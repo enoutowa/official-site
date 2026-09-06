@@ -14,16 +14,27 @@ body {
   margin: 0;
   padding: 0;
 
-    background:
-  linear-gradient(
-    rgba(250, 247, 252, 0.45),
-    rgba(242, 235, 247, 0.45)
-  ),
-  url("./images/paw-bg.png");
+  background:
+    linear-gradient(
+      rgba(250, 247, 252, 0.45),
+      rgba(242, 235, 247, 0.45)
+    ),
+    url("./images/paw-bg.png");
 
- background-repeat: repeat-y;
-background-position: center top;
-background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 100% auto;
+
+  color: #4f4258;
+
+  font-family:
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    sans-serif;
+
+  line-height: 1.8;
+}
 
 
 /* =========================
@@ -122,8 +133,9 @@ main {
   padding-bottom: 60px;
 }
 
+
 /* =========================
-各セクション
+   各セクション
 ========================= */
 
 section {
@@ -134,12 +146,12 @@ section {
   padding: 28px 32px;
 
   background:
-  linear-gradient(
-    180deg,
-    rgba(222, 205, 238, 0.55) 0px,
-    rgba(246, 240, 250, 0.35) 70px,
-    rgba(255, 255, 255, 0.82) 140px
-  );
+    linear-gradient(
+      180deg,
+      rgba(222, 205, 238, 0.55) 0px,
+      rgba(246, 240, 250, 0.35) 70px,
+      rgba(255, 255, 255, 0.82) 140px
+    );
 
   border-radius: 16px;
 
@@ -207,6 +219,7 @@ section p {
 
   font-size: 16px;
 }
+
 
 /* =========================
    通常リンク
@@ -367,6 +380,89 @@ a:hover {
 
 
 /* =========================
+   JUKEBOX
+========================= */
+
+.jukebox-text {
+  margin-bottom: 20px;
+}
+
+.song-card {
+  display: grid;
+
+  grid-template-columns: 150px minmax(0, 1fr);
+
+  gap: 22px;
+
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(224, 210, 239, 0.95),
+      rgba(247, 241, 251, 0.95)
+    );
+
+  border: 1px solid #d2bfdf;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 20px rgba(90, 65, 110, 0.10);
+}
+
+.song-cover {
+  display: block;
+
+  width: 150px;
+  height: 150px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.16);
+}
+
+.song-info {
+  min-width: 0;
+}
+
+.song-label {
+  margin-bottom: 4px;
+
+  color: #9576aa;
+
+  font-size: 12px;
+
+  letter-spacing: 0.12em;
+}
+
+.song-info h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+
+  color: #5f466f;
+
+  font-size: 20px;
+
+  font-weight: normal;
+}
+
+.song-card audio {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* =========================
    NOVEL
 ========================= */
 
@@ -507,6 +603,47 @@ a:hover {
 
 
 /* =========================
+   走る猫トワ
+========================= */
+
+.towa-run-area {
+  position: relative;
+
+  width: 100%;
+  height: 120px;
+
+  overflow: hidden;
+}
+
+.towa-run {
+  position: absolute;
+
+  width: 130px;
+  height: auto;
+
+  top: 50%;
+  left: -150px;
+
+  transform: translateY(-50%);
+
+  animation:
+    towa-running 8s linear infinite;
+}
+
+@keyframes towa-running {
+
+  0% {
+    left: -150px;
+  }
+
+  100% {
+    left: calc(100% + 150px);
+  }
+
+}
+
+
+/* =========================
    FOOTER
 ========================= */
 
@@ -532,7 +669,7 @@ footer {
 
 
 /* =========================
-   タブレット・小さめ画面
+   タブレット
 ========================= */
 
 @media screen and (max-width: 800px) {
@@ -609,94 +746,11 @@ footer {
     gap: 10px;
   }
 
-}
 
-/* =========================
-   JUKEBOX
-========================= */
-
-.jukebox-text {
-  margin-bottom: 20px;
-}
-
-.song-card {
-  margin-top: 20px;
-
-  padding: 22px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(224, 210, 239, 0.95),
-      rgba(247, 241, 251, 0.95)
-    );
-
-  border: 1px solid #d2bfdf;
-
-  border-radius: 18px;
-
-  box-shadow:
-    0 8px 20px rgba(90, 65, 110, 0.10);
-}
-
-.song-label {
-  margin-bottom: 4px;
-
-  color: #9576aa;
-
-  font-size: 12px;
-
-  letter-spacing: 0.12em;
-}
-
-.song-info h3 {
-  margin-top: 0;
-  margin-bottom: 16px;
-
-  color: #5f466f;
-
-  font-size: 20px;
-
-  font-weight: normal;
-}
-
-.song-card audio {
-  width: 100%;
-
-  display: block;
-}
-.song-card {
-  display: grid;
-
-  grid-template-columns: 150px 1fr;
-
-  gap: 22px;
-
-  align-items: center;
-}
-
-.song-cover {
-  display: block;
-
-  width: 150px;
-  height: 150px;
-
-  object-fit: cover;
-
-  border-radius: 14px;
-
-  box-shadow:
-    0 6px 18px rgba(78, 55, 92, 0.16);
-}
-
-.song-info {
-  min-width: 0;
-}
-
-@media screen and (max-width: 600px) {
+  /* JUKEBOX */
 
   .song-card {
-    grid-template-columns: 1fr;
+    display: block;
 
     text-align: center;
   }
@@ -705,40 +759,26 @@ footer {
     width: 180px;
     height: 180px;
 
-    margin: 0 auto;
+    margin: 0 auto 18px;
   }
 
-}
-
-.song-card {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 22px;
-  align-items: center;
-}
-
-.song-cover {
-  display: block;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(78, 55, 92, 0.16);
-}
-
-.song-info {
-  min-width: 0;
-}
-
-@media screen and (max-width: 600px) {
-  .song-card {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .song-info {
+    width: 100%;
   }
 
-  .song-cover {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
+  .song-card audio {
+    width: 100%;
   }
+
+
+  /* 走る猫トワ */
+
+  .towa-run-area {
+    height: 90px;
+  }
+
+  .towa-run {
+    width: 100px;
+  }
+
 }
