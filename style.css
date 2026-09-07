@@ -2329,3 +2329,18 @@ section p {
   }
 
 }
+/* =========================
+   BLOG CARD CLICK AREA
+========================= */
+
+.blog-card {
+  position: relative;
+}
+
+.blog-card-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: block;
+  border-radius: 14px;
+}
