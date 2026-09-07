@@ -2152,12 +2152,13 @@ section p {
 }
 
 
-/* スマホ：フッタービジュアルを上に寄せる */
+/* スマホ：LINK下の余白をなくす */
 
 @media screen and (max-width: 600px) {
 
-  .footer-visual-area {
-    margin-top: -120px;
+  main {
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
 }
