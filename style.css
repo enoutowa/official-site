@@ -1495,3 +1495,251 @@ section p {
   color: #6f5a7c;
   letter-spacing: 0.08em;
 }
+
+/* =========================
+   CHARACTER PROFILE LINKS
+========================= */
+
+.character-profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.character-profile-links a {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  background:
+    rgba(113, 84, 141, 0.10);
+
+  border:
+    1px solid #cdb8de;
+
+  border-radius: 999px;
+
+  color: #654c78;
+
+  font-size: 13px;
+
+  letter-spacing: 0.05em;
+
+  transition: 0.2s;
+}
+
+.character-profile-links a:hover {
+  background: #71548d;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   CHARACTER PROFILE PAGE
+========================= */
+
+.character-profile-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* 左：画像 / 右：名前・紹介文・基本プロフィール */
+
+.character-profile-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  width: 100%;
+}
+
+.character-profile-visual {
+  min-width: 0;
+  margin: 0;
+}
+
+.character-profile-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 18px;
+  box-shadow:
+    0 8px 24px rgba(78, 55, 92, 0.14);
+}
+
+.character-profile-details {
+  min-width: 0;
+}
+
+.character-profile-details h3 {
+  margin: 0 0 5px;
+  color: #654c78;
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+}
+
+.character-profile-role {
+  margin: 0 0 20px;
+  color: #8d749e;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.character-profile-details > p {
+  margin: 0 0 12px;
+}
+
+
+/* 右側の基本情報 */
+
+.character-profile-info {
+  margin: 24px 0 0;
+  padding: 18px 20px;
+  background:
+    rgba(238, 229, 247, 0.65);
+  border-radius: 14px;
+}
+
+.character-profile-info p {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom:
+    1px solid rgba(113, 84, 141, 0.15);
+}
+
+.character-profile-info p:last-child {
+  border-bottom: none;
+}
+
+.character-profile-info span {
+  display: block;
+  margin-bottom: 2px;
+  color: #87699a;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+
+/* 詳細プロフィール */
+
+.character-detail-box {
+  margin-top: 24px;
+  padding: 24px 26px;
+  background:
+    rgba(255, 255, 255, 0.70);
+  border:
+    1px solid rgba(126, 91, 156, 0.20);
+  border-radius: 16px;
+  box-shadow:
+    0 5px 15px rgba(78, 55, 92, 0.07);
+}
+
+.character-detail-box h3 {
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  color: #654c78;
+  font-size: 19px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  border-bottom:
+    1px solid #ded1e8;
+}
+
+.character-detail-box p {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.character-detail-box p:last-child {
+  margin-bottom: 0;
+}
+
+.character-message-last {
+  text-align: center;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(230, 216, 241, 0.75),
+      rgba(255, 255, 255, 0.80)
+    );
+}
+
+
+/* =========================
+   CHARACTER PROFILE MOBILE
+========================= */
+
+@media screen and (max-width: 600px) {
+
+  .character-profile-layout {
+    grid-template-columns: 42% minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .character-profile-details h3 {
+    font-size: 22px;
+  }
+
+  .character-profile-role {
+    font-size: 12px;
+  }
+
+  .character-profile-details > p {
+    font-size: 13px;
+  }
+
+  .character-profile-info {
+    margin-top: 16px;
+    padding: 12px;
+  }
+
+  .character-profile-info p {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .character-profile-info span {
+    font-size: 10px;
+  }
+
+  .character-detail-box {
+    padding: 20px 18px;
+  }
+}
+
+.character-profile-visual::before,
+.character-profile-visual::after {
+  display: block;
+  white-space: pre-line;
+
+  text-align: center;
+  color: #9b7bb2;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+/* 画像の上 */
+.character-profile-visual::before {
+  content:
+    "\A\A˚✩∗*ﾟ⋆｡˚✩☪︎⋆｡˚✩˚✩∗*ﾟ⋆｡˚✩⋆｡˚✩";
+
+  margin-bottom: 18px;
+}
+
+/* 画像の下 */
+.character-profile-visual::after {
+  content:
+    "˚✩∗*ﾟ⋆｡˚✩☪︎⋆｡˚✩˚✩∗*ﾟ⋆｡˚✩⋆｡˚✩\A\A";
+
+  margin-top: 18px;
+}
