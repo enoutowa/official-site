@@ -1240,3 +1240,186 @@ section p {
   }
 
 }
+
+/* =========================
+   BLOG
+========================= */
+
+.blog-intro {
+  margin-bottom: 24px;
+}
+
+
+/* トップページ */
+
+.blog-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.blog-card {
+  padding: 20px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  border:
+    1px solid rgba(126, 91, 156, 0.20);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 15px rgba(78, 55, 92, 0.08);
+}
+
+.blog-date {
+  margin: 0 0 5px;
+
+  color: #8a6aa1;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 0.08em;
+}
+
+.blog-tag {
+  display: inline-block;
+
+  margin: 0 0 10px;
+
+  padding: 3px 9px;
+
+  background:
+    rgba(113, 84, 141, 0.12);
+
+  border-radius: 999px;
+
+  color: #71548d;
+
+  font-size: 10px;
+
+  letter-spacing: 0.10em;
+}
+
+.blog-card h3 {
+  margin: 0 0 12px;
+
+  color: #654c78;
+
+  font-size: 17px;
+
+  font-weight: normal;
+}
+
+.blog-card p {
+  font-size: 14px;
+}
+
+.blog-more {
+  margin-top: 24px;
+
+  text-align: right;
+}
+
+.blog-more a {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  border:
+    1px solid #cdb8de;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  font-size: 13px;
+}
+
+
+/* BLOGページ */
+
+.blog-page {
+  max-width: 900px;
+
+  margin: 0 auto;
+}
+
+.blog-archive {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+.blog-entry {
+  padding: 26px;
+
+  background:
+    rgba(255, 255, 255, 0.75);
+
+  border:
+    1px solid rgba(126, 91, 156, 0.22);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.08);
+}
+
+.blog-entry-head {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.blog-entry h3 {
+  margin: 0 0 15px;
+
+  color: #654c78;
+
+  font-size: 20px;
+
+  font-weight: normal;
+}
+
+.blog-entry p {
+  margin-bottom: 12px;
+}
+
+
+/* =========================
+   BLOG スマホ
+========================= */
+
+@media screen and (max-width: 600px) {
+
+  .blog-list {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-card {
+    padding: 18px;
+  }
+
+  .blog-more {
+    text-align: center;
+  }
+
+  .blog-entry {
+    padding: 20px 18px;
+  }
+
+}
