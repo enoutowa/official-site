@@ -1892,3 +1892,233 @@ section p {
   }
 
 }
+
+.video-more {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.video-more a {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  border:
+    1px solid #cdb8de;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  font-size: 13px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .video-more {
+    text-align: center;
+  }
+
+}
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+.back-to-top {
+  position: fixed;
+
+  right: 20px;
+  bottom: 20px;
+
+  z-index: 999;
+
+  display: inline-block;
+
+  padding: 10px 14px;
+
+  background:
+    rgba(101, 76, 120, 0.90);
+
+  color: #ffffff;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 5px 15px rgba(78, 55, 92, 0.18);
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.back-to-top:hover {
+  background: #80639a;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+
+    padding: 9px 12px;
+
+    font-size: 11px;
+  }
+
+}
+
+/* =========================
+   NEWS NEW BADGE
+========================= */
+
+.new-badge {
+  display: inline-block;
+
+  margin-right: 8px;
+  padding: 2px 7px;
+
+  background: #8f6caf;
+  color: #ffffff;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+
+  vertical-align: middle;
+}
+
+.song-description {
+  margin: 8px 0 14px;
+  color: #6f5a7c;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.song-more {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 14px;
+
+  border: 1px solid #cdb8de;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.footer-visual-area {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: -100px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-visual {
+  display: block;
+  width: 760px;
+  max-width: 92%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* =========================
+   NOVEL CARD
+========================= */
+
+.novel-card {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.novel-cover {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.14);
+}
+
+.novel-info {
+  min-width: 0;
+}
+
+.novel-info h3 {
+  margin-top: 0;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+  .novel-card {
+    display: block;
+    text-align: center;
+  }
+
+  .novel-cover {
+    width: 200px;
+    margin: 0 auto 20px;
+  }
+
+  .novel-links {
+    justify-content: center;
+  }
+
+}
+
+.footer-update {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.video-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #5f486f;
+  letter-spacing: 0.04em;
+}
+
+.link-name {
+  display: block;
+  font-weight: bold;
+}
+
+.link-sub {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  opacity: 0.65;
+}
