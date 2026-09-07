@@ -595,18 +595,30 @@ section p {
 }
 
 
-/* トップページ */
+/* トップページ：横スワイプ */
 
 .blog-list {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
+  display: flex;
 
   gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 4px 2px 14px;
+
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 .blog-card {
+  flex: 0 0 360px;
+
+  scroll-snap-align: start;
+
   padding: 20px;
 
   background:
@@ -619,6 +631,21 @@ section p {
 
   box-shadow:
     0 5px 15px rgba(78, 55, 92, 0.08);
+}
+
+.blog-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.blog-list::-webkit-scrollbar-thumb {
+  background:
+    rgba(125, 89, 147, 0.35);
+
+  border-radius: 10px;
+}
+
+.blog-list::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .blog-date {
@@ -1328,11 +1355,9 @@ section p {
 
   /* BLOG */
 
-  .blog-list {
-    grid-template-columns: 1fr;
-  }
-
   .blog-card {
+    flex: 0 0 88%;
+
     padding: 18px;
   }
 
