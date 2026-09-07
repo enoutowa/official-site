@@ -2156,9 +2156,9 @@ section p {
 
 @media screen and (max-width: 600px) {
 
-  main {
-    margin-bottom: 0;
-    padding-bottom: 0;
+  .footer-visual-area {
+    margin-top: 35px;
+    margin-bottom: -100px;
   }
 
 }
