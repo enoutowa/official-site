@@ -1,4 +1,4 @@
-/* =========================
+
    全体
 ========================= */
 
@@ -832,16 +832,28 @@ section p {
 }
 
 .gallery-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
+  display: flex;
 
   gap: 16px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 4px 2px 14px;
+
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 .gallery-grid a {
   display: block;
+
+  flex: 0 0 260px;
+
+  scroll-snap-align: start;
 
   overflow: hidden;
 
@@ -867,6 +879,21 @@ section p {
 
 .gallery-grid a:hover img {
   transform: scale(1.04);
+}
+
+.gallery-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-grid::-webkit-scrollbar-thumb {
+  background:
+    rgba(125, 89, 147, 0.35);
+
+  border-radius: 10px;
+}
+
+.gallery-grid::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 
@@ -1373,10 +1400,11 @@ section p {
   /* GALLERY */
 
   .gallery-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
+    gap: 12px;
+  }
 
-    gap: 10px;
+  .gallery-grid a {
+    flex: 0 0 82%;
   }
 
 
