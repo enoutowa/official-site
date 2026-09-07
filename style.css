@@ -2151,22 +2151,31 @@ section p {
 
 }
 
-
-/* スマホ：LINK下の余白をなくす */
+/* =========================
+   MOBILE フッター位置調整
+========================= */
 
 @media screen and (max-width: 600px) {
 
+  main {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
   .footer-visual-area {
-    margin-top: 35px;
-    margin-bottom: -100px;
-    overflow: hidden;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
   }
 
   .footer-visual {
-    width: 100%;
-    max-width: 100%;
-    transform: translateY(-45px);
-    margin-bottom: -45px;
+    width: 92%;
+    max-width: 92%;
+    margin: 0 auto;
+    transform: none !important;
+  }
+
+  .site-footer {
+    margin-top: 0 !important;
   }
 
 }
