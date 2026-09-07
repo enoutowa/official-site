@@ -2151,13 +2151,13 @@ section p {
 
 }
 
-/* スマホ：LINKとフッタービジュアルの間を詰める */
+
+/* スマホ：フッタービジュアルを上に寄せる */
 
 @media screen and (max-width: 600px) {
 
-  main {
-    padding-bottom: 0;
-    margin-bottom: 0;
+  .footer-visual-area {
+    margin-top: -80px;
   }
 
 }
