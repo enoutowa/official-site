@@ -1426,3 +1426,19 @@ section p {
   }
 
 }
+
+/* =========================
+   SUB PAGE FOOTER
+========================= */
+
+.simple-footer {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.simple-footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #6f5a7c;
+  letter-spacing: 0.08em;
+}
