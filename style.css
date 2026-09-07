@@ -2157,8 +2157,16 @@ section p {
 @media screen and (max-width: 600px) {
 
   .footer-visual-area {
-    margin-top: 70px;
+    margin-top: 35px;
     margin-bottom: -100px;
+    overflow: hidden;
+  }
+
+  .footer-visual {
+    width: 100%;
+    max-width: 100%;
+    transform: translateY(-45px);
+    margin-bottom: -45px;
   }
 
 }
