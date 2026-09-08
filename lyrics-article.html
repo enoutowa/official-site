@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>LYRICS | 鴛鴦トワ Official Website</title>
+
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
+</head>
+
+
+<body>
+
+  <header>
+
+    <div class="header-inner">
+
+      <p class="header-sub">
+        OFFICIAL WEBSITE
+      </p>
+
+      <h1>
+        鴛鴦トワ
+      </h1>
+
+    </div>
+
+    <nav>
+      <a href="./index.html#news">NEWS</a>
+      <a href="./index.html#profile">PROFILE</a>
+      <a href="./index.html#music">MUSIC</a>
+      <a href="./index.html#jukebox">JUKEBOX</a>
+      <a href="./index.html#video">VIDEO</a>
+      <a href="./lyrics.html">LYRICS</a>
+      <a href="./blog.html">BLOG</a>
+      <a href="./index.html#novel">NOVEL</a>
+      <a href="./index.html#gallery">GALLERY</a>
+      <a href="./index.html#link">LINK</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <article
+      class="lyrics-article"
+      id="lyrics-article"
+    >
+    </article>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <p class="footer-title">
+        鴛鴦トワ Official Website
+      </p>
+
+      <div class="footer-submenu">
+
+        <a href="./index.html">
+          HOME
+        </a>
+
+        <span>|</span>
+
+        <a href="./lyrics.html">
+          LYRICS
+        </a>
+
+        <span>|</span>
+
+        <a href="./terms.html">
+          利用規約
+        </a>
+
+        <span>|</span>
+
+        <a href="./contact.html">
+          お問い合わせ
+        </a>
+
+      </div>
+
+      <p class="footer-copy">
+        © 鴛鴦トワ
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <a href="#" class="back-to-top">
+    ↑ TOP
+  </a>
+
+
+  <script src="./lyrics-data.js"></script>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const songId = params.get("id");
+
+    const song =
+      typeof lyricsItems !== "undefined" &&
+      Array.isArray(lyricsItems)
+        ? lyricsItems.find((item) => {
+            return item.id === songId;
+          })
+        : null;
+
+    const lyricsArticle =
+      document.getElementById("lyrics-article");
+
+
+    if (!song) {
+
+      lyricsArticle.innerHTML = `
+        <div class="lyrics-body">
+
+          <p>
+            楽曲が見つかりませんでした。
+          </p>
+
+        </div>
+
+        <div class="lyrics-back">
+
+          <a href="./lyrics.html">
+            ← 歌詞一覧へ戻る
+          </a>
+
+        </div>
+      `;
+
+    } else {
+
+      document.title =
+        `${song.title} | LYRICS | 鴛鴦トワ Official Website`;
+
+
+      let youtubeHtml = "";
+
+      if (song.youtube) {
+
+        youtubeHtml = `
+          <div class="lyrics-youtube-card">
+
+            <h3>
+              『${song.title}』をYouTubeで聴く
+            </h3>
+
+            <iframe
+              src="https://www.youtube.com/embed/${song.youtube}"
+              title="${song.title}"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+        `;
+
+      }
+
+
+      lyricsArticle.innerHTML = `
+
+        <div class="lyrics-song-info">
+
+          <h2>
+            ${song.title}
+          </h2>
+
+          <div class="lyrics-song-meta">
+
+            <img
+              src="${song.cover}"
+              alt="${song.title} ジャケット"
+              class="lyrics-cover"
+            >
+
+            <div class="lyrics-meta-text">
+
+              <p class="lyrics-artist">
+                ${song.artist}
+              </p>
+
+              <p>
+                ${song.releaseDate} リリース
+              </p>
+
+              <p>
+                <strong>作詞</strong>　${song.lyricist}
+              </p>
+
+              <p>
+                <strong>作曲</strong>　${song.composer}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="lyrics-body">
+
+          ${song.lyrics}
+
+        </div>
+
+
+        ${youtubeHtml}
+
+
+        <div class="lyrics-back">
+
+          <a href="./lyrics.html">
+            ← 歌詞一覧へ戻る
+          </a>
+
+        </div>
+
+      `;
+
+    }
+  </script>
+
+</body>
+
+</html>

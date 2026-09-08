@@ -1771,6 +1771,7 @@ section p {
   }
 }
 
+
 /* =========================
    GALLERY PAGE
 ========================= */
@@ -1793,7 +1794,6 @@ section p {
 
 .gallery-page-grid a {
   display: block;
-
   padding: 8px;
 
   background:
@@ -1806,6 +1806,8 @@ section p {
 
   box-shadow:
     0 5px 15px rgba(78, 55, 92, 0.08);
+
+  overflow: hidden;
 
   transition:
     transform 0.2s ease,
@@ -1821,46 +1823,6 @@ section p {
 
 .gallery-page-grid img {
   display: block;
-
-  width: 100%;
-  height: auto;
-
-  border-radius: 9px;
-}
-
-/* =========================
-   GALLERY PAGE
-========================= */
-
-.gallery-page-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: start;
-}
-
-.gallery-page-grid a {
-  display: block;
-
-  padding: 8px;
-
-  background:
-    rgba(255, 255, 255, 0.65);
-
-  border:
-    1px solid rgba(126, 91, 156, 0.18);
-
-  border-radius: 14px;
-
-  box-shadow:
-    0 5px 15px rgba(78, 55, 92, 0.08);
-
-  overflow: hidden;
-}
-
-.gallery-page-grid img {
-  display: block;
-
   width: 100%;
   aspect-ratio: 1 / 1;
 
@@ -1869,7 +1831,6 @@ section p {
 
   border-radius: 9px;
 }
-
 
 /* =========================
    GALLERY PAGE MOBILE
@@ -2180,65 +2141,6 @@ section p {
 
 }
 
-/* =========================
-   MUSIC
-========================= */
-
-.music-card {
-  margin-top: 20px;
-  padding: 28px;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid #d7c4e3;
-  border-radius: 18px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(78, 55, 92, 0.08);
-}
-
-.music-lead {
-  margin: 0 0 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #5f486f;
-}
-
-.music-text {
-  margin: 0 0 22px;
-  line-height: 1.8;
-}
-
-.music-links {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.music-links a {
-  display: inline-block;
-  padding: 10px 18px;
-  border: 1px solid #cdb8de;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  font-size: 13px;
-}
-
-@media screen and (max-width: 600px) {
-
-  .music-card {
-    padding: 22px 16px;
-  }
-
-  .music-lead {
-    font-size: 16px;
-  }
-
-}
-
-.music-links a {
-  background: #e8d9f2;
-  color: #5f486f;
-  border: 1px solid #c7add9;
-}
 
 /* =========================
    MUSIC
@@ -2329,6 +2231,7 @@ section p {
   }
 
 }
+
 /* =========================
    BLOG CARD CLICK AREA
 ========================= */
@@ -2354,4 +2257,187 @@ section p {
   height: auto;
   margin: 24px auto;
   border-radius: 14px;
+}
+
+#news-list {
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+#news-list p {
+  margin-bottom: 18px;
+}
+
+#news-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#news-list::-webkit-scrollbar-thumb {
+  background: rgba(143, 108, 175, 0.45);
+  border-radius: 999px;
+}
+
+#news-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+}
+
+
+/* =========================
+   LYRICS
+========================= */
+
+.lyrics-article {
+  text-align: center;
+}
+
+.lyrics-body {
+  width: 90%;
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 36px 28px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 24px rgba(78, 55, 92, 0.10);
+
+  line-height: 2;
+}
+
+.lyrics-body p {
+  margin: 0 0 28px;
+}
+
+.lyrics-back {
+  margin-top: 32px;
+  text-align: center;
+}
+
+
+/* 楽曲情報：左ジャケット / 右テキスト */
+
+.lyrics-song-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+
+  text-align: left;
+}
+
+.lyrics-cover {
+  width: 90px;
+  height: 90px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+
+  flex-shrink: 0;
+}
+
+.lyrics-meta-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lyrics-meta-text p {
+  margin: 0 0 10px;
+}
+
+
+/* YouTube */
+
+.lyrics-youtube-card {
+  width: 90%;
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #d8c6e4;
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 24px rgba(78, 55, 92, 0.12);
+
+  text-align: center;
+}
+
+.lyrics-youtube-card h3 {
+  margin: 0 0 18px;
+
+  color: #5f486f;
+}
+
+.lyrics-youtube-card iframe {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  border: 0;
+  border-radius: 10px;
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+  .lyrics-body {
+    width: 92%;
+    padding: 28px 18px;
+  }
+
+  .lyrics-song-meta {
+    gap: 16px;
+  }
+
+  .lyrics-cover {
+    width: 80px;
+    height: 80px;
+  }
+
+  .lyrics-youtube-card {
+    width: 92%;
+    padding: 18px;
+  }
+
+}
+
+/* LYRICS ジャケットサイズ */
+
+.lyrics-cover {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .lyrics-cover {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* LYRICS 一覧を縦並び */
+
+.lyrics-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.lyrics-item {
+  display: block;
 }

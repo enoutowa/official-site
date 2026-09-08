@@ -1,16 +1,21 @@
 const newsItems = [
 
-{
-  date: "2026.09.08",
-  text: "新曲『心近』をYouTubeにアップロードしました。",
-  url: "https://youtu.be/a1zO8f9Il-k?si=plrZcHPIQ08qy74G"
-},
+  {
+    date: "2026.09.08",
+    text: "新曲『心近』をYouTubeにアップロードしました。",
+    url: "https://youtu.be/a1zO8f9Il-k?si=plrZcHPIQ08qy74G"
+  },
 
   {
     date: "2026.09.08",
     text: "BLOGを更新しました。",
     url: "./article.html?id=20260908-auto"
   },
+
+ {
+  date: "2026.09.08",
+  text: "公式サイトにBLOGを開設しました。"
+},
 
   {
     date: "2026.09.07",
@@ -22,6 +27,18 @@ const newsItems = [
     date: "2026.09.06",
     text: "新曲『我流』をYouTubeにアップロードしました。",
     url: "https://youtu.be/KDGYMUREle0?si=N5VWE5vHGlDFaeIB"
+  },
+
+  {
+    date: "2026.09.06",
+    text: "YouTube公式アーティストになりました。",
+    url: "./article.html?id=20260906-youtube"
+  },
+
+  {
+    date: "2026.09.04",
+    text: "各音楽配信サービスにて、オリジナル楽曲の配信がスタートしました。",
+    url: "./article.html?id=20260904-release"
   }
 
 ];

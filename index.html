@@ -27,6 +27,7 @@
       <a href="#music">MUSIC</a>
       <a href="#jukebox">JUKEBOX</a>
       <a href="#video">VIDEO</a>
+      <a href="#lyrics">LYRICS</a>
       <a href="#blog">BLOG</a>
       <a href="#novel">NOVEL</a>
       <a href="#gallery">GALLERY</a>
@@ -43,14 +44,14 @@
          NEWS
     ========================= -->
 
-   <section id="news">
+    <section id="news">
 
-  <h2>NEWS</h2>
+      <h2>NEWS</h2>
 
-  <div id="news-list">
-  </div>
+      <div id="news-list">
+      </div>
 
-</section>
+    </section>
 
     <!-- =========================
          PROFILE
@@ -404,6 +405,27 @@
 </section>
 
 <!-- =========================
+     LYRICS
+========================= -->
+
+<section id="lyrics">
+
+  <h2>LYRICS</h2>
+
+  <p class="lyrics-intro">
+    鴛鴦トワのオリジナル楽曲の歌詞を掲載しています。
+  </p>
+
+  <div class="lyrics-more">
+    <a href="./lyrics.html">
+      歌詞を見る →
+    </a>
+  </div>
+
+</section>
+
+
+<!-- =========================
      BLOG
 ========================= -->
 
@@ -699,6 +721,7 @@
         <a href="#music">MUSIC</a>
         <a href="#jukebox">JUKEBOX</a>
         <a href="#video">VIDEO</a>
+        <a href="#lyrics">LYRICS</a>
         <a href="#blog">BLOG</a>
         <a href="#novel">NOVEL</a>
         <a href="#gallery">GALLERY</a>
@@ -722,8 +745,8 @@
       </div>
 
 
-      <p class="footer-update">
-        Last Update 2026.09.07
+      <p class="footer-update" id="last-update">
+        Last Update
       </p>
 
 
@@ -792,27 +815,49 @@
       p.className = "news-new";
     }
 
-    const isExternal =
-      item.url.startsWith("http");
+    let newsContent = item.text;
+
+    if (item.url) {
+      const isExternal = item.url.startsWith("http");
+
+      newsContent = `
+        <a
+          href="${item.url}"
+          ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''}
+        >
+          ${item.text}
+        </a>
+      `;
+    }
 
     p.innerHTML = `
       ${index === 0 ? '<span class="new-badge">NEW</span>' : ''}
-
-      <strong>
-        ${item.date}
-      </strong><br>
-
-      <a
-        href="${item.url}"
-        ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''}
-      >
-        ${item.text}
-      </a>
+      <strong>${item.date}</strong><br>
+      ${newsContent}
     `;
 
     newsList.appendChild(p);
 
   });
+</script>
+
+
+
+<script>
+  const blogDates = blogPosts.map((post) => post.date);
+  const newsDates = newsItems.map((item) => item.date);
+
+  const allDates = [
+    ...blogDates,
+    ...newsDates
+  ].sort().reverse();
+
+  const latestDate = allDates[0];
+  const lastUpdate = document.getElementById("last-update");
+
+  if (latestDate && lastUpdate) {
+    lastUpdate.textContent = `Last Update ${latestDate}`;
+  }
 </script>
 
 </body>
