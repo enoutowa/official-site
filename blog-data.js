@@ -6,7 +6,7 @@ const blogPosts = [
   date: "2026.09.08",
   category: "SITE",
   title: "自動化完成",
-  summary: "なんやかんやで携帯でも更新できるように調整しました",
+  summary: "なんやかんやで携帯でも更新できるように調整しました。",
 
   content: `
     <p>
