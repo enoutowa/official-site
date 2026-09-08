@@ -1,5 +1,11 @@
 const newsItems = [
 
+  {
+  date: "2026.09.09",
+  text: "BLOGを更新しました。",
+  url: "./article.html?id=20260908-mobile-updat"
+},
+
 {
   date: "2026.09.08",
   text: "新曲『無心論』をYouTubeにアップロードしました",
