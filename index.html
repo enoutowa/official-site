@@ -43,42 +43,14 @@
          NEWS
     ========================= -->
 
-    <section id="news">
+   <section id="news">
 
-      <h2>NEWS</h2>
+  <h2>NEWS</h2>
 
-      <div class="news-scroll">
+  <div id="news-list">
+  </div>
 
-        <p class="news-new">
-  <span class="new-badge">NEW</span>
-  <strong>2026.09.07</strong><br>
-  新曲『<a href="https://youtu.be/NC9w21RSoRg?si=TmbFSpfr_SqeR1lG" target="_blank" rel="noopener noreferrer">恋愛抗争</a>』をYouTubeにアップロードしました。
-</p>
-
-        <p>
-          <strong>2026.09.07</strong><br>
-          各音楽配信サービスにてアルバム『ラブちゅちゅ』の配信を開始しました。
-        </p>
-
-<p>
-  <strong>2026.09.06</strong><br>
-  新曲『<a href="https://youtu.be/KDGYMUREle0?si=N5VWE5vHGlDFaeIB" target="_blank" rel="noopener noreferrer">我流</a>』をYouTubeにアップロードしました。
-</p>
-       
-        <p>
-          <strong>2026.09.06</strong><br>
-          YouTube公式アーティストになりました。
-        </p>
-
-        <p>
-          <strong>2026.09.04</strong><br>
-          各音楽配信サービスにてオリジナル楽曲の配信を開始しました。
-        </p>
-
-      </div>
-
-    </section>
-
+</section>
 
     <!-- =========================
          PROFILE
@@ -444,130 +416,16 @@
     鴛鴦トワの小さな記録。
   </p>
 
-
-  <div class="blog-list">
-
-
-    <a
-      href="./blog-20260907-music.html"
-      class="blog-card-link"
-    >
-      <article class="blog-card">
-
-        <p class="blog-date">
-          2026.09.07
-        </p>
-
-        <p class="blog-tag">
-          MUSIC
-        </p>
-
-        <h3>
-          猫の一曲
-        </h3>
-
-        <p>
-          各地で雨模様の今日。
-          そんな日におすすめしたい一曲、
-          『花は雨を嫌わない』をご紹介します🐾
-        </p>
-
-      </article>
-    </a>
-
-
-    <a
-      href="./blog-20260907-site.html"
-      class="blog-card-link"
-    >
-      <article class="blog-card">
-
-        <p class="blog-date">
-          2026.09.07
-        </p>
-
-        <p class="blog-tag">
-          SITE
-        </p>
-
-        <h3>
-          ホームページを更新しました
-        </h3>
-
-        <p>
-          VIDEO欄や利用規約、
-          お問い合わせページなどを追加しました。
-          少しずつ公式サイトらしく育ってきています。
-        </p>
-
-      </article>
-    </a>
-
-
-    <a
-      href="./blog-20260906-youtube.html"
-      class="blog-card-link"
-    >
-      <article class="blog-card">
-
-        <p class="blog-date">
-          2026.09.06
-        </p>
-
-        <p class="blog-tag">
-          MUSIC
-        </p>
-
-        <h3>
-          YouTube公式アーティストになりました
-        </h3>
-
-        <p>
-          またひとつ、
-          目標にしていた場所まで辿り着きました。
-          これからも自分のペースで作品を届けていきます。
-        </p>
-
-      </article>
-    </a>
-
-
-    <a
-      href="./blog-20260904-release.html"
-      class="blog-card-link"
-    >
-      <article class="blog-card">
-
-        <p class="blog-date">
-          2026.09.04
-        </p>
-
-        <p class="blog-tag">
-          MUSIC
-        </p>
-
-        <h3>
-          楽曲配信スタート
-        </h3>
-
-        <p>
-          各音楽配信サービスで、
-          鴛鴦トワのオリジナル楽曲の配信が始まりました。
-        </p>
-
-      </article>
-    </a>
-
-
+  <div
+    class="blog-list"
+    id="home-blog-list"
+  >
   </div>
 
-
   <div class="blog-more">
-
     <a href="./blog.html">
       BLOGをもっと見る →
     </a>
-
   </div>
 
 </section>
@@ -881,7 +739,81 @@
   <a href="#" class="back-to-top">
     ↑ TOP
   </a>
+<script src="./blog-data.js"></script>
 
+<script>
+  const homeBlogList = document.getElementById("home-blog-list");
+
+  blogPosts.slice(0, 4).forEach((post) => {
+
+    const article = document.createElement("article");
+
+    article.className = "blog-card";
+
+    article.innerHTML = `
+      <a
+        href="${post.url}"
+        class="blog-card-hit"
+        aria-label="${post.title}を読む"
+      ></a>
+
+      <p class="blog-date">
+        ${post.date}
+      </p>
+
+      <p class="blog-tag">
+        ${post.category}
+      </p>
+
+      <h3>
+        ${post.title}
+      </h3>
+
+      <p>
+        ${post.summary}
+      </p>
+    `;
+
+    homeBlogList.appendChild(article);
+
+  });
+</script>
+
+<script src="./news-data.js"></script>
+
+<script>
+  const newsList = document.getElementById("news-list");
+
+  newsItems.forEach((item, index) => {
+
+    const p = document.createElement("p");
+
+    if (index === 0) {
+      p.className = "news-new";
+    }
+
+    const isExternal =
+      item.url.startsWith("http");
+
+    p.innerHTML = `
+      ${index === 0 ? '<span class="new-badge">NEW</span>' : ''}
+
+      <strong>
+        ${item.date}
+      </strong><br>
+
+      <a
+        href="${item.url}"
+        ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ''}
+      >
+        ${item.text}
+      </a>
+    `;
+
+    newsList.appendChild(p);
+
+  });
+</script>
 
 </body>
 

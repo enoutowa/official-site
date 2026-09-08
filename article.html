@@ -84,17 +84,11 @@
 
       <h2>BLOG</h2>
 
-      <p class="blog-intro">
-        制作のこと、日々のこと。<br>
-        鴛鴦トワの小さな記録。
-      </p>
-
-
-      <div
-        class="blog-archive"
-        id="blog-archive"
+      <article
+        class="blog-entry"
+        id="article-content"
       >
-      </div>
+      </article>
 
     </section>
 
@@ -146,44 +140,73 @@
   <script src="./blog-data.js"></script>
 
   <script>
-    const blogArchive = document.getElementById("blog-archive");
 
-    blogPosts.forEach((post) => {
+    const params = new URLSearchParams(window.location.search);
 
-      const link = document.createElement("a");
+    const articleId = params.get("id");
 
-      link.href = post.url;
-      link.className = "blog-entry-link";
+    const article = blogPosts.find((post) => {
+      return post.id === articleId;
+    });
 
-      link.innerHTML = `
-        <article class="blog-entry">
+    const articleContent = document.getElementById("article-content");
 
-          <div class="blog-entry-head">
 
-            <p class="blog-date">
-              ${post.date}
-            </p>
+    if (article) {
 
-            <p class="blog-tag">
-              ${post.category}
-            </p>
+      document.title =
+        article.title + " | 鴛鴦トワ Official Website";
 
-          </div>
 
-          <h3>
-            ${post.title}
-          </h3>
+      articleContent.innerHTML = `
 
-          <p>
-            ${post.summary}
+        <div class="blog-entry-head">
+
+          <p class="blog-date">
+            ${article.date}
           </p>
 
-        </article>
+          <p class="blog-tag">
+            ${article.category}
+          </p>
+
+        </div>
+
+
+        <h3>
+          🐾${article.title}🐾
+        </h3>
+
+
+        ${article.content}
+
+
+        <p>
+          <a href="./blog.html">
+            ← BLOG一覧へ戻る
+          </a>
+        </p>
+
       `;
 
-      blogArchive.appendChild(link);
+    } else {
 
-    });
+      articleContent.innerHTML = `
+
+        <h3>
+          記事が見つかりませんでした
+        </h3>
+
+        <p>
+          <a href="./blog.html">
+            ← BLOG一覧へ戻る
+          </a>
+        </p>
+
+      `;
+
+    }
+
   </script>
 
 
