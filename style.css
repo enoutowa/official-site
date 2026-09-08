@@ -2441,3 +2441,88 @@ section p {
 .lyrics-item {
   display: block;
 }
+
+/* =========================
+   HOME LYRICS
+========================= */
+
+.lyrics-home {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 36px;
+  align-items: center;
+}
+
+.lyrics-home-content {
+  min-width: 0;
+}
+
+.lyrics-home-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lyrics-home-visual img {
+  display: block;
+
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.lyrics-more {
+  margin-top: 24px;
+}
+
+.lyrics-more a {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  border:
+    1px solid #cdb8de;
+
+  border-radius: 999px;
+
+  color: #654c78;
+
+  font-size: 13px;
+
+  transition: 0.2s;
+}
+
+.lyrics-more a:hover {
+  background: #71548d;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* スマホ */
+
+@media screen and (max-width: 600px) {
+
+  .lyrics-home {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .lyrics-home-content {
+    text-align: left;
+  }
+
+  .lyrics-more {
+    text-align: center;
+  }
+
+  .lyrics-home-visual img {
+    width: 190px;
+  }
+
+}
