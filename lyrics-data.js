@@ -13,7 +13,7 @@ const lyricsItems = [
 
   composer: "鴛鴦トワ",
 
-  cover: "./images/album-yojin/.png",
+  cover: "./images/album-yojin.png",
 
   youtube: "EnLE7Ar-bBk",
 
@@ -263,7 +263,7 @@ const lyricsItems = [
 
   composer: "鴛鴦トワ",
 
-  cover: "./images/album-yojin/.png",
+  cover: "./images/album-yojin.png",
 
   youtube: "IVnKX7gIBLQ",
 
