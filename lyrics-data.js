@@ -1,13 +1,219 @@
 const lyricsItems = [
 
 {
+  id: "second",
+
+  title: "Second",
+
+  artist: "鴛鴦トワ",
+
+  releaseDate: "2026.09.05",
+
+  lyricist: "鴛鴦トワ",
+
+  composer: "鴛鴦トワ",
+
+  cover: "./images/album-yojin.png",
+
+  youtube: "Fq45SCLh2-Y",
+
+  lyrics: `
+
+    <p>
+      またその名前
+    </p>
+
+    <p>
+      呼んでいるね
+    </p>
+
+    <p>
+      その笑顔は
+    </p>
+
+    <p>
+      私じゃない
+    </p>
+
+    <p>
+      知っていたよ
+    </p>
+
+    <p>
+      はじめから
+    </p>
+
+    <p>
+      一番には
+    </p>
+
+    <p>
+      なれないって
+    </p>
+
+    <p>
+      それでも
+    </p>
+
+    <p>
+      いいの
+    </p>
+
+    <p>
+      その隣で
+    </p>
+
+    <p>
+      笑えるなら
+    </p>
+
+    <p>
+      それだけで
+    </p>
+
+    <p>
+      I'm not your first<br>
+      （私はあなたの一番じゃない）
+    </p>
+
+    <p>
+      I know it's true<br>
+      （それが本当だってわかってる）
+    </p>
+
+    <p>
+      Still I choose<br>
+      （それでも私は選ぶ）
+    </p>
+
+    <p>
+      To stay with you<br>
+      （あなたのそばにいることを）
+    </p>
+
+    <p>
+      Call my name<br>
+      （私の名前を呼んで）
+    </p>
+
+    <p>
+      Even once<br>
+      （一度だけでも）
+    </p>
+
+    <p>
+      I'll be waiting<br>
+      （私は待ってる）
+    </p>
+
+    <p>
+      Just for you<br>
+      （ただあなただけを）
+    </p>
+
+    <p>
+      叶わない
+    </p>
+
+    <p>
+      恋だって
+    </p>
+
+    <p>
+      わかってるよ
+    </p>
+
+    <p>
+      なのにまだ
+    </p>
+
+    <p>
+      その手を
+    </p>
+
+    <p>
+      離せない
+    </p>
+
+    <p>
+      あなたしか
+    </p>
+
+    <p>
+      見えなくて
+    </p>
+
+    <p>
+      ねぇ
+    </p>
+
+    <p>
+      少しだけ
+    </p>
+
+    <p>
+      こっち見て
+    </p>
+
+    <p>
+      その瞳
+    </p>
+
+    <p>
+      奪えたら
+    </p>
+
+    <p>
+      I'm not enough<br>
+      （私は足りない）
+    </p>
+
+    <p>
+      Maybe I know<br>
+      （たぶんわかってる）
+    </p>
+
+    <p>
+      But my heart<br>
+      （でも私の心は）
+    </p>
+
+    <p>
+      Won't let go<br>
+      （手放してくれない）
+    </p>
+
+    <p>
+      Stay tonight<br>
+      （今夜はそばにいて）
+    </p>
+
+    <p>
+      Hold me close<br>
+      （強く抱きしめて）
+    </p>
+
+    <p>
+      Even if<br>
+      （たとえ）
+    </p>
+
+    <p>
+      I'm second<br>
+      （私が二番目でも）
+    </p>
+
+  `
+},
+
+{
   id: "kyoumei",
 
   title: "叫命",
 
   artist: "鴛鴦トワ",
 
-  releaseDate: "2026.09.04",
+  releaseDate: "2026.09.05",
 
   lyricist: "鴛鴦トワ",
 
@@ -390,7 +596,7 @@ const lyricsItems = [
 
   artist: "鴛鴦トワ",
 
-  releaseDate: "2026.09.04",
+  releaseDate: "2026.09.05",
 
   lyricist: "鴛鴦トワ",
 
@@ -761,7 +967,7 @@ const lyricsItems = [
 
   artist: "鴛鴦トワ",
 
-  releaseDate: "2026.09.04",
+  releaseDate: "2026.09.05",
 
   lyricist: "鴛鴦トワ",
 
@@ -1116,7 +1322,7 @@ const lyricsItems = [
 
   artist: "鴛鴦トワ",
 
-  releaseDate: "2026.09.04",
+  releaseDate: "2026.09.05",
 
   lyricist: "鴛鴦トワ",
 
@@ -1352,7 +1558,7 @@ const lyricsItems = [
 
   artist: "鴛鴦トワ",
 
-  releaseDate: "2026.09.04",
+  releaseDate: "2026.09.05",
 
   lyricist: "鴛鴦トワ",
 
