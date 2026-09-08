@@ -1,5 +1,11 @@
 const newsItems = [
 
+{
+  date: "2026.09.08",
+  text: "新曲『心近』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/a1zO8f9Il-k?si=plrZcHPIQ08qy74G"
+},
+
   {
     date: "2026.09.08",
     text: "BLOGを更新しました。",
