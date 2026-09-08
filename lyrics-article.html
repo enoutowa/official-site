@@ -11,6 +11,52 @@
 
   <title>LYRICS | 鴛鴦トワ Official Website</title>
 
+  <meta
+    name="description"
+    content="鴛鴦トワのオリジナル楽曲の歌詞を掲載しています。"
+    id="page-description"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow"
+    id="page-robots"
+  >
+
+  <link
+    rel="canonical"
+    href="https://enoutowa.github.io/official-site/lyrics-article.html"
+    id="page-canonical"
+  >
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+  <meta
+    property="og:title"
+    content="LYRICS | 鴛鴦トワ Official Website"
+    id="og-title"
+  >
+
+  <meta
+    property="og:description"
+    content="鴛鴦トワのオリジナル楽曲の歌詞を掲載しています。"
+    id="og-description"
+  >
+
+  <meta
+    property="og:url"
+    content="https://enoutowa.github.io/official-site/lyrics-article.html"
+    id="og-url"
+  >
+
+  <meta
+    property="og:site_name"
+    content="鴛鴦トワ Official Website"
+  >
+
   <link
     rel="stylesheet"
     href="./style.css"
@@ -34,6 +80,7 @@
 
     </div>
 
+
     <nav>
       <a href="./index.html#news">NEWS</a>
       <a href="./index.html#profile">PROFILE</a>
@@ -43,7 +90,7 @@
       <a href="./lyrics.html">LYRICS</a>
       <a href="./blog.html">BLOG</a>
       <a href="./index.html#novel">NOVEL</a>
-      <a href="./index.html#gallery">GALLERY</a>
+      <a href="./gallery.html">GALLERY</a>
       <a href="./index.html#link">LINK</a>
     </nav>
 
@@ -112,9 +159,11 @@
   <script src="./lyrics-data.js"></script>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
+    const params =
+      new URLSearchParams(window.location.search);
 
-    const songId = params.get("id");
+    const songId =
+      params.get("id");
 
     const song =
       typeof lyricsItems !== "undefined" &&
@@ -124,13 +173,47 @@
           })
         : null;
 
+
     const lyricsArticle =
       document.getElementById("lyrics-article");
+
+    const pageDescription =
+      document.getElementById("page-description");
+
+    const pageRobots =
+      document.getElementById("page-robots");
+
+    const pageCanonical =
+      document.getElementById("page-canonical");
+
+    const ogTitle =
+      document.getElementById("og-title");
+
+    const ogDescription =
+      document.getElementById("og-description");
+
+    const ogUrl =
+      document.getElementById("og-url");
 
 
     if (!song) {
 
+      document.title =
+        "楽曲が見つかりません | LYRICS | 鴛鴦トワ Official Website";
+
+      pageDescription.setAttribute(
+        "content",
+        "指定された楽曲の歌詞ページが見つかりませんでした。"
+      );
+
+      pageRobots.setAttribute(
+        "content",
+        "noindex, follow"
+      );
+
+
       lyricsArticle.innerHTML = `
+
         <div class="lyrics-body">
 
           <p>
@@ -139,6 +222,7 @@
 
         </div>
 
+
         <div class="lyrics-back">
 
           <a href="./lyrics.html">
@@ -146,19 +230,64 @@
           </a>
 
         </div>
+
       `;
 
     } else {
 
-      document.title =
-        `${song.title} | LYRICS | 鴛鴦トワ Official Website`;
+      const pageTitle =
+        `${song.title} 歌詞 | 鴛鴦トワ Official Website`;
 
+      const description =
+        `鴛鴦トワ「${song.title}」の歌詞。作詞・作曲：鴛鴦トワ。オリジナル楽曲の歌詞を公式サイトで掲載しています。`;
+
+      const canonicalUrl =
+        `https://enoutowa.github.io/official-site/lyrics-article.html?id=${encodeURIComponent(song.id)}`;
+
+
+      /* =========================
+         SEO情報
+      ========================= */
+
+      document.title =
+        pageTitle;
+
+      pageDescription.setAttribute(
+        "content",
+        description
+      );
+
+      pageCanonical.setAttribute(
+        "href",
+        canonicalUrl
+      );
+
+      ogTitle.setAttribute(
+        "content",
+        pageTitle
+      );
+
+      ogDescription.setAttribute(
+        "content",
+        description
+      );
+
+      ogUrl.setAttribute(
+        "content",
+        canonicalUrl
+      );
+
+
+      /* =========================
+         YouTube
+      ========================= */
 
       let youtubeHtml = "";
 
       if (song.youtube) {
 
         youtubeHtml = `
+
           <div class="lyrics-youtube-card">
 
             <h3>
@@ -174,10 +303,15 @@
             </iframe>
 
           </div>
+
         `;
 
       }
 
+
+      /* =========================
+         歌詞ページ
+      ========================= */
 
       lyricsArticle.innerHTML = `
 
