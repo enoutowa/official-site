@@ -1,4 +1,5 @@
 const galleryItems = [
+  "gallery16.png",
   "gallery15.png",
   "gallery14.png",
   "gallery13.png",
