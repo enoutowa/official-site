@@ -44,6 +44,7 @@
       <a href="./lyrics.html">LYRICS</a>
       <a href="./blog.html">BLOG</a>
       <a href="./index.html#novel">NOVEL</a>
+      <a href="./gallery.html">GALLERY</a>
       <a href="./index.html#link">LINK</a>
     </nav>
 
@@ -221,13 +222,9 @@
             "lazy";
 
 
-          link.appendChild(
-            image
-          );
+          link.appendChild(image);
 
-          galleryList.appendChild(
-            link
-          );
+          galleryList.appendChild(link);
 
         }
       );
@@ -304,9 +301,7 @@
           current.className =
             "pagination-current";
 
-          pagination.appendChild(
-            current
-          );
+          pagination.appendChild(current);
 
         } else {
 
@@ -318,3 +313,31 @@
           );
 
         }
+
+      }
+
+
+      if (currentPage < totalPages) {
+
+        pagination.appendChild(
+          createPageLink(
+            "次へ →",
+            currentPage + 1,
+            "pagination-next"
+          )
+        );
+
+      }
+
+    }
+
+
+    renderGallery();
+    renderPagination();
+
+  </script>
+
+
+</body>
+
+</html>
