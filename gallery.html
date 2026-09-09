@@ -125,12 +125,15 @@
     const galleryList =
       document.getElementById("gallery-list");
 
-    galleryItems.forEach(item => {
+    galleryItems.forEach((fileName, index) => {
+
+      const imagePath =
+        `./images/${fileName}`;
 
       const link =
         document.createElement("a");
 
-      link.href = item.image;
+      link.href = imagePath;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
 
@@ -138,8 +141,10 @@
       const image =
         document.createElement("img");
 
-      image.src = item.image;
-      image.alt = item.alt;
+      image.src = imagePath;
+      image.alt =
+        `鴛鴦トワ Gallery ${galleryItems.length - index}`;
+
       image.loading = "lazy";
 
 
