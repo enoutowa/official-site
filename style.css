@@ -3909,3 +3909,202 @@ box-sizing: border-box;
   }
 
 }
+
+/* =========================
+   REQUEST BANNER SLIDER
+   最終上書き版
+========================= */
+
+/* 外側の大きな囲いを完全に消す */
+main .request-banner-section {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto 36px;
+  padding: 0;
+
+  background: transparent;
+  background-image: none;
+
+  border: none;
+  border-radius: 0;
+
+  box-shadow: none;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   横スライド本体
+========================= */
+
+main .request-slider {
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  background: transparent;
+}
+
+
+main .request-slider::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================
+   1枚ずつ表示
+========================= */
+
+main .request-slide {
+  display: block;
+
+  flex: 0 0 100%;
+
+  width: 100%;
+  min-width: 100%;
+
+  margin: 0;
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  scroll-snap-align: start;
+
+  background: transparent;
+
+  border: none;
+
+  text-decoration: none;
+}
+
+
+/* =========================
+   バナー画像
+========================= */
+
+main .request-slide img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 16 / 9;
+
+  object-fit: cover;
+
+  margin: 0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 24px rgba(78, 55, 92, 0.14);
+}
+
+
+/* =========================
+   ドット
+========================= */
+
+main .request-slider-dots {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 8px 0 0;
+  padding: 0;
+
+  background: transparent;
+}
+
+
+main .request-dot {
+  appearance: none;
+
+  width: 10px;
+  height: 10px;
+
+  min-width: 10px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #d8c9e4;
+
+  cursor: pointer;
+
+  transition:
+    width 0.2s ease,
+    background 0.2s ease,
+    border-radius 0.2s ease;
+}
+
+
+main .request-dot.active {
+  width: 24px;
+
+  border-radius: 999px;
+
+  background: #71548d;
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media screen and (max-width: 600px) {
+
+  main .request-banner-section {
+    width: 100%;
+
+    margin: 0 auto 28px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+
+  main .request-slide {
+    padding: 8px;
+  }
+
+
+  main .request-slide img {
+    border-radius: 14px;
+  }
+
+
+  main .request-slider-dots {
+    margin-top: 6px;
+  }
+
+}
