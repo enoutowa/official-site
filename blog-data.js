@@ -10,15 +10,7 @@ const blogPosts = [
   content: "<p>\n      今回、自分で公式Webサイトを制作しました。\n    </p>\n\n    <p>\n      やったことを専門用語っぽくまとめると、こんな感じです。\n    </p>\n\n    <p>\n      【Webサイト制作 / Webデザイン】<br>\n      ・HTMLでページ構造を作成<br>\n      ・CSSでデザイン<br>\n      ・レスポンシブ対応<br>\n      ・スマホ / PC両対応\n    </p>\n\n    <p>\n      【フロントエンド開発】<br>\n      ・JavaScriptでNEWS、BLOG、LYRICS、GALLERY、VIDEOなどを自動表示<br>\n      ・各コンテンツをdata.jsに分離<br>\n      ・最新順表示<br>\n      ・表示件数制御<br>\n      ・スクロール表示などを実装\n    </p>\n\n    <p>\n      【公開 / GitHub運用】<br>\n      ・GitHub Pagesで公式HPを公開<br>\n      ・リポジトリ管理<br>\n      ・ファイル更新<br>\n      ・Commit<br>\n      ・GitHub Appの作成<br>\n      ・リポジトリ権限設定\n    </p>\n\n    <p>\n      【SEO】<br>\n      ・sitemap.xml<br>\n      ・Google Search Console<br>\n      ・description<br>\n      ・canonical<br>\n      ・構造化データ<br>\n      ・検索インデックス対応\n    </p>\n\n    <p>\n      【サーバーレス / API連携】<br>\n      ・Cloudflare Workersを使用<br>\n      ・GitHub APIと連携<br>\n      ・GitHub App認証<br>\n      ・JWT<br>\n      ・Installation Token<br>\n      ・管理画面からGitHub上のファイルを自動更新\n    </p>\n\n    <p>\n      【セキュリティまわり】<br>\n      ・Private Key<br>\n      ・Worker Secrets<br>\n      ・環境変数<br>\n      ・パスワード認証\n    </p>\n\n    <p>\n      【独自管理画面】<br>\n      自分のサイト専用の簡易CMSのようなものも作りました。\n    </p>\n\n    <p>\n      ・GALLERY 追加 / 編集 / 削除<br>\n      ・NEWS 追加 / 編集 / 削除<br>\n      ・BLOG 追加 / 編集 / 削除<br>\n      ・LYRICS 追加 / 編集 / 削除<br>\n      ・VIDEO 追加 / 編集 / 削除\n    </p>\n\n    <p>\n      別サイトでは、<br>\n      ・NEWS<br>\n      ・SCHEDULE<br>\n      ・MEMORY\n    </p>\n\n    <p>\n      をスマホから更新できる管理画面も作成しました。\n    </p>\n\n    <p>\n      最初は「ホームページを作る」だけのつもりだったのに、<br>\n      最終的には更新用の管理システムまで自作することになりました🤣\n    </p>"
 },
 
-{
-  id: "20260909-blog-d63559",
-  url: "./article.html?id=20260909-blog-d63559",
-  date: "2026.09.09",
-  category: "SITE",
-  title: "魔改造化",
-  summary: "猫がめんどくさがりなので完全に省略可させました。",
-  content: "<p>\n      住民の皆様、こんにちは！\n    </p>\n\n    <p>\n      今日も天気が悪いですね・・・。\n    </p>\n\n    <p>\n      今日の猫さんは<br>\n      『めんどくさがりなので猫用に完全に省略可計画』をしていました。\n    </p>\n\n    <p>\n      今までは、手打ちでコードとか改行とかしていたけど<br>\n      完全に省略可して日付とかもいちいち手打ちじゃなくしましたｗｗ\n    </p>\n\n    <p>\n      画像貼り付けるのにも<br>\n      いちいち画像に名前つけて組み込んで・・・<br>\n      ってやってたのも画像選択のみ！！\n    </p>\n\n    <p>\n      までに省略してきました♡\n    </p>\n\n    <p>\n      怠惰ゆえに作り上げましたｗｗ\n    </p>"
-},
+
 
 {
   id: "20260908-mobile-update",
