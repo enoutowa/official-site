@@ -3856,3 +3856,46 @@ main .request-page .request-section::after {
   }
 
 }
+
+/* =========================
+   REQUEST TITLE 位置最終調整
+========================= */
+
+main .request-page .request-page-header h2 {
+  display: block !important;
+
+  width: fit-content !important;
+
+  margin: 0 auto 14px !important;
+  padding: 0 0 8px !important;
+
+  position: relative !important;
+
+  text-align: center !important;
+}
+
+
+/* 🐾はタイトルの左に添えるだけ */
+main .request-page .request-page-header h2::before {
+  position: absolute !important;
+
+  left: -28px !important;
+  top: 50% !important;
+
+  margin: 0 !important;
+
+  transform: translateY(-55%) !important;
+
+  font-size: 18px !important;
+}
+
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+  main .request-page .request-page-header h2::before {
+    left: -25px !important;
+    font-size: 17px !important;
+  }
+
+}
