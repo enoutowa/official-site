@@ -2526,3 +2526,445 @@ section p {
   }
 
 }
+/* =========================
+   BLOG COMMUNITY
+   記事リンク / 応援 / コメント
+========================= */
+
+/* 記事内の自由リンク */
+.blog-extra-link {
+  margin: 24px 0 20px !important;
+}
+
+.blog-extra-link a {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+/* 記事画像 */
+.blog-article-image {
+  display: block;
+  width: 70%;
+  max-width: 520px;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 14px;
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.10);
+}
+
+/* BLOG一覧へ戻る */
+.blog-back {
+  margin-top: 30px !important;
+  padding-top: 20px;
+  border-top:
+    1px solid rgba(113, 84, 141, 0.16);
+}
+
+
+/* =========================
+   猫トワ 応援ボタン
+========================= */
+
+section.blog-support {
+  margin: 26px 0 0;
+  padding: 26px 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(238, 229, 247, 0.82),
+      rgba(255, 255, 255, 0.88)
+    );
+
+  border:
+    1px solid rgba(126, 91, 156, 0.22);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.08);
+
+  text-align: center;
+  overflow: visible;
+}
+
+section.blog-support::after {
+  display: none;
+}
+
+.blog-support-title {
+  margin: 0 0 12px !important;
+  color: #654c78;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.support-button {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.support-button img {
+  display: block;
+  width: 170px;
+  max-width: 46vw;
+  height: auto;
+  margin: 0 auto;
+
+  filter:
+    drop-shadow(0 6px 10px rgba(78, 55, 92, 0.12));
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.support-button:hover:not(:disabled) img {
+  transform: translateY(-3px) scale(1.03);
+  filter:
+    drop-shadow(0 8px 13px rgba(78, 55, 92, 0.18));
+}
+
+.support-button:active:not(:disabled) img {
+  transform: scale(0.96);
+}
+
+.support-button:disabled {
+  cursor: default;
+}
+
+.support-button.supported img {
+  animation:
+    towa-support-pop 0.38s ease;
+}
+
+@keyframes towa-support-pop {
+  0% {
+    transform: scale(0.88);
+  }
+
+  60% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.support-message {
+  margin: 10px 0 4px !important;
+  color: #71548d;
+  font-size: 14px !important;
+}
+
+.support-count {
+  display: inline-block;
+
+  margin: 8px 0 0 !important;
+  padding: 5px 12px;
+
+  background:
+    rgba(113, 84, 141, 0.10);
+
+  border-radius: 999px;
+
+  color: #71548d;
+  font-size: 12px !important;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+#support-count {
+  margin-left: 4px;
+}
+
+
+/* =========================
+   BLOG COMMENTS
+========================= */
+
+section.blog-comments {
+  margin: 26px 0 0;
+  padding: 28px 26px;
+
+  background:
+    rgba(255, 255, 255, 0.80);
+
+  border:
+    1px solid rgba(126, 91, 156, 0.22);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.08);
+
+  overflow: visible;
+}
+
+section.blog-comments::after {
+  display: none;
+}
+
+.blog-comments h3 {
+  margin: 0 0 8px;
+
+  color: #654c78;
+
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+}
+
+.comments-intro {
+  margin: 0 0 22px !important;
+  color: #806b8f;
+  font-size: 14px !important;
+}
+
+#comment-form {
+  margin: 0;
+}
+
+#comment-form label {
+  display: block;
+
+  margin: 15px 0 7px;
+
+  color: #654c78;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#comment-name,
+#comment-body {
+  display: block;
+  width: 100%;
+
+  padding: 12px 14px;
+
+  background:
+    rgba(250, 247, 252, 0.95);
+
+  border:
+    1px solid #d7c6e3;
+
+  border-radius: 12px;
+
+  color: #4f4258;
+
+  font: inherit;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+
+#comment-name:focus,
+#comment-body:focus {
+  background: #ffffff;
+
+  border-color: #9d7ab6;
+
+  box-shadow:
+    0 0 0 3px rgba(113, 84, 141, 0.09);
+}
+
+#comment-body {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.8;
+}
+
+/* Bot用の見えない入力欄 */
+.comment-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  overflow: hidden !important;
+}
+
+.comment-submit {
+  display: inline-block;
+
+  margin-top: 18px;
+  padding: 11px 22px;
+
+  background: #71548d;
+  color: #ffffff;
+
+  border: 0;
+  border-radius: 999px;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    opacity 0.2s;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.comment-submit:hover:not(:disabled) {
+  background: #9470ae;
+  transform: translateY(-2px);
+}
+
+.comment-submit:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.comment-status {
+  min-height: 24px;
+
+  margin: 12px 0 0 !important;
+
+  font-size: 13px !important;
+}
+
+.comment-status.success {
+  color: #6e5682;
+  font-weight: bold;
+}
+
+.comment-status.error {
+  color: #a34f68;
+  font-weight: bold;
+}
+
+.comment-note {
+  margin: 5px 0 0 !important;
+
+  color: #95839f;
+  font-size: 11px !important;
+}
+
+.comment-list {
+  margin-top: 30px;
+  padding-top: 24px;
+
+  border-top:
+    1px solid rgba(113, 84, 141, 0.16);
+}
+
+.comment-item {
+  margin-bottom: 14px;
+  padding: 16px 18px;
+
+  background:
+    rgba(238, 229, 247, 0.48);
+
+  border:
+    1px solid rgba(126, 91, 156, 0.16);
+
+  border-radius: 13px;
+}
+
+.comment-item:last-child {
+  margin-bottom: 0;
+}
+
+.comment-name {
+  margin: 0 0 7px !important;
+
+  color: #71548d;
+
+  font-size: 13px !important;
+  font-weight: bold;
+}
+
+.comment-body {
+  margin: 0 !important;
+
+  color: #4f4258;
+
+  font-size: 14px !important;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.comment-empty,
+.comment-loading {
+  margin: 0 !important;
+
+  color: #95839f;
+
+  font-size: 13px !important;
+  text-align: center;
+}
+
+
+/* =========================
+   BLOG COMMUNITY MOBILE
+========================= */
+
+@media screen and (max-width: 600px) {
+
+  .blog-article-image {
+    width: 92%;
+    margin: 20px auto;
+    border-radius: 12px;
+  }
+
+  section.blog-support {
+    padding: 22px 16px;
+  }
+
+  .support-button img {
+    width: 145px;
+    max-width: 52vw;
+  }
+
+  section.blog-comments {
+    padding: 22px 18px;
+  }
+
+  .blog-comments h3 {
+    font-size: 18px;
+  }
+
+  #comment-body {
+    min-height: 125px;
+  }
+
+  .comment-submit {
+    width: 100%;
+    padding: 12px 16px;
+  }
+
+  .comment-item {
+    padding: 14px 15px;
+  }
+
+}
