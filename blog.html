@@ -62,9 +62,24 @@
       </p>
 
 
+      <!-- =========================
+           BLOG一覧
+      ========================= -->
+
       <div
         class="blog-archive"
         id="blog-archive"
+      >
+      </div>
+
+
+      <!-- =========================
+           ページ送り
+      ========================= -->
+
+      <div
+        class="pagination"
+        id="pagination"
       >
       </div>
 
@@ -118,44 +133,241 @@
   <script src="./blog-data.js"></script>
 
   <script>
-    const blogArchive = document.getElementById("blog-archive");
 
-    blogPosts.forEach((post) => {
+    const ITEMS_PER_PAGE = 5;
 
-      const link = document.createElement("a");
+    const blogArchive =
+      document.getElementById("blog-archive");
 
-      link.href = post.url;
-      link.className = "blog-entry-link";
+    const pagination =
+      document.getElementById("pagination");
 
-      link.innerHTML = `
-        <article class="blog-entry">
 
-          <div class="blog-entry-head">
+    const params =
+      new URLSearchParams(window.location.search);
 
-            <p class="blog-date">
-              ${post.date}
-            </p>
+    let currentPage =
+      Number(params.get("page")) || 1;
 
-            <p class="blog-tag">
-              ${post.category}
-            </p>
 
-          </div>
+    const totalPages =
+      Math.max(
+        1,
+        Math.ceil(
+          blogPosts.length / ITEMS_PER_PAGE
+        )
+      );
 
-          <h3>
-            ${post.title}
-          </h3>
 
-          <p>
-            ${post.summary}
-          </p>
+    if (currentPage < 1) {
+      currentPage = 1;
+    }
 
-        </article>
-      `;
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
 
-      blogArchive.appendChild(link);
 
-    });
+    /* =========================
+       BLOG表示
+    ========================= */
+
+    function renderBlog() {
+
+      blogArchive.innerHTML = "";
+
+
+      const start =
+        (currentPage - 1) * ITEMS_PER_PAGE;
+
+      const end =
+        start + ITEMS_PER_PAGE;
+
+      const pagePosts =
+        blogPosts.slice(start, end);
+
+
+      pagePosts.forEach((post) => {
+
+        const link =
+          document.createElement("a");
+
+        link.href =
+          post.url;
+
+        link.className =
+          "blog-entry-link";
+
+
+        const article =
+          document.createElement("article");
+
+        article.className =
+          "blog-entry";
+
+
+        const head =
+          document.createElement("div");
+
+        head.className =
+          "blog-entry-head";
+
+
+        const date =
+          document.createElement("p");
+
+        date.className =
+          "blog-date";
+
+        date.textContent =
+          post.date;
+
+
+        const tag =
+          document.createElement("p");
+
+        tag.className =
+          "blog-tag";
+
+        tag.textContent =
+          post.category;
+
+
+        const title =
+          document.createElement("h3");
+
+        title.textContent =
+          post.title;
+
+
+        const summary =
+          document.createElement("p");
+
+        summary.textContent =
+          post.summary;
+
+
+        head.appendChild(date);
+        head.appendChild(tag);
+
+        article.appendChild(head);
+        article.appendChild(title);
+        article.appendChild(summary);
+
+        link.appendChild(article);
+
+        blogArchive.appendChild(link);
+
+      });
+
+    }
+
+
+    /* =========================
+       ページ送り
+    ========================= */
+
+    function createPageLink(
+      text,
+      page,
+      className = ""
+    ) {
+
+      const link =
+        document.createElement("a");
+
+      link.textContent =
+        text;
+
+      link.href =
+        `./blog.html?page=${page}`;
+
+      if (className) {
+        link.className =
+          className;
+      }
+
+      return link;
+
+    }
+
+
+    function renderPagination() {
+
+      pagination.innerHTML = "";
+
+
+      if (totalPages <= 1) {
+        return;
+      }
+
+
+      if (currentPage > 1) {
+
+        pagination.appendChild(
+          createPageLink(
+            "← 前へ",
+            currentPage - 1,
+            "pagination-prev"
+          )
+        );
+
+      }
+
+
+      for (
+        let page = 1;
+        page <= totalPages;
+        page++
+      ) {
+
+        if (page === currentPage) {
+
+          const current =
+            document.createElement("span");
+
+          current.textContent =
+            page;
+
+          current.className =
+            "pagination-current";
+
+          pagination.appendChild(
+            current
+          );
+
+        } else {
+
+          pagination.appendChild(
+            createPageLink(
+              page,
+              page
+            )
+          );
+
+        }
+
+      }
+
+
+      if (currentPage < totalPages) {
+
+        pagination.appendChild(
+          createPageLink(
+            "次へ →",
+            currentPage + 1,
+            "pagination-next"
+          )
+        );
+
+      }
+
+    }
+
+
+    renderBlog();
+    renderPagination();
+
   </script>
 
 
