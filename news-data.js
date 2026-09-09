@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.09.09",
+  text: "BLOGを更新しました。",
+  url: "./article.html?id=20260909-blog-d63559"
+},
+
+{
+  date: "2026.09.09",
   text: "HPを完全に省略更新に魔改造いたしました。"
 },
 
