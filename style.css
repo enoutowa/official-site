@@ -2620,8 +2620,8 @@ section.blog-support::after {
 
 .support-button img {
   display: block;
-  width: 170px;
-  max-width: 46vw;
+  width: 110px;
+  max-width: 32vw;
   height: auto;
   margin: 0 auto;
 
@@ -2942,9 +2942,9 @@ section.blog-comments::after {
   }
 
   .support-button img {
-    width: 145px;
-    max-width: 52vw;
-  }
+  width: 100px;
+  max-width: 34vw;
+}
 
   section.blog-comments {
     padding: 22px 18px;
