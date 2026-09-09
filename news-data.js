@@ -15,11 +15,7 @@ const newsItems = [
   text: "HPを完全に省略更新に魔改造いたしました。"
 },
 
-  {
-  date: "2026.09.09",
-  text: "BLOGを更新しました。",
-  url: "./article.html?id=20260908-mobile-update"
-},
+  
 
 {
   date: "2026.09.08",
