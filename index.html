@@ -484,125 +484,56 @@
 
 </section>
 
-    <!-- =========================
-         GALLERY
-    ========================= -->
+  <!-- =========================
+     GALLERY
+========================= -->
 
-    <section id="gallery">
+<section id="gallery">
 
-      <h2>GALLERY</h2>
+  <h2>GALLERY</h2>
 
-      <p class="gallery-text">
-        楽曲ジャケットやキャラクターアートなど、<br>
-        鴛鴦トワの活動で制作・使用しているビジュアルを掲載しています。
-      </p>
+  <p class="gallery-text">
+    楽曲ジャケットやキャラクターアートなど、<br>
+    鴛鴦トワの活動で制作・使用しているビジュアルを掲載しています。
+  </p>
 
-      <div class="gallery-grid">
+  <div class="gallery-grid" id="home-gallery-grid">
+  </div>
 
+  <div class="gallery-more">
 
-        <a
-          href="./images/gallery06.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery06.png"
-            alt="鴛鴦トワ Gallery 06"
-            loading="lazy"
-          >
-        </a>
+    <a href="./gallery.html">
+      GALLERYをもっと見る →
+    </a>
 
+  </div>
 
-        <a
-          href="./images/gallery07.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery07.png"
-            alt="鴛鴦トワ Gallery 07"
-            loading="lazy"
-          >
-        </a>
+</section>
 
+<script src="./gallery-data.js"></script>
 
-        <a
-          href="./images/gallery04.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery04.png"
-            alt="鴛鴦トワ Gallery 04"
-            loading="lazy"
-          >
-        </a>
+<script>
+  const homeGalleryGrid = document.getElementById("home-gallery-grid");
 
+  galleryItems.slice(0, 7).forEach((fileName) => {
 
-        <a
-          href="./images/gallery05.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery05.png"
-            alt="鴛鴦トワ Gallery 05"
-            loading="lazy"
-          >
-        </a>
+    const link = document.createElement("a");
 
+    link.href = `./images/${fileName}`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
 
-        <a
-          href="./images/gallery01.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery01.png"
-            alt="鴛鴦トワ Gallery 01"
-            loading="lazy"
-          >
-        </a>
+    const img = document.createElement("img");
 
+    img.src = `./images/${fileName}`;
+    img.alt = `鴛鴦トワ ${fileName}`;
+    img.loading = "lazy";
 
-        <a
-          href="./images/gallery02.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery02.png"
-            alt="鴛鴦トワ Gallery 02"
-            loading="lazy"
-          >
-        </a>
+    link.appendChild(img);
+    homeGalleryGrid.appendChild(link);
 
-
-        <a
-          href="./images/gallery03.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="./images/gallery03.png"
-            alt="鴛鴦トワ Gallery 03"
-            loading="lazy"
-          >
-        </a>
-
-      </div>
-
-
-      <div class="gallery-more">
-
-        <a href="./gallery.html">
-          GALLERYをもっと見る →
-        </a>
-
-      </div>
-
-    </section>
-
+  });
+</script>
 
     <!-- =========================
          LINK
