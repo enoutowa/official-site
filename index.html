@@ -281,82 +281,11 @@
       <h2>VIDEO</h2>
 
       <p class="video-text">
-        鴛鴦トワ・鴛鴦スグルのMV・楽曲をお楽しみください。
+        鴛鴦トワ・鴛鴦スグルのMVをお楽しみください。
       </p>
 
-      <div class="video-slider">
-
-
-        <!-- MV 1 -->
-
-        <div class="video-card">
-
-          <p class="video-label">
-            MUSIC VIDEO
-          </p>
-
-          <h3 class="video-title">
-            結婚しよ！
-          </h3>
-
-          <iframe
-            src="https://www.youtube.com/embed/zUlAweU2-38"
-            title="鴛鴦トワ Music Video"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-
-        </div>
-
-
-        <!-- MV 2 -->
-
-        <div class="video-card">
-
-          <p class="video-label">
-            MUSIC VIDEO
-          </p>
-
-          <h3 class="video-title">
-            機械保全学校
-          </h3>
-
-          <iframe
-            src="https://www.youtube.com/embed/_X-HYysDdnQ"
-            title="鴛鴦トワ Music Video"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-
-        </div>
-
-
-        <!-- PLAYLIST -->
-
-        <div class="video-card">
-
-          <p class="video-label">
-            PLAYLIST
-          </p>
-
-          <h3 class="video-title">
-            偽りの偽善、その結末
-          </h3>
-
-          <iframe
-            src="https://www.youtube.com/embed/videoseries?list=PLYJbmbLpthus"
-            title="鴛鴦トワ Playlist"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-
-        </div>
-
+      <div class="video-slider" id="home-video-slider">
       </div>
-
 
       <div class="video-more">
 
@@ -509,6 +438,44 @@
   </div>
 
 </section>
+
+<script src="./video-data.js"></script>
+
+<script>
+  const homeVideoSlider = document.getElementById("home-video-slider");
+
+  if (homeVideoSlider && typeof videoItems !== "undefined") {
+
+    videoItems.slice(0, 3).forEach((item) => {
+
+      const card = document.createElement("div");
+      card.className = "video-card";
+
+      const label = document.createElement("p");
+      label.className = "video-label";
+      label.textContent = "MUSIC VIDEO";
+
+      const title = document.createElement("h3");
+      title.className = "video-title";
+      title.textContent = item.title;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${item.youtube}`;
+      iframe.title = `鴛鴦トワ Music Video ${item.title}`;
+      iframe.loading = "lazy";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+
+      card.appendChild(label);
+      card.appendChild(title);
+      card.appendChild(iframe);
+
+      homeVideoSlider.appendChild(card);
+
+    });
+
+  }
+</script>
 
 <script src="./gallery-data.js"></script>
 
