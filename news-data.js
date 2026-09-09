@@ -1,10 +1,6 @@
 const newsItems = [
 
-{
-  date: "2026.09.09",
-  text: "新曲『曲』をYouTubeにアップロードしました。",
-  url: "https://youtu.be/8F-7lc8UtBs"
-},
+
 
 {
   date: "2026.09.09",
