@@ -1,5 +1,41 @@
 const galleryItems = [
 
+{
+  id: "gallery13",
+  image: "./images/gallery13.png",
+  alt: "鴛鴦トワ Gallery 13"
+},
+
+{
+  id: "gallery12",
+  image: "./images/gallery12.png",
+  alt: "鴛鴦トワ Gallery 12"
+},
+
+{
+  id: "gallery11",
+  image: "./images/gallery11.png",
+  alt: "鴛鴦トワ Gallery 11"
+},
+
+{
+  id: "gallery10",
+  image: "./images/gallery10.png",
+  alt: "鴛鴦トワ Gallery 10"
+},
+
+{
+  id: "gallery09",
+  image: "./images/gallery09.png",
+  alt: "鴛鴦トワ Gallery 09"
+},
+
+{
+  id: "gallery08",
+  image: "./images/gallery08.png",
+  alt: "鴛鴦トワ Gallery 08"
+},
+
   {
     id: "gallery07",
     image: "./images/gallery07.png",
