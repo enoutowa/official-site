@@ -4153,3 +4153,25 @@ main .request-dot.active {
   }
 
 }
+
+
+/* =========================
+   REQUEST PAGE
+   TOPボタン位置調整
+========================= */
+
+.request-page ~ .back-to-top,
+.request-floating-area + .back-to-top {
+  bottom: 82px;
+}
+
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+  .request-page ~ .back-to-top,
+  .request-floating-area + .back-to-top {
+    bottom: 76px;
+  }
+
+}
