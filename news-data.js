@@ -1,6 +1,11 @@
 const newsItems = [
 
 {
+  date: "2026.09.10",
+  text: "制作依頼の受付を開始しました。"
+},
+
+{
   date: "2026.09.09",
   text: "BLOGを更新しました。",
   url: "./article.html?id=20260909-blog-ecea56"
