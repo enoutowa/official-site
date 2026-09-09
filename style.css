@@ -4108,3 +4108,48 @@ main .request-dot.active {
   }
 
 }
+
+/* =========================
+   REQUEST PAGE TITLE
+   🐾とタイトルをセットで中央配置
+========================= */
+
+.request-page-header h2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: auto;
+
+  margin: 0 auto 14px;
+
+  position: relative;
+
+  text-align: center;
+}
+
+
+/* 左に離れていた🐾をタイトル横へ */
+.request-page-header h2::before {
+  position: static !important;
+
+  display: inline-block;
+
+  margin: 0 !important;
+
+  transform: none !important;
+
+  flex-shrink: 0;
+}
+
+
+/* スマホ */
+@media screen and (max-width: 600px) {
+
+  .request-page-header h2 {
+    gap: 8px;
+  }
+
+}
