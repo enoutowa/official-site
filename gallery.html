@@ -71,6 +71,16 @@
         id="gallery-list"
       ></div>
 
+
+      <!-- =========================
+           ページ送り
+      ========================= -->
+
+      <div
+        class="pagination"
+        id="pagination"
+      ></div>
+
     </section>
 
   </main>
@@ -122,40 +132,189 @@
 
   <script>
 
+    const ITEMS_PER_PAGE = 5;
+
     const galleryList =
       document.getElementById("gallery-list");
 
-    galleryItems.forEach((fileName, index) => {
+    const pagination =
+      document.getElementById("pagination");
 
-      const imagePath =
-        `./images/${fileName}`;
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    let currentPage =
+      Number(params.get("page")) || 1;
+
+
+    const totalPages =
+      Math.max(
+        1,
+        Math.ceil(
+          galleryItems.length / ITEMS_PER_PAGE
+        )
+      );
+
+
+    if (currentPage < 1) {
+      currentPage = 1;
+    }
+
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+
+
+    /* =========================
+       GALLERY表示
+    ========================= */
+
+    function renderGallery() {
+
+      galleryList.innerHTML = "";
+
+
+      const start =
+        (currentPage - 1) * ITEMS_PER_PAGE;
+
+      const end =
+        start + ITEMS_PER_PAGE;
+
+      const pageItems =
+        galleryItems.slice(start, end);
+
+
+      pageItems.forEach(
+        (fileName, index) => {
+
+          const imagePath =
+            `./images/${fileName}`;
+
+
+          const link =
+            document.createElement("a");
+
+          link.href =
+            imagePath;
+
+          link.target =
+            "_blank";
+
+          link.rel =
+            "noopener noreferrer";
+
+
+          const image =
+            document.createElement("img");
+
+          image.src =
+            imagePath;
+
+          image.alt =
+            `鴛鴦トワ Gallery ${
+              galleryItems.length -
+              (start + index)
+            }`;
+
+          image.loading =
+            "lazy";
+
+
+          link.appendChild(
+            image
+          );
+
+          galleryList.appendChild(
+            link
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       ページ送り
+    ========================= */
+
+    function createPageLink(
+      text,
+      page,
+      className = ""
+    ) {
 
       const link =
         document.createElement("a");
 
-      link.href = imagePath;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
+      link.textContent =
+        text;
+
+      link.href =
+        `./gallery.html?page=${page}`;
+
+      if (className) {
+        link.className =
+          className;
+      }
+
+      return link;
+
+    }
 
 
-      const image =
-        document.createElement("img");
+    function renderPagination() {
 
-      image.src = imagePath;
-      image.alt =
-        `鴛鴦トワ Gallery ${galleryItems.length - index}`;
-
-      image.loading = "lazy";
+      pagination.innerHTML = "";
 
 
-      link.appendChild(image);
-      galleryList.appendChild(link);
-
-    });
-
-  </script>
+      if (totalPages <= 1) {
+        return;
+      }
 
 
-</body>
+      if (currentPage > 1) {
 
-</html>
+        pagination.appendChild(
+          createPageLink(
+            "← 前へ",
+            currentPage - 1,
+            "pagination-prev"
+          )
+        );
+
+      }
+
+
+      for (
+        let page = 1;
+        page <= totalPages;
+        page++
+      ) {
+
+        if (page === currentPage) {
+
+          const current =
+            document.createElement("span");
+
+          current.textContent =
+            page;
+
+          current.className =
+            "pagination-current";
+
+          pagination.appendChild(
+            current
+          );
+
+        } else {
+
+          pagination.appendChild(
+            createPageLink(
+              page,
+              page
+            )
+          );
+
+        }
