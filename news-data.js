@@ -29,11 +29,7 @@ const newsItems = [
     url: "https://youtu.be/a1zO8f9Il-k?si=plrZcHPIQ08qy74G"
   },
 
-  {
-    date: "2026.09.08",
-    text: "BLOGを更新しました。",
-    url: "./article.html?id=20260908-auto"
-  },
+  
 
  {
   date: "2026.09.08",
