@@ -66,129 +66,10 @@
            GALLERY一覧
       ========================= -->
 
-      <div class="gallery-page-grid">
-
-
-        <!-- Gallery 07 -->
-
-        <a
-          href="./images/gallery07.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery07.png"
-            alt="鴛鴦トワ Gallery 07"
-            loading="lazy"
-          >
-
-        </a>
-
-
-        <!-- Gallery 06 -->
-
-        <a
-          href="./images/gallery06.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery06.png"
-            alt="鴛鴦トワ Gallery 06"
-            loading="lazy"
-          >
-
-        </a>
-
-
-        <!-- Gallery 05 -->
-
-        <a
-          href="./images/gallery05.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery05.png"
-            alt="鴛鴦トワ Gallery 05"
-            loading="lazy"
-          >
-
-        </a>
-
-
-        <!-- Gallery 04 -->
-
-        <a
-          href="./images/gallery04.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery04.png"
-            alt="鴛鴦トワ Gallery 04"
-            loading="lazy"
-          >
-
-        </a>
-
-
-        <!-- Gallery 03 -->
-
-        <a
-          href="./images/gallery03.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery03.png"
-            alt="鴛鴦トワ Gallery 03"
-            loading="lazy"
-          >
-
-        </a>
-
-
-        <!-- Gallery 02 -->
-
-        <a
-          href="./images/gallery02.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery02.png"
-            alt="鴛鴦トワ Gallery 02"
-            loading="lazy"
-          >
-
-        </a>
-
-
-        <!-- Gallery 01 -->
-
-        <a
-          href="./images/gallery01.png"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <img
-            src="./images/gallery01.png"
-            alt="鴛鴦トワ Gallery 01"
-            loading="lazy"
-          >
-
-        </a>
-
-
-      </div>
+      <div
+        class="gallery-page-grid"
+        id="gallery-list"
+      ></div>
 
     </section>
 
@@ -235,6 +116,39 @@
   <a href="#" class="back-to-top">
     ↑ TOP
   </a>
+
+
+  <script src="./gallery-data.js"></script>
+
+  <script>
+
+    const galleryList =
+      document.getElementById("gallery-list");
+
+    galleryItems.forEach(item => {
+
+      const link =
+        document.createElement("a");
+
+      link.href = item.image;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+
+      const image =
+        document.createElement("img");
+
+      image.src = item.image;
+      image.alt = item.alt;
+      image.loading = "lazy";
+
+
+      link.appendChild(image);
+      galleryList.appendChild(link);
+
+    });
+
+  </script>
 
 
 </body>
