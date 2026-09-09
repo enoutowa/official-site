@@ -2754,7 +2754,8 @@ section.blog-comments::after {
 #comment-body {
   display: block;
   width: 100%;
-
+box-sizing: border-box;
+   
   padding: 12px 14px;
 
   background:
