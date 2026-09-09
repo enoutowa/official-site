@@ -1,6 +1,18 @@
 const lyricsItems = [
 
 {
+  id: "song-20260905-74fdc7",
+  title: "曲",
+  artist: "鴛鴦トワ",
+  releaseDate: "2026.09.05",
+  lyricist: "鴛鴦トワ",
+  composer: "鴛鴦トワ",
+  cover: "./images/lyrics-song-20260905-74fdc7.png",
+  youtube: "8F-7lc8UtBs",
+  lyrics: "<p>\n      君が笑えば\n    </p>\n\n    <p>\n      僕も笑う\n    </p>\n\n    <p>\n      笑うというのは\n    </p>\n\n    <p>\n      笑ったということです\n    </p>\n\n    <p>\n      今日の次は\n    </p>\n\n    <p>\n      明日なんです\n    </p>\n\n    <p>\n      明日になれば\n    </p>\n\n    <p>\n      今日じゃない\n    </p>\n\n    <p>\n      息を止めたら\n    </p>\n\n    <p>\n      苦しかった\n    </p>\n\n    <p>\n      これが恋？\n    </p>\n\n    <p>\n      いや\n    </p>\n\n    <p>\n      酸欠です\n    </p>\n\n    <p>\n      それが\n    </p>\n\n    <p>\n      歌なんです\n    </p>\n\n    <p>\n      歌だから\n    </p>\n\n    <p>\n      歌なんです\n    </p>\n\n    <p>\n      君が聴けば\n    </p>\n\n    <p>\n      聴いたんです\n    </p>\n\n    <p>\n      それでいいんです\n    </p>\n\n    <p>\n      空を見たら\n    </p>\n\n    <p>\n      空でした\n    </p>\n\n    <p>\n      下を見れば\n    </p>\n\n    <p>\n      地面でした\n    </p>\n\n    <p>\n      歩けば\n    </p>\n\n    <p>\n      進みます\n    </p>\n\n    <p>\n      止まれば\n    </p>\n\n    <p>\n      止まるんです\n    </p>\n\n    <p>\n      お腹が空けば\n    </p>\n\n    <p>\n      食べるんです\n    </p>\n\n    <p>\n      眠くなれば\n    </p>\n\n    <p>\n      寝るんです\n    </p>\n\n    <p>\n      それが\n    </p>\n\n    <p>\n      歌なんです\n    </p>\n\n    <p>\n      今日という日は\n    </p>\n\n    <p>\n      今日なんです\n    </p>\n\n    <p>\n      明日になれば\n    </p>\n\n    <p>\n      明日です\n    </p>\n\n    <p>\n      それでいいんです\n    </p>\n\n    <p>\n      生きてるから\n    </p>\n\n    <p>\n      生きてます\n    </p>\n\n    <p>\n      歌うから\n    </p>\n\n    <p>\n      歌なんです\n    </p>\n\n    <p>\n      笑った人は\n    </p>\n\n    <p>\n      勝ったんです\n    </p>\n\n    <p>\n      何でも\n    </p>\n\n    <p>\n      歌なんです！\n    </p>\n\n    <p>\n      Hey!!\n    </p>\n\n    <p>\n      それが\n    </p>\n\n    <p>\n      歌なんです！！\n    </p>"
+},
+
+{
   id: "zan-u",
 
   title: "残雨",
