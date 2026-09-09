@@ -2754,8 +2754,8 @@ section.blog-comments::after {
 #comment-body {
   display: block;
   width: 100%;
-box-sizing: border-box;
-   
+  box-sizing: border-box;
+
   padding: 12px 14px;
 
   background:
@@ -2943,9 +2943,9 @@ box-sizing: border-box;
   }
 
   .support-button img {
-  width: 100px;
-  max-width: 34vw;
-}
+    width: 100px;
+    max-width: 34vw;
+  }
 
   section.blog-comments {
     padding: 22px 18px;
@@ -2969,17 +2969,17 @@ box-sizing: border-box;
   }
 
 }
-/* =========================
+
+/* =========================================================
    PAGINATION
    BLOG / GALLERY 共通
-========================= */
+========================================================= */
 
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
   gap: 8px;
 
   margin-top: 32px;
@@ -2992,13 +2992,11 @@ box-sizing: border-box;
 .pagination a,
 .pagination-current {
   display: inline-flex;
-
   justify-content: center;
   align-items: center;
 
   min-width: 38px;
   height: 38px;
-
   padding: 0 12px;
 
   background:
@@ -3024,34 +3022,26 @@ box-sizing: border-box;
 
 .pagination a:hover {
   background: #71548d;
-
   color: #ffffff;
-
   transform: translateY(-2px);
 }
 
 .pagination-current {
   background: #71548d;
-
   border-color: #71548d;
-
   color: #ffffff;
 }
 
 .pagination-prev,
 .pagination-next {
-  padding-left: 16px !important;
-  padding-right: 16px !important;
+  padding-left: 16px;
+  padding-right: 16px;
 }
-
-
-/* スマホ */
 
 @media screen and (max-width: 600px) {
 
   .pagination {
     gap: 6px;
-
     margin-top: 26px;
     padding-top: 18px;
   }
@@ -3060,40 +3050,59 @@ box-sizing: border-box;
   .pagination-current {
     min-width: 34px;
     height: 34px;
-
     padding: 0 10px;
-
     font-size: 12px;
   }
 
   .pagination-prev,
   .pagination-next {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
 }
 
-/* =========================
-   REQUEST BANNER SLIDER
-========================= */
 
-.request-banner-section {
+/* =========================================================
+   REQUEST BANNER SLIDER
+   HOME / NEWS上
+========================================================= */
+
+/*
+  通常の section デザインをこのバナーだけ解除。
+  外側の白い大きな箱は表示しない。
+*/
+main .request-banner-section {
   width: 100%;
   max-width: 1000px;
+
   margin: 0 auto 36px;
+  padding: 0;
+
+  background: transparent;
+  background-image: none;
+
+  border: none;
+  border-radius: 0;
+
+  box-shadow: none;
+  backdrop-filter: none;
+
   overflow: hidden;
 }
 
+main .request-banner-section::after {
+  display: none;
+}
 
-/* 横スライド本体 */
-
-.request-slider {
+main .request-slider {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 
   width: 100%;
+  margin: 0;
+  padding: 0;
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -3101,40 +3110,41 @@ box-sizing: border-box;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+  background: transparent;
 }
 
-
-.request-slider::-webkit-scrollbar {
+main .request-slider::-webkit-scrollbar {
   display: none;
 }
 
-
-/* 1枚 = 画面いっぱい */
-
-.request-slide {
+main .request-slide {
   display: block;
 
   flex: 0 0 100%;
+
   width: 100%;
   min-width: 100%;
 
-  scroll-snap-align: start;
-
-  padding: 12px;
+  margin: 0;
+  padding: 10px;
 
   box-sizing: border-box;
+
+  scroll-snap-align: start;
+
+  background: transparent;
+  border: none;
 
   text-decoration: none;
 }
 
-
-/* バナー画像 */
-
-.request-slide img {
+main .request-slide img {
   display: block;
 
   width: 100%;
@@ -3143,40 +3153,39 @@ box-sizing: border-box;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 
+  margin: 0;
+
   border-radius: 18px;
 
   box-shadow:
     0 8px 24px rgba(78, 55, 92, 0.14);
 }
 
-
-/* =========================
-   DOT
-========================= */
-
-.request-slider-dots {
+main .request-slider-dots {
   display: flex;
-
   justify-content: center;
   align-items: center;
 
   gap: 8px;
 
-  margin-top: 10px;
+  margin: 8px 0 0;
+  padding: 0;
+
+  background: transparent;
 }
 
-
-.request-dot {
+main .request-dot {
   appearance: none;
+  -webkit-appearance: none;
 
   width: 10px;
   height: 10px;
-
   min-width: 10px;
 
+  margin: 0;
   padding: 0;
 
-  border: 0;
+  border: none;
   border-radius: 50%;
 
   background: #d8c9e4;
@@ -3189,90 +3198,70 @@ box-sizing: border-box;
     border-radius 0.2s ease;
 }
 
-
-.request-dot.active {
+main .request-dot.active {
   width: 24px;
-
   border-radius: 999px;
-
   background: #71548d;
 }
 
-
-/* =========================
-   SMARTPHONE
-========================= */
-
 @media screen and (max-width: 600px) {
 
-  .request-banner-section {
-    margin-bottom: 28px;
+  main .request-banner-section {
+    margin: 0 auto 28px;
   }
 
-  .request-slide {
-    padding: 10px;
+  main .request-slide {
+    padding: 8px;
   }
 
-  .request-slide img {
+  main .request-slide img {
     border-radius: 14px;
   }
 
-}
-
-/* PC */
-
-@media screen and (min-width: 801px) {
-
-  .request-slide {
-    flex-basis: 72%;
+  main .request-slider-dots {
+    margin-top: 6px;
   }
 
 }
 
 
-/* スマホ */
-
-@media screen and (max-width: 600px) {
-
-  .request-banner-section {
-    margin-bottom: 28px;
-  }
-
-  .request-slider {
-    gap: 12px;
-
-    padding-left: 6%;
-    padding-right: 6%;
-  }
-
-  .request-slide {
-    flex-basis: 88%;
-
-    border-radius: 16px;
-  }
-
-}
-/* =========================
+/* =========================================================
    REQUEST PAGE
-   request / music-request / web-request 共通
-========================= */
+   request.html / music-request.html / web-request.html
+========================================================= */
 
-.request-page {
+/*
+  .request-page 自体は section 要素なので、
+  通常 section の背景・影・花をここだけ解除する。
+*/
+main .request-page {
   max-width: 900px;
+
   margin: 0 auto;
   padding: 0 16px 110px;
+
+  background: transparent;
+  background-image: none;
+
+  border-radius: 0;
+
+  box-shadow: none;
+  backdrop-filter: none;
+
+  overflow: visible;
+}
+
+main .request-page::after {
+  display: none;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ---------- ページ上部 ---------- */
 
 .request-page-header {
   text-align: center;
 
   margin-bottom: 34px;
-
   padding: 34px 22px;
 
   background:
@@ -3287,7 +3276,6 @@ box-sizing: border-box;
     0 8px 24px rgba(78, 55, 92, 0.08);
 }
 
-
 .request-page-label {
   margin: 0 0 8px;
 
@@ -3299,18 +3287,41 @@ box-sizing: border-box;
   letter-spacing: 0.16em;
 }
 
+/*
+  通常の section h2 は🐾を左端へ絶対配置しているので、
+  REQUESTページだけタイトルと🐾を1セットで中央配置。
+*/
+main .request-page .request-page-header h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.request-page-header h2 {
-  margin:
-    0 0 14px;
+  width: fit-content;
+
+  margin: 0 auto 14px;
+  padding: 0 0 8px;
+
+  position: relative;
 
   color: #5f4673;
+
+  text-align: center;
 }
 
+main .request-page .request-page-header h2::before {
+  position: static;
+
+  display: inline-block;
+
+  margin: 0 8px 0 0;
+
+  transform: none;
+
+  flex-shrink: 0;
+}
 
 .request-page-lead {
-  margin:
-    0 0 12px;
+  margin: 0 0 12px;
 
   color: #71548d;
 
@@ -3319,7 +3330,6 @@ box-sizing: border-box;
 
   line-height: 1.7;
 }
-
 
 .request-page-text {
   margin: 0;
@@ -3330,14 +3340,10 @@ box-sizing: border-box;
 }
 
 
-/* =========================
-   SECTION
-========================= */
+/* ---------- 共通カード ---------- */
 
-.request-section {
-  margin:
-    0 0 28px;
-
+main .request-page .request-section {
+  margin: 0 0 28px;
   padding: 26px 24px;
 
   background:
@@ -3350,13 +3356,18 @@ box-sizing: border-box;
 
   box-shadow:
     0 6px 20px rgba(78, 55, 92, 0.07);
+
+  backdrop-filter: none;
+
+  overflow: hidden;
 }
 
+main .request-page .request-section::after {
+  display: none;
+}
 
 .request-section h3 {
-  margin:
-    0 0 18px;
-
+  margin: 0 0 18px;
   padding-bottom: 10px;
 
   color: #654c78;
@@ -3367,30 +3378,23 @@ box-sizing: border-box;
   font-size: 20px;
 }
 
-
 .request-section h4 {
-  margin:
-    22px 0 12px;
+  margin: 22px 0 12px;
 
   color: #71548d;
 
   font-size: 16px;
 }
 
-
 .request-section p {
   line-height: 1.9;
 }
 
 
-/* =========================
-   PRICE CARD
-========================= */
+/* ---------- 料金 ---------- */
 
 .request-price-card {
-  margin:
-    0 0 16px;
-
+  margin: 0 0 16px;
   padding: 20px;
 
   background:
@@ -3402,15 +3406,12 @@ box-sizing: border-box;
   border-radius: 16px;
 }
 
-
 .request-price-card:last-child {
   margin-bottom: 0;
 }
 
-
 .request-price-label {
-  margin:
-    0 0 6px;
+  margin: 0 0 6px;
 
   color: #71548d;
 
@@ -3418,10 +3419,8 @@ box-sizing: border-box;
   font-weight: bold;
 }
 
-
 .request-price {
-  margin:
-    0 0 10px;
+  margin: 0 0 10px;
 
   color: #5d4372;
 
@@ -3429,22 +3428,33 @@ box-sizing: border-box;
   font-weight: bold;
 }
 
+.request-payment-main {
+  color: #654c78;
 
-/* =========================
-   NOTE / WARNING
-========================= */
+  font-size: 18px;
+  font-weight: bold;
+
+  line-height: 1.8;
+}
+
+.request-small-note {
+  color: #716278;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+
+/* ---------- 注意 / 補足 ---------- */
 
 .request-note-box,
 .request-warning-box {
-  margin:
-    18px 0;
-
-  padding:
-    18px 20px;
+  margin: 18px 0;
+  padding: 18px 20px;
 
   border-radius: 15px;
 }
-
 
 .request-note-box {
   background:
@@ -3454,7 +3464,6 @@ box-sizing: border-box;
     1px solid #d9c8e6;
 }
 
-
 .request-warning-box {
   background:
     rgba(250, 246, 251, 0.96);
@@ -3463,13 +3472,10 @@ box-sizing: border-box;
     1px solid #cfb7dd;
 }
 
-
 .request-note-box p,
 .request-warning-box p {
-  margin:
-    0 0 10px;
+  margin: 0 0 10px;
 }
-
 
 .request-note-box p:last-child,
 .request-warning-box p:last-child {
@@ -3477,22 +3483,15 @@ box-sizing: border-box;
 }
 
 
-/* =========================
-   CHECK LIST
-========================= */
+/* ---------- リスト ---------- */
 
 .request-check-list {
-  margin:
-    16px 0;
+  margin: 16px 0;
 }
 
-
 .request-check-list p {
-  margin:
-    0 0 8px;
-
-  padding:
-    10px 12px;
+  margin: 0 0 8px;
+  padding: 10px 12px;
 
   background:
     rgba(250, 248, 252, 0.8);
@@ -3501,20 +3500,15 @@ box-sizing: border-box;
 }
 
 
-/* =========================
-   FLOW
-========================= */
+/* ---------- ご依頼の流れ ---------- */
 
 .request-flow {
   display: grid;
-
   gap: 14px;
 }
 
-
 .request-flow-item {
   display: flex;
-
   align-items: flex-start;
 
   gap: 14px;
@@ -3530,10 +3524,8 @@ box-sizing: border-box;
   border-radius: 14px;
 }
 
-
 .request-flow-item > span {
   display: inline-flex;
-
   justify-content: center;
   align-items: center;
 
@@ -3545,42 +3537,22 @@ box-sizing: border-box;
   border-radius: 50%;
 
   background: #71548d;
-
   color: #ffffff;
 
   font-size: 12px;
   font-weight: bold;
 }
 
-
 .request-flow-item h4 {
-  margin:
-    0 0 4px;
+  margin: 0 0 4px;
 }
-
 
 .request-flow-item p {
   margin: 0;
 }
 
 
-/* =========================
-   PAYMENT EMPHASIS
-========================= */
-
-.request-payment-main {
-  color: #654c78;
-
-  font-size: 18px;
-  font-weight: bold;
-
-  line-height: 1.8;
-}
-
-
-/* =========================
-   REQUEST MENU
-========================= */
+/* ---------- REQUESTトップの2メニュー ---------- */
 
 .request-menu {
   display: grid;
@@ -3593,10 +3565,8 @@ box-sizing: border-box;
   margin-bottom: 28px;
 }
 
-
 .request-menu-card {
   display: flex;
-
   align-items: flex-start;
 
   gap: 14px;
@@ -3623,24 +3593,19 @@ box-sizing: border-box;
     box-shadow 0.2s ease;
 }
 
-
 .request-menu-card:hover {
-  transform:
-    translateY(-3px);
+  transform: translateY(-3px);
 
   box-shadow:
     0 10px 26px rgba(78, 55, 92, 0.12);
 }
 
-
 .request-menu-icon {
   font-size: 28px;
 }
 
-
 .request-menu-small {
-  margin:
-    0 0 4px;
+  margin: 0 0 4px;
 
   color: #9679aa;
 
@@ -3650,22 +3615,17 @@ box-sizing: border-box;
   letter-spacing: 0.1em;
 }
 
-
 .request-menu-card h3 {
-  margin:
-    0 0 7px;
+  margin: 0 0 7px;
 
   color: #654c78;
 
   font-size: 18px;
 }
 
-
 .request-menu-card p {
-  margin:
-    0 0 8px;
+  margin: 0 0 8px;
 }
-
 
 .request-menu-more {
   color: #71548d;
@@ -3675,25 +3635,19 @@ box-sizing: border-box;
 }
 
 
-/* =========================
-   DETAIL LINKS
-========================= */
+/* ---------- 他ページへのリンク ---------- */
 
 .request-service-guide {
   text-align: center;
 }
 
-
 .request-detail-link {
   display: block;
 
-  margin:
-    10px auto;
-
-  padding:
-    14px 18px;
-
   max-width: 520px;
+
+  margin: 10px auto;
+  padding: 14px 18px;
 
   background:
     rgba(246, 240, 250, 0.92);
@@ -3711,25 +3665,19 @@ box-sizing: border-box;
 }
 
 
-/* =========================
-   MAIN BUTTON
-========================= */
+/* ---------- ページ内の通常申し込みボタン ---------- */
 
 .request-last {
   text-align: center;
 }
 
-
 .request-main-button {
   display: inline-flex;
-
   justify-content: center;
   align-items: center;
 
   margin-top: 14px;
-
-  padding:
-    15px 24px;
+  padding: 15px 24px;
 
   background: #71548d;
 
@@ -3745,23 +3693,15 @@ box-sizing: border-box;
     0 6px 16px rgba(78, 55, 92, 0.16);
 }
 
-
-/* =========================
-   SMALL NOTE
-========================= */
-
-.request-small-note {
-  color: #716278;
-
-  font-size: 12px;
-
-  line-height: 1.8;
+.request-main-button:hover {
+  background: #9470ae;
+  color: #ffffff;
 }
 
 
-/* =========================
-   FLOATING REQUEST BUTTON
-========================= */
+/* =========================================================
+   REQUEST 追従申し込みボタン
+========================================================= */
 
 .request-floating-area {
   position: fixed;
@@ -3770,10 +3710,9 @@ box-sizing: border-box;
   right: 0;
   bottom: 0;
 
-  z-index: 999;
+  z-index: 1000;
 
   display: flex;
-
   justify-content: center;
 
   padding:
@@ -3792,21 +3731,15 @@ box-sizing: border-box;
     1px solid rgba(113, 84, 141, 0.14);
 }
 
-
 .request-floating-button {
   display: flex;
-
   justify-content: center;
   align-items: center;
 
   width: min(100%, 560px);
-
   min-height: 48px;
 
-  padding:
-    10px 18px;
-
-  box-sizing: border-box;
+  padding: 10px 18px;
 
   background: #71548d;
 
@@ -3823,51 +3756,66 @@ box-sizing: border-box;
     0 5px 18px rgba(78, 55, 92, 0.18);
 }
 
+.request-floating-button:hover {
+  background: #9470ae;
+  color: #ffffff;
+}
 
-/* =========================
-   SMARTPHONE
-========================= */
+
+/*
+  request系3ページではHTML上、
+  .request-floating-area の直後に .back-to-top がある。
+  そのためTOPを追従ボタンより上へ移動。
+*/
+.request-floating-area + .back-to-top {
+  bottom: 82px !important;
+}
+
+
+/* =========================================================
+   REQUEST MOBILE
+========================================================= */
 
 @media screen and (max-width: 600px) {
 
-  .request-page {
-    padding:
-      0 12px 105px;
+  main .request-page {
+    padding: 0 12px 105px;
   }
 
-
   .request-page-header {
-    padding:
-      26px 16px;
+    padding: 26px 16px;
 
     border-radius: 18px;
   }
 
+  main .request-page .request-page-header h2 {
+    padding-left: 0;
+
+    font-size: 21px;
+  }
+
+  main .request-page .request-page-header h2::before {
+    margin-right: 7px;
+  }
 
   .request-page-lead {
     font-size: 18px;
   }
 
-
-  .request-section {
+  main .request-page .request-section {
     margin-bottom: 20px;
-
-    padding:
-      20px 16px;
+    padding: 20px 16px;
 
     border-radius: 16px;
   }
-
 
   .request-section h3 {
     font-size: 18px;
   }
 
-
   .request-price {
     font-size: 22px;
   }
-
 
   .request-menu {
     grid-template-columns: 1fr;
@@ -3875,18 +3823,15 @@ box-sizing: border-box;
     gap: 12px;
   }
 
-
   .request-menu-card {
     padding: 18px;
   }
-
 
   .request-flow-item {
     gap: 12px;
 
     padding: 14px;
   }
-
 
   .request-flow-item > span {
     flex-basis: 38px;
@@ -3895,12 +3840,10 @@ box-sizing: border-box;
     height: 38px;
   }
 
-
   .request-floating-area {
     padding:
       8px 10px calc(8px + env(safe-area-inset-bottom));
   }
-
 
   .request-floating-button {
     min-height: 46px;
@@ -3908,270 +3851,8 @@ box-sizing: border-box;
     font-size: 14px;
   }
 
-}
-
-/* =========================
-   REQUEST BANNER SLIDER
-   最終上書き版
-========================= */
-
-/* 外側の大きな囲いを完全に消す */
-main .request-banner-section {
-  width: 100%;
-  max-width: 1000px;
-
-  margin: 0 auto 36px;
-  padding: 0;
-
-  background: transparent;
-  background-image: none;
-
-  border: none;
-  border-radius: 0;
-
-  box-shadow: none;
-
-  overflow: hidden;
-}
-
-
-/* =========================
-   横スライド本体
-========================= */
-
-main .request-slider {
-  display: flex;
-
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  width: 100%;
-
-  margin: 0;
-  padding: 0;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  -webkit-overflow-scrolling: touch;
-
-  background: transparent;
-}
-
-
-main .request-slider::-webkit-scrollbar {
-  display: none;
-}
-
-
-/* =========================
-   1枚ずつ表示
-========================= */
-
-main .request-slide {
-  display: block;
-
-  flex: 0 0 100%;
-
-  width: 100%;
-  min-width: 100%;
-
-  margin: 0;
-  padding: 10px;
-
-  box-sizing: border-box;
-
-  scroll-snap-align: start;
-
-  background: transparent;
-
-  border: none;
-
-  text-decoration: none;
-}
-
-
-/* =========================
-   バナー画像
-========================= */
-
-main .request-slide img {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  aspect-ratio: 16 / 9;
-
-  object-fit: cover;
-
-  margin: 0;
-
-  border-radius: 18px;
-
-  box-shadow:
-    0 8px 24px rgba(78, 55, 92, 0.14);
-}
-
-
-/* =========================
-   ドット
-========================= */
-
-main .request-slider-dots {
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  gap: 8px;
-
-  margin: 8px 0 0;
-  padding: 0;
-
-  background: transparent;
-}
-
-
-main .request-dot {
-  appearance: none;
-
-  width: 10px;
-  height: 10px;
-
-  min-width: 10px;
-
-  margin: 0;
-  padding: 0;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background: #d8c9e4;
-
-  cursor: pointer;
-
-  transition:
-    width 0.2s ease,
-    background 0.2s ease,
-    border-radius 0.2s ease;
-}
-
-
-main .request-dot.active {
-  width: 24px;
-
-  border-radius: 999px;
-
-  background: #71548d;
-}
-
-
-/* =========================
-   スマホ
-========================= */
-
-@media screen and (max-width: 600px) {
-
-  main .request-banner-section {
-    width: 100%;
-
-    margin: 0 auto 28px;
-    padding: 0;
-
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-
-  main .request-slide {
-    padding: 8px;
-  }
-
-
-  main .request-slide img {
-    border-radius: 14px;
-  }
-
-
-  main .request-slider-dots {
-    margin-top: 6px;
-  }
-
-}
-
-/* =========================
-   REQUEST PAGE TITLE
-   🐾とタイトルをセットで中央配置
-========================= */
-
-.request-page-header h2 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 10px;
-
-  width: auto;
-
-  margin: 0 auto 14px;
-
-  position: relative;
-
-  text-align: center;
-}
-
-
-/* 左に離れていた🐾をタイトル横へ */
-.request-page-header h2::before {
-  position: static !important;
-
-  display: inline-block;
-
-  margin: 0 !important;
-
-  transform: none !important;
-
-  flex-shrink: 0;
-}
-
-
-/* スマホ */
-@media screen and (max-width: 600px) {
-
-  .request-page-header h2 {
-    gap: 8px;
-  }
-
-}
-
-
-/* =========================
-   REQUEST PAGE
-   TOPボタン位置調整
-========================= */
-
-.request-page ~ .back-to-top,
-.request-floating-area + .back-to-top {
-  bottom: 82px;
-}
-
-
-/* スマホ */
-@media screen and (max-width: 600px) {
-
-  .request-page ~ .back-to-top,
   .request-floating-area + .back-to-top {
-    bottom: 76px;
+    bottom: 76px !important;
   }
 
 }
