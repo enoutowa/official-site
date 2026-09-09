@@ -84,11 +84,149 @@
 
       <h2>BLOG</h2>
 
+
       <article
         class="blog-entry"
         id="article-content"
       >
       </article>
+
+
+      <!-- =========================
+           応援
+      ========================= -->
+
+      <section
+        class="blog-support"
+        id="blog-support"
+        hidden
+      >
+
+        <p class="blog-support-title">
+          このブログを応援する
+        </p>
+
+        <button
+          type="button"
+          class="support-button"
+          id="support-button"
+        >
+
+          <img
+            src="./images/support-towa.png"
+            alt="猫トワを押して応援する"
+            id="support-image"
+          >
+
+        </button>
+
+        <p
+          class="support-message"
+          id="support-message"
+        >
+          猫トワをぽちっと🐾
+        </p>
+
+        <p class="support-count">
+          応援
+          <span id="support-count">0</span>
+        </p>
+
+      </section>
+
+
+      <!-- =========================
+           コメント
+      ========================= -->
+
+      <section
+        class="blog-comments"
+        id="blog-comments"
+        hidden
+      >
+
+        <h3>
+          COMMENTS
+        </h3>
+
+        <p class="comments-intro">
+          コメントお待ちしています💜
+        </p>
+
+
+        <form id="comment-form">
+
+          <label for="comment-name">
+            お名前
+          </label>
+
+          <input
+            type="text"
+            id="comment-name"
+            name="name"
+            maxlength="40"
+            placeholder="匿名でもOK"
+          >
+
+
+          <label for="comment-body">
+            コメント
+          </label>
+
+          <textarea
+            id="comment-body"
+            name="body"
+            maxlength="500"
+            required
+            placeholder="コメントを書く"
+          ></textarea>
+
+
+          <!-- スパム対策：人には見えません -->
+          <div
+            class="comment-honeypot"
+            aria-hidden="true"
+          >
+            <label>
+              Website
+              <input
+                type="text"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              >
+            </label>
+          </div>
+
+
+          <button
+            type="submit"
+            class="comment-submit"
+            id="comment-submit"
+          >
+            コメントを送る
+          </button>
+
+          <p
+            class="comment-status"
+            id="comment-status"
+          >
+          </p>
+
+          <p class="comment-note">
+            コメントは承認後に表示されます。
+          </p>
+
+        </form>
+
+
+        <div
+          class="comment-list"
+          id="comment-list"
+        >
+        </div>
+
+      </section>
 
     </section>
 
@@ -139,23 +277,42 @@
 
   <script src="./blog-data.js"></script>
 
+
   <script>
 
-    const params = new URLSearchParams(window.location.search);
+    const BLOG_API =
+      "https://enou-towa-admin.miyu-run-0220.workers.dev";
 
-    const articleId = params.get("id");
+    const params =
+      new URLSearchParams(window.location.search);
 
-    const article = blogPosts.find((post) => {
-      return post.id === articleId;
-    });
+    const articleId =
+      params.get("id");
 
-    const articleContent = document.getElementById("article-content");
+    const article =
+      blogPosts.find((post) => {
+        return post.id === articleId;
+      });
 
+    const articleContent =
+      document.getElementById("article-content");
+
+    const supportArea =
+      document.getElementById("blog-support");
+
+    const commentsArea =
+      document.getElementById("blog-comments");
+
+
+    /* =========================
+       BLOG記事
+    ========================= */
 
     if (article) {
 
       document.title =
-        article.title + " | 鴛鴦トワ Official Website";
+        article.title +
+        " | 鴛鴦トワ Official Website";
 
 
       articleContent.innerHTML = `
@@ -181,13 +338,20 @@
         ${article.content}
 
 
-        <p>
+        <p class="blog-back">
           <a href="./blog.html">
             ← BLOG一覧へ戻る
           </a>
         </p>
 
       `;
+
+
+      supportArea.hidden = false;
+      commentsArea.hidden = false;
+
+      loadSupport();
+      loadComments();
 
     } else {
 
@@ -206,6 +370,407 @@
       `;
 
     }
+
+
+    /* =========================
+       猫トワ応援
+    ========================= */
+
+    const supportButton =
+      document.getElementById("support-button");
+
+    const supportImage =
+      document.getElementById("support-image");
+
+    const supportMessage =
+      document.getElementById("support-message");
+
+    const supportCount =
+      document.getElementById("support-count");
+
+    const supportStorageKey =
+      "towa-support-" + articleId;
+
+
+    async function loadSupport() {
+
+      try {
+
+        const response =
+          await fetch(
+            BLOG_API +
+            "/api/public/support?article_id=" +
+            encodeURIComponent(articleId)
+          );
+
+        const data =
+          await response.json();
+
+        if (data.ok) {
+          supportCount.textContent =
+            data.count || 0;
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+
+
+      if (
+        localStorage.getItem(
+          supportStorageKey
+        )
+      ) {
+
+        setSupportedState();
+
+      }
+
+    }
+
+
+    function setSupportedState() {
+
+      supportImage.src =
+        "./images/support-towa-active.png";
+
+      supportImage.alt =
+        "応援ありがとう";
+
+      supportMessage.textContent =
+        "応援ありがとう💜";
+
+      supportButton.disabled =
+        true;
+
+      supportButton.classList.add(
+        "supported"
+      );
+
+    }
+
+
+    supportButton.addEventListener(
+      "click",
+      async () => {
+
+        if (
+          localStorage.getItem(
+            supportStorageKey
+          )
+        ) {
+          return;
+        }
+
+
+        supportButton.disabled =
+          true;
+
+
+        try {
+
+          const response =
+            await fetch(
+              BLOG_API +
+              "/api/public/support",
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body: JSON.stringify({
+                  articleId:
+                    articleId
+                })
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if (!data.ok) {
+            throw new Error(
+              data.message ||
+              "応援を送れませんでした"
+            );
+          }
+
+
+          supportCount.textContent =
+            data.count || 0;
+
+
+          localStorage.setItem(
+            supportStorageKey,
+            "1"
+          );
+
+
+          setSupportedState();
+
+
+        } catch (error) {
+
+          supportButton.disabled =
+            false;
+
+          supportMessage.textContent =
+            "もう一度試してみてね";
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       コメント
+    ========================= */
+
+    const commentForm =
+      document.getElementById("comment-form");
+
+    const commentSubmit =
+      document.getElementById("comment-submit");
+
+    const commentStatus =
+      document.getElementById("comment-status");
+
+    const commentList =
+      document.getElementById("comment-list");
+
+
+    async function loadComments() {
+
+      commentList.innerHTML =
+        '<p class="comment-loading">読み込み中...</p>';
+
+
+      try {
+
+        const response =
+          await fetch(
+            BLOG_API +
+            "/api/public/comments?article_id=" +
+            encodeURIComponent(articleId)
+          );
+
+        const data =
+          await response.json();
+
+
+        if (!data.ok) {
+          throw new Error();
+        }
+
+
+        renderComments(
+          data.comments || []
+        );
+
+
+      } catch (error) {
+
+        commentList.innerHTML =
+          '<p class="comment-empty">コメントを読み込めませんでした。</p>';
+
+      }
+
+    }
+
+
+    function renderComments(comments) {
+
+      commentList.innerHTML = "";
+
+
+      if (!comments.length) {
+
+        const empty =
+          document.createElement("p");
+
+        empty.className =
+          "comment-empty";
+
+        empty.textContent =
+          "まだコメントはありません。";
+
+        commentList.appendChild(
+          empty
+        );
+
+        return;
+
+      }
+
+
+      comments.forEach(
+        (comment) => {
+
+          const box =
+            document.createElement("div");
+
+          box.className =
+            "comment-item";
+
+
+          const name =
+            document.createElement("p");
+
+          name.className =
+            "comment-name";
+
+          name.textContent =
+            "🐾 " +
+            (comment.name || "匿名");
+
+
+          const body =
+            document.createElement("p");
+
+          body.className =
+            "comment-body";
+
+          body.textContent =
+            comment.body || "";
+
+
+          box.appendChild(name);
+          box.appendChild(body);
+
+          commentList.appendChild(box);
+
+        }
+      );
+
+    }
+
+
+    commentForm.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+
+        const formData =
+          new FormData(commentForm);
+
+        const body =
+          String(
+            formData.get("body") || ""
+          ).trim();
+
+
+        if (!body) {
+          return;
+        }
+
+
+        commentSubmit.disabled =
+          true;
+
+        commentSubmit.textContent =
+          "送信中...";
+
+        commentStatus.textContent =
+          "";
+
+
+        try {
+
+          const response =
+            await fetch(
+              BLOG_API +
+              "/api/public/comments",
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body: JSON.stringify({
+
+                  articleId:
+                    articleId,
+
+                  articleTitle:
+                    article.title,
+
+                  name:
+                    String(
+                      formData.get("name") ||
+                      ""
+                    ),
+
+                  body:
+                    body,
+
+                  website:
+                    String(
+                      formData.get("website") ||
+                      ""
+                    )
+
+                })
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if (!data.ok) {
+
+            throw new Error(
+              data.message ||
+              "送信できませんでした"
+            );
+
+          }
+
+
+          commentStatus.textContent =
+            data.message;
+
+          commentStatus.className =
+            "comment-status success";
+
+
+          commentForm.reset();
+
+
+        } catch (error) {
+
+          commentStatus.textContent =
+            error.message ||
+            "コメントを送信できませんでした";
+
+          commentStatus.className =
+            "comment-status error";
+
+        } finally {
+
+          commentSubmit.disabled =
+            false;
+
+          commentSubmit.textContent =
+            "コメントを送る";
+
+        }
+
+      }
+    );
 
   </script>
 
