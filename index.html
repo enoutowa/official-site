@@ -857,6 +857,89 @@
   }
 </script>
 
+<script>
+  const requestSlider =
+    document.getElementById("request-slider");
+
+  const requestDots =
+    document.querySelectorAll(".request-dot");
+
+  function goToRequestSlide(index) {
+
+    const slide =
+      requestSlider.querySelectorAll(".request-slide")[index];
+
+    if (!slide) {
+      return;
+    }
+
+    requestSlider.scrollTo({
+      left: slide.offsetLeft - requestSlider.offsetLeft,
+      behavior: "smooth"
+    });
+  }
+
+
+  requestDots.forEach((dot) => {
+
+    dot.addEventListener("click", () => {
+
+      goToRequestSlide(
+        Number(dot.dataset.slide)
+      );
+
+    });
+
+  });
+
+
+  let requestScrollTimer;
+
+  requestSlider.addEventListener("scroll", () => {
+
+    clearTimeout(requestScrollTimer);
+
+    requestScrollTimer = setTimeout(() => {
+
+      const slides =
+        requestSlider.querySelectorAll(".request-slide");
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      slides.forEach((slide, index) => {
+
+        const distance =
+          Math.abs(
+            slide.offsetLeft -
+            requestSlider.offsetLeft -
+            requestSlider.scrollLeft
+          );
+
+        if (distance < closestDistance) {
+
+          closestDistance = distance;
+          closestIndex = index;
+
+        }
+
+      });
+
+
+      requestDots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+          "active",
+          index === closestIndex
+        );
+
+      });
+
+    }, 80);
+
+  });
+</script>
+  
 </body>
 
 </html>
