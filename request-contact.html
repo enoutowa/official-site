@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>制作依頼フォーム | 鴛鴦トワ Official Website</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    main .request-form-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 90px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    main .request-form-page::after {
+      display: none;
+    }
+
+    .request-form-header {
+      margin-bottom: 28px;
+      padding: 34px 24px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(113, 84, 141, 0.16);
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(78, 55, 92, 0.08);
+    }
+
+    .request-form-label {
+      margin: 0 0 8px;
+      color: #8b6aa4;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.16em;
+    }
+
+    main .request-form-page .request-form-header h2 {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 12px;
+      padding: 0 0 8px;
+      position: relative;
+      color: #5f4673;
+      text-align: center;
+    }
+
+    main .request-form-page .request-form-header h2::before {
+      position: absolute;
+      left: -28px;
+      top: 50%;
+      margin: 0;
+      transform: translateY(-55%);
+      font-size: 18px;
+    }
+
+    .request-form-lead {
+      margin: 0;
+      color: #695574;
+      line-height: 1.9;
+    }
+
+    .request-form-card {
+      padding: 28px 24px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(113, 84, 141, 0.14);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(78, 55, 92, 0.07);
+    }
+
+    .request-form-row {
+      margin-bottom: 22px;
+    }
+
+    .request-form-row:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .request-form-row label,
+    .request-form-title {
+      display: block;
+      margin-bottom: 8px;
+      color: #5f4673;
+      font-weight: bold;
+    }
+
+    .request-required {
+      margin-left: 6px;
+      color: #a25c7b;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .request-optional {
+      margin-left: 6px;
+      color: #8c8191;
+      font-size: 11px;
+      font-weight: normal;
+    }
+
+    .request-form-card input[type="text"],
+    .request-form-card input[type="email"],
+    .request-form-card select,
+    .request-form-card textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 14px;
+      border: 1px solid rgba(113, 84, 141, 0.25);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #4f4057;
+      font: inherit;
+      outline: none;
+    }
+
+    .request-form-card textarea {
+      min-height: 220px;
+      resize: vertical;
+      line-height: 1.8;
+    }
+
+    .request-form-card input:focus,
+    .request-form-card select:focus,
+    .request-form-card textarea:focus {
+      border-color: rgba(113, 84, 141, 0.58);
+      box-shadow: 0 0 0 3px rgba(113, 84, 141, 0.08);
+    }
+
+    .request-file-box {
+      padding: 16px;
+      border: 1px dashed rgba(113, 84, 141, 0.35);
+      border-radius: 14px;
+      background: rgba(248, 244, 251, 0.72);
+    }
+
+    .request-file-box input[type="file"] {
+      width: 100%;
+      color: #5f5266;
+    }
+
+    .request-file-note {
+      margin: 9px 0 0;
+      color: #8a7b91;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .request-file-list {
+      margin-top: 12px;
+      color: #66566e;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .request-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 24px;
+      padding: 14px 16px;
+      background: rgba(245, 240, 249, 0.74);
+      border-radius: 12px;
+      color: #64556b;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .request-consent input {
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .request-submit-wrap {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .request-submit {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 34px;
+      background: #71548d;
+      color: #fff;
+      font: inherit;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(91, 67, 112, 0.18);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .request-submit:hover {
+      transform: translateY(-2px);
+    }
+
+    .request-submit:disabled {
+      opacity: 0.55;
+      cursor: wait;
+      transform: none;
+    }
+
+    .request-form-status {
+      min-height: 1.8em;
+      margin: 16px 0 0;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .request-form-status.success {
+      color: #5f4673;
+      font-weight: bold;
+    }
+
+    .request-form-status.error {
+      color: #a44960;
+      font-weight: bold;
+    }
+
+    .request-success-box {
+      display: none;
+      margin-top: 22px;
+      padding: 20px;
+      background: rgba(247, 242, 250, 0.95);
+      border: 1px solid rgba(113, 84, 141, 0.18);
+      border-radius: 14px;
+      color: #5f5266;
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    .request-success-box.show {
+      display: block;
+    }
+
+    .request-success-id {
+      font-weight: bold;
+      color: #71548d;
+    }
+
+    .request-honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    @media screen and (max-width: 600px) {
+      main .request-form-page {
+        padding: 0 12px 80px;
+      }
+
+      .request-form-header {
+        padding: 28px 18px;
+        border-radius: 18px;
+      }
+
+      .request-form-card {
+        padding: 22px 16px;
+        border-radius: 17px;
+      }
+
+      main .request-form-page .request-form-header h2::before {
+        left: -25px;
+        font-size: 17px;
+      }
+
+      .request-form-card textarea {
+        min-height: 190px;
+      }
+
+      .request-submit {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="header-inner">
+
+      <p class="header-sub">
+        OFFICIAL WEBSITE
+      </p>
+
+      <h1>
+        鴛鴦トワ
+      </h1>
+
+    </div>
+
+    <nav>
+      <a href="./index.html#news">NEWS</a>
+      <a href="./index.html#profile">PROFILE</a>
+      <a href="./index.html#music">MUSIC</a>
+      <a href="./index.html#jukebox">JUKEBOX</a>
+      <a href="./index.html#video">VIDEO</a>
+      <a href="./lyrics.html">LYRICS</a>
+      <a href="./blog.html">BLOG</a>
+      <a href="./index.html#novel">NOVEL</a>
+      <a href="./index.html#gallery">GALLERY</a>
+      <a href="./index.html#link">LINK</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="request-form-page">
+
+      <div class="request-form-header">
+
+        <p class="request-form-label">
+          COMMISSION REQUEST
+        </p>
+
+        <h2>制作依頼フォーム</h2>
+
+        <p class="request-form-lead">
+          ご希望の内容をご記入ください。<br>
+          内容を確認後、必要に応じて専用チャットへご案内します。
+        </p>
+
+      </div>
+
+
+      <form
+        class="request-form-card"
+        id="request-form"
+        novalidate
+      >
+
+        <div class="request-form-row">
+          <label for="request-name">
+            お名前 / 活動名
+            <span class="request-required">必須</span>
+          </label>
+
+          <input
+            type="text"
+            id="request-name"
+            name="name"
+            maxlength="80"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+
+        <div class="request-form-row">
+          <label for="request-email">
+            返信用メールアドレス
+            <span class="request-required">必須</span>
+          </label>
+
+          <input
+            type="email"
+            id="request-email"
+            name="email"
+            maxlength="180"
+            autocomplete="email"
+            inputmode="email"
+            required
+          >
+        </div>
+
+
+        <div class="request-form-row">
+          <label for="request-type">
+            ご依頼の種類
+            <span class="request-required">必須</span>
+          </label>
+
+          <select
+            id="request-type"
+            name="requestType"
+            required
+          >
+            <option value="">選択してください</option>
+            <option value="楽曲制作">楽曲制作</option>
+            <option value="Webサイト制作">Webサイト制作</option>
+            <option value="その他">その他 / ご相談</option>
+          </select>
+        </div>
+
+
+        <div class="request-form-row">
+          <label for="request-title">
+            依頼タイトル
+            <span class="request-required">必須</span>
+          </label>
+
+          <input
+            type="text"
+            id="request-title"
+            name="title"
+            maxlength="160"
+            placeholder="例：オリジナル楽曲制作について"
+            required
+          >
+        </div>
+
+
+        <div class="request-form-row">
+          <label for="request-body">
+            ご依頼内容
+            <span class="request-required">必須</span>
+          </label>
+
+          <textarea
+            id="request-body"
+            name="body"
+            maxlength="5000"
+            placeholder="ご希望の内容、イメージ、用途、納期の希望などをご自由にご記入ください。"
+            required
+          ></textarea>
+        </div>
+
+
+        <div class="request-form-row">
+
+          <span class="request-form-title">
+            参考画像
+            <span class="request-optional">任意・最大3枚</span>
+          </span>
+
+          <div class="request-file-box">
+
+            <input
+              type="file"
+              id="request-images"
+              accept="image/png,image/jpeg,image/webp"
+              multiple
+            >
+
+            <p class="request-file-note">
+              PNG / JPEG / WebP、1枚5MB以下。<br>
+              参考資料として必要な画像のみ添付してください。
+            </p>
+
+            <div
+              class="request-file-list"
+              id="request-file-list"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="request-honeypot" aria-hidden="true">
+          <label>
+            Website
+            <input
+              type="text"
+              id="request-website"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </label>
+        </div>
+
+
+        <label class="request-consent">
+          <input
+            type="checkbox"
+            id="request-consent"
+            required
+          >
+
+          <span>
+            入力内容を確認し、制作依頼の受付・連絡のために送信することに同意します。
+          </span>
+        </label>
+
+
+        <div class="request-submit-wrap">
+
+          <button
+            type="submit"
+            class="request-submit"
+            id="request-submit"
+          >
+            この内容で送信する
+          </button>
+
+          <p
+            class="request-form-status"
+            id="request-status"
+            aria-live="polite"
+          ></p>
+
+        </div>
+
+
+        <div
+          class="request-success-box"
+          id="request-success"
+        >
+          <strong>ご依頼を受け付けました💜</strong><br>
+          依頼番号：
+          <span
+            class="request-success-id"
+            id="request-success-id"
+          ></span>
+          <br><br>
+          内容を確認後、ご連絡いたします。
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <p class="footer-title">
+        鴛鴦トワ Official Website
+      </p>
+
+      <div class="footer-submenu">
+
+        <a href="./index.html">
+          HOME
+        </a>
+
+        <span>|</span>
+
+        <a href="./terms.html">
+          利用規約
+        </a>
+
+        <span>|</span>
+
+        <a href="./contact.html">
+          お問い合わせ
+        </a>
+
+      </div>
+
+      <p class="footer-copy">
+        © 鴛鴦トワ
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <a href="#" class="back-to-top">
+    ↑ TOP
+  </a>
+
+
+  <script>
+    const API_BASE =
+      "https://enou-towa-admin.miyu-run-0220.workers.dev";
+
+    const form =
+      document.getElementById("request-form");
+
+    const submitButton =
+      document.getElementById("request-submit");
+
+    const statusElement =
+      document.getElementById("request-status");
+
+    const successBox =
+      document.getElementById("request-success");
+
+    const successId =
+      document.getElementById("request-success-id");
+
+    const imageInput =
+      document.getElementById("request-images");
+
+    const fileList =
+      document.getElementById("request-file-list");
+
+    const requestType =
+      document.getElementById("request-type");
+
+
+    /*
+      music-request.html / web-request.html から
+      ?type=music / ?type=web で開いた時に自動選択
+    */
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const typeParam =
+      params.get("type");
+
+    if (typeParam === "music") {
+      requestType.value = "楽曲制作";
+    }
+
+    if (typeParam === "web") {
+      requestType.value = "Webサイト制作";
+    }
+
+
+    imageInput.addEventListener("change", () => {
+
+      const files =
+        Array.from(imageInput.files || []);
+
+      if (files.length > 3) {
+        imageInput.value = "";
+        fileList.textContent =
+          "画像は最大3枚までです。";
+        return;
+      }
+
+      const tooLarge =
+        files.find((file) => {
+          return file.size > 5 * 1024 * 1024;
+        });
+
+      if (tooLarge) {
+        imageInput.value = "";
+        fileList.textContent =
+          `${tooLarge.name} は5MBを超えています。`;
+        return;
+      }
+
+      if (!files.length) {
+        fileList.textContent = "";
+        return;
+      }
+
+      fileList.innerHTML =
+        files
+          .map((file) => {
+            return `📎 ${escapeHtml(file.name)}`;
+          })
+          .join("<br>");
+    });
+
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function fileToDataUrl(file) {
+      return new Promise((resolve, reject) => {
+
+        const reader =
+          new FileReader();
+
+        reader.onload = () => {
+          resolve(reader.result);
+        };
+
+        reader.onerror = () => {
+          reject(
+            new Error(
+              `${file.name} を読み込めませんでした。`
+            )
+          );
+        };
+
+        reader.readAsDataURL(file);
+
+      });
+    }
+
+
+    form.addEventListener("submit", async (event) => {
+
+      event.preventDefault();
+
+      statusElement.className =
+        "request-form-status";
+
+      statusElement.textContent = "";
+
+      successBox.classList.remove("show");
+
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+
+      const selectedFiles =
+        Array.from(imageInput.files || []);
+
+      if (selectedFiles.length > 3) {
+        statusElement.className =
+          "request-form-status error";
+
+        statusElement.textContent =
+          "画像は最大3枚までです。";
+
+        return;
+      }
+
+
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中…";
+
+      statusElement.textContent =
+        "ご依頼を送信しています…";
+
+
+      try {
+
+        const images = [];
+
+        for (const file of selectedFiles) {
+
+          if (file.size > 5 * 1024 * 1024) {
+            throw new Error(
+              `${file.name} は5MBを超えています。`
+            );
+          }
+
+          if (
+            ![
+              "image/png",
+              "image/jpeg",
+              "image/webp"
+            ].includes(file.type)
+          ) {
+            throw new Error(
+              `${file.name} は対応していない画像形式です。`
+            );
+          }
+
+          images.push({
+            name: file.name,
+            dataUrl: await fileToDataUrl(file)
+          });
+
+        }
+
+
+        const payload = {
+          name:
+            document
+              .getElementById("request-name")
+              .value
+              .trim(),
+
+          email:
+            document
+              .getElementById("request-email")
+              .value
+              .trim(),
+
+          requestType:
+            requestType.value,
+
+          title:
+            document
+              .getElementById("request-title")
+              .value
+              .trim(),
+
+          body:
+            document
+              .getElementById("request-body")
+              .value
+              .trim(),
+
+          website:
+            document
+              .getElementById("request-website")
+              .value,
+
+          images
+        };
+
+
+        const response =
+          await fetch(
+            `${API_BASE}/api/public/request`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+              body:
+                JSON.stringify(payload)
+            }
+          );
+
+
+        const result =
+          await response
+            .json()
+            .catch(() => null);
+
+
+        if (!response.ok || !result?.ok) {
+          throw new Error(
+            result?.message ||
+            "送信できませんでした。"
+          );
+        }
+
+
+        statusElement.className =
+          "request-form-status success";
+
+        statusElement.textContent =
+          "送信できました！";
+
+
+        successId.textContent =
+          result.publicId || "受付済み";
+
+        successBox.classList.add("show");
+
+
+        form.reset();
+        fileList.textContent = "";
+
+
+        /*
+          typeパラメータが付いている場合は
+          リセット後も選択状態を戻す
+        */
+        if (typeParam === "music") {
+          requestType.value = "楽曲制作";
+        }
+
+        if (typeParam === "web") {
+          requestType.value = "Webサイト制作";
+        }
+
+
+        successBox.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      } catch (error) {
+
+        statusElement.className =
+          "request-form-status error";
+
+        statusElement.textContent =
+          error?.message ||
+          "送信できませんでした。時間を空けてもう一度お試しください。";
+
+      } finally {
+
+        submitButton.disabled = false;
+        submitButton.textContent =
+          "この内容で送信する";
+
+      }
+
+    });
+  </script>
+
+</body>
+
+</html>
