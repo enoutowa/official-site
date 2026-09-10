@@ -3,20 +3,114 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>LYRICS | 鴛鴦トワ Official Website</title>
 
-  <link
-    rel="stylesheet"
-    href="./style.css"
-  >
-</head>
+  <link rel="stylesheet" href="./style.css">
 
+  <!-- LYRICS一覧だけの専用デザイン -->
+  <style>
+    .lyrics-page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .lyrics-intro {
+      margin-bottom: 28px;
+    }
+
+    .lyrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      margin-top: 26px;
+    }
+
+    .lyrics-item {
+      display: block;
+      width: 100%;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(126, 91, 156, 0.18);
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(78, 55, 92, 0.07);
+      color: #56445f;
+      text-decoration: none;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .lyrics-item:hover {
+      background: rgba(255, 255, 255, 0.94);
+      color: #56445f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(78, 55, 92, 0.12);
+    }
+
+    .lyrics-item-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      color: #654c78;
+      font-size: 17px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    .lyrics-item-paw {
+      flex-shrink: 0;
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .lyrics-item-preview {
+      display: -webkit-box;
+      overflow: hidden;
+      margin: 0;
+      color: #75647e;
+      font-size: 13px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow-wrap: anywhere;
+    }
+
+    .lyrics-empty {
+      margin: 28px 0 0;
+      text-align: center;
+      color: #8b7895;
+    }
+
+    @media screen and (max-width: 600px) {
+      .lyrics-list {
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .lyrics-item {
+        padding: 16px 15px;
+        border-radius: 13px;
+      }
+
+      .lyrics-item-title {
+        margin-bottom: 7px;
+        font-size: 16px;
+      }
+
+      .lyrics-item-preview {
+        font-size: 12px;
+        line-height: 1.75;
+        -webkit-line-clamp: 2;
+      }
+    }
+  </style>
+</head>
 
 <body>
 
@@ -34,16 +128,16 @@
 
     </div>
 
-
     <nav>
       <a href="./index.html#news">NEWS</a>
       <a href="./index.html#profile">PROFILE</a>
       <a href="./index.html#music">MUSIC</a>
       <a href="./index.html#jukebox">JUKEBOX</a>
       <a href="./index.html#video">VIDEO</a>
+      <a href="./lyrics.html">LYRICS</a>
       <a href="./blog.html">BLOG</a>
       <a href="./index.html#novel">NOVEL</a>
-      <a href="./gallery.html">GALLERY</a>
+      <a href="./index.html#gallery">GALLERY</a>
       <a href="./index.html#link">LINK</a>
     </nav>
 
@@ -60,15 +154,7 @@
         鴛鴦トワのオリジナル楽曲の歌詞を掲載しています。
       </p>
 
-
-      <!-- =========================
-           歌詞一覧
-      ========================= -->
-
-      <div
-        class="lyrics-list"
-        id="lyrics-list"
-      >
+      <div class="lyrics-list" id="lyrics-list">
       </div>
 
     </section>
@@ -88,6 +174,12 @@
 
         <a href="./index.html">
           HOME
+        </a>
+
+        <span>|</span>
+
+        <a href="./lyrics.html">
+          LYRICS
         </a>
 
         <span>|</span>
@@ -118,40 +210,136 @@
   </a>
 
 
-  <!-- =========================
-       LYRICS DATA
-  ========================= -->
-
   <script src="./lyrics-data.js"></script>
 
   <script>
-    const lyricsList = document.getElementById("lyrics-list");
+    const lyricsList =
+      document.getElementById("lyrics-list");
+
+
+    function makeLyricsPreview(lyricsHtml) {
+
+      const temp =
+        document.createElement("div");
+
+      temp.innerHTML =
+        String(lyricsHtml || "")
+          .replace(/<br\s*\/?>/gi, "\n")
+          .replace(/<\/p>/gi, "\n")
+          .replace(/<\/div>/gi, "\n");
+
+
+      const lines =
+        (temp.textContent || "")
+          .split(/\n+/)
+          .map((line) => {
+            return line
+              .replace(/\s+/g, " ")
+              .trim();
+          })
+          .filter((line) => {
+            if (!line) {
+              return false;
+            }
+
+            if (/^【[^】]+】$/.test(line)) {
+              return false;
+            }
+
+            return true;
+          });
+
+
+      let preview =
+        lines
+          .slice(0, 3)
+          .join("　");
+
+
+      if (preview.length > 110) {
+        preview =
+          preview.slice(0, 110).trim() + "…";
+      }
+
+
+      return preview ||
+        "歌詞を掲載しています。";
+    }
+
 
     if (
       typeof lyricsItems !== "undefined" &&
       Array.isArray(lyricsItems) &&
       lyricsItems.length > 0
     ) {
+
       lyricsList.innerHTML = "";
+
 
       lyricsItems.forEach((song) => {
 
-        const link = document.createElement("a");
+        const link =
+          document.createElement("a");
 
-        link.href = `./lyrics-article.html?id=${song.id}`;
-        link.className = "lyrics-item";
-        link.textContent = `🐾 ${song.title}`;
+        link.href =
+          `./lyrics-article.html?id=${encodeURIComponent(song.id)}`;
+
+        link.className =
+          "lyrics-item";
+
+
+        const title =
+          document.createElement("div");
+
+        title.className =
+          "lyrics-item-title";
+
+
+        const paw =
+          document.createElement("span");
+
+        paw.className =
+          "lyrics-item-paw";
+
+        paw.textContent =
+          "🐾";
+
+
+        const titleText =
+          document.createElement("span");
+
+        titleText.textContent =
+          song.title;
+
+
+        const preview =
+          document.createElement("p");
+
+        preview.className =
+          "lyrics-item-preview";
+
+        preview.textContent =
+          makeLyricsPreview(song.lyrics);
+
+
+        title.appendChild(paw);
+        title.appendChild(titleText);
+
+        link.appendChild(title);
+        link.appendChild(preview);
 
         lyricsList.appendChild(link);
 
       });
 
     } else {
+
       lyricsList.innerHTML = `
         <p class="lyrics-empty">
           歌詞データを読み込めませんでした。
         </p>
       `;
+
     }
   </script>
 
