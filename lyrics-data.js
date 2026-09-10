@@ -1,6 +1,18 @@
 const lyricsItems = [
 
 {
+  id: "song-20260906-9e0b69",
+  title: "色花",
+  artist: "鴛鴦トワ",
+  releaseDate: "2026.09.06",
+  lyricist: "鴛鴦トワ",
+  composer: "鴛鴦トワ",
+  cover: "./images/lyrics-song-20260906-9e0b69.png",
+  youtube: "aEEIayhDgHc",
+  lyrics: "<p>\n      またそんな顔\n    </p>\n\n    <p>\n      してるんだね\n    </p>\n\n    <p>\n      目が合うたび\n    </p>\n\n    <p>\n      笑っちゃう\n    </p>\n\n    <p>\n      少し近付いて\n    </p>\n\n    <p>\n      首をかしげる\n    </p>\n\n    <p>\n      ねぇ\n    </p>\n\n    <p>\n      ドキドキしないの？\n    </p>\n\n    <p>\n      ほら\n    </p>\n\n    <p>\n      もう少しだけ\n    </p>\n\n    <p>\n      近くへおいで\n    </p>\n\n    <p>\n      甘えてみて\n    </p>\n\n    <p>\n      今日は\n    </p>\n\n    <p>\n      わたしのダーリン\n    </p>\n\n    <p>\n      君を翻弄させる\n    </p>\n\n    <p>\n      そのくらいが\n    </p>\n\n    <p>\n      ちょうどいい\n    </p>\n\n    <p>\n      ねぇ\n    </p>\n\n    <p>\n      ここは？\n    </p>\n\n    <p>\n      ここはどう？\n    </p>\n\n    <p>\n      まだ平気？\n    </p>\n\n    <p>\n      ねぇ\n    </p>\n\n    <p>\n      もっと\n    </p>\n\n    <p>\n      愛をちょうだい\n    </p>\n\n    <p>\n      照れた顔\n    </p>\n\n    <p>\n      見つけた\n    </p>\n\n    <p>\n      やっぱり\n    </p>\n\n    <p>\n      可愛いね\n    </p>\n\n    <p>\n      隠したって\n    </p>\n\n    <p>\n      分かるよ\n    </p>\n\n    <p>\n      全部\n    </p>\n\n    <p>\n      顔に出てる\n    </p>\n\n    <p>\n      強がる君も\n    </p>\n\n    <p>\n      好きだけど\n    </p>\n\n    <p>\n      たまには\n    </p>\n\n    <p>\n      甘えて\n    </p>\n\n    <p>\n      ほしいな\n    </p>\n\n    <p>\n      君を翻弄させる\n    </p>\n\n    <p>\n      そんな夜も\n    </p>\n\n    <p>\n      悪くない\n    </p>\n\n    <p>\n      ほら\n    </p>\n\n    <p>\n      もう逃げないで\n    </p>\n\n    <p>\n      ちゃんと\n    </p>\n\n    <p>\n      こっち見て\n    </p>\n\n    <p>\n      ねぇ\n    </p>\n\n    <p>\n      もっと\n    </p>\n\n    <p>\n      愛をちょうだい\n    </p>"
+},
+
+{
   id: "song-20260906-91a382",
   title: "粋",
   artist: "鴛鴦トワ",
