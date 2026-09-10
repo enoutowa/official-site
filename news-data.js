@@ -2,7 +2,8 @@ const newsItems = [
 
 {
   date: "2026.09.11",
-  text: "『鴛鴦スグル』のプロフィールを追加しました。"
+  text: "『鴛鴦スグル』のプロフィールを追加しました。",
+  url: "https://enoutowa.github.io/official-site/suguru.html"
 },
 
 {
