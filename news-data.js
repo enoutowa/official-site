@@ -30,7 +30,7 @@ const newsItems = [
 
 {
   date: "2026.09.08",
-  text: "新曲『無心論』をYouTubeにアップロードしました",
+  text: "新曲『無心論』をYouTubeにアップロードしました。",
   url: "https://youtu.be/LUp8lx1Xuqg?si=jdidIuGK5xCOzgBt"
 },
 
