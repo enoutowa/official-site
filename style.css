@@ -3899,3 +3899,27 @@ main .request-page .request-page-header h2::before {
   }
 
 }
+
+/* =========================
+   REQUEST CHAT BACKGROUND
+========================= */
+
+body {
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.18)
+    ),
+    url("./images/request-chat-bg.png") center top / cover fixed no-repeat;
+}
+
+.request-chat-page {
+  position: relative;
+  z-index: 1;
+}
+
+.request-chat-header,
+.request-chat-box {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
