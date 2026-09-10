@@ -2,216 +2,234 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>制作依頼チャット | 鴛鴦トワ Official Website</title>
-
-  <meta
-    name="description"
-    content="鴛鴦トワ 制作依頼専用チャット"
-  >
-
-  <link
-    rel="stylesheet"
-    href="./style.css"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>制作依頼 専用チャット | 鴛鴦トワ Official Website</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="./style.css">
 
   <style>
+    * { box-sizing: border-box; }
+
     .request-chat-page {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 48px 18px 90px;
+      width: min(920px, calc(100% - 28px));
+      margin: 48px auto 100px;
     }
 
-    .request-chat-head {
+    .request-chat-header,
+    .request-chat-box {
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(118,77,142,.14);
+      box-shadow: 0 12px 35px rgba(96,66,115,.08);
+      border-radius: 24px;
+    }
+
+    .request-chat-header {
+      padding: 30px 24px;
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
 
     .request-chat-label {
       margin: 0 0 8px;
-      color: #8c6ca8;
+      color: #8a699c;
       font-size: 12px;
-      font-weight: 700;
       letter-spacing: .16em;
+      font-weight: 700;
     }
 
-    .request-chat-head h2 {
-      margin: 0 0 12px;
-      color: #4d3c59;
-      font-size: clamp(24px, 5vw, 34px);
-    }
-
-    .request-chat-head p {
+    .request-chat-header h2 {
       margin: 0;
-      color: #776c7d;
-      line-height: 1.8;
-    }
-
-    .request-chat-card {
-      overflow: hidden;
-      border: 1px solid #eadff0;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 10px 30px rgba(87, 62, 104, .08);
+      color: #694b78;
+      font-size: clamp(22px, 5vw, 32px);
     }
 
     .request-chat-info {
-      padding: 18px 20px;
-      border-bottom: 1px solid #eee4f2;
-      background: #faf7fc;
-    }
-
-    .request-chat-number {
-      margin: 0 0 5px;
-      color: #8c6ca8;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .request-chat-title {
-      margin: 0;
-      color: #45364f;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .request-chat-messages {
-      min-height: 330px;
-      max-height: 560px;
-      overflow-y: auto;
-      padding: 22px 16px;
-      background:
-        linear-gradient(rgba(252, 249, 253, .96), rgba(252, 249, 253, .96)),
-        radial-gradient(circle at 20% 20%, #eadff3 0 2px, transparent 3px);
-    }
-
-    .request-chat-empty,
-    .request-chat-loading {
-      padding: 75px 10px;
-      text-align: center;
-      color: #998da0;
+      margin-top: 15px;
+      color: #806f89;
       font-size: 13px;
-    }
-
-    .request-chat-message {
-      display: flex;
-      margin: 0 0 14px;
-    }
-
-    .request-chat-message.client {
-      justify-content: flex-end;
-    }
-
-    .request-chat-message.admin {
-      justify-content: flex-start;
-    }
-
-    .request-chat-bubble {
-      max-width: min(76%, 560px);
-      padding: 11px 14px;
-      border-radius: 17px;
-      word-break: break-word;
-      white-space: pre-wrap;
-      line-height: 1.75;
-      font-size: 14px;
-    }
-
-    .request-chat-message.client .request-chat-bubble {
-      border-bottom-right-radius: 5px;
-      background: #8b69a5;
-      color: #fff;
-    }
-
-    .request-chat-message.admin .request-chat-bubble {
-      border: 1px solid #eadff0;
-      border-bottom-left-radius: 5px;
-      background: #fff;
-      color: #4e4453;
-    }
-
-    .request-chat-time {
-      display: block;
-      margin-top: 5px;
-      opacity: .68;
-      font-size: 10px;
-    }
-
-    .request-chat-form {
-      padding: 16px;
-      border-top: 1px solid #eee4f2;
-      background: #fff;
-    }
-
-    .request-chat-form textarea {
-      width: 100%;
-      min-height: 110px;
-      resize: vertical;
-      box-sizing: border-box;
-      padding: 13px 14px;
-      border: 1px solid #dfd2e5;
-      border-radius: 14px;
-      outline: none;
-      font: inherit;
-      line-height: 1.7;
-      background: #fff;
-    }
-
-    .request-chat-form textarea:focus {
-      border-color: #a88abd;
-      box-shadow: 0 0 0 3px rgba(168, 138, 189, .12);
-    }
-
-    .request-chat-send {
-      width: 100%;
-      margin-top: 10px;
-      padding: 13px 16px;
-      border: 0;
-      border-radius: 999px;
-      background: #82629b;
-      color: #fff;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .request-chat-send:disabled {
-      opacity: .55;
-      cursor: default;
-    }
-
-    .request-chat-status {
-      min-height: 20px;
-      margin: 8px 0 0;
-      text-align: center;
-      color: #776c7d;
-      font-size: 12px;
-    }
-
-    .request-chat-error {
-      padding: 55px 20px;
-      text-align: center;
-      color: #765467;
       line-height: 1.8;
     }
 
-    @media screen and (max-width: 600px) {
+    .request-chat-box {
+      padding: 18px;
+    }
+
+    .chat-notice {
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      background: #f5eff8;
+      color: #735f7e;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .chat-messages {
+      min-height: 250px;
+      max-height: 58vh;
+      overflow-y: auto;
+      padding: 4px 2px 18px;
+    }
+
+    .chat-empty {
+      padding: 50px 10px;
+      text-align: center;
+      color: #9a8ca2;
+      font-size: 13px;
+    }
+
+    .chat-row {
+      display: flex;
+      margin: 13px 0;
+    }
+
+    .chat-row.client { justify-content: flex-end; }
+    .chat-row.towa { justify-content: flex-start; }
+
+    .chat-bubble {
+      max-width: min(78%, 620px);
+      padding: 12px 14px;
+      border-radius: 18px;
+      line-height: 1.7;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .chat-row.client .chat-bubble {
+      color: white;
+      background: linear-gradient(135deg, #8a61a2, #73508d);
+      border-bottom-right-radius: 6px;
+    }
+
+    .chat-row.towa .chat-bubble {
+      color: #604d6a;
+      background: #f3edf6;
+      border-bottom-left-radius: 6px;
+    }
+
+    .chat-time {
+      margin-top: 6px;
+      opacity: .7;
+      font-size: 10px;
+    }
+
+    .chat-images {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .chat-images img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 11px;
+      display: block;
+    }
+
+    .chat-form {
+      border-top: 1px solid rgba(118,77,142,.12);
+      padding-top: 18px;
+    }
+
+    .chat-form textarea {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+      padding: 14px;
+      border: 1px solid #d9cce0;
+      border-radius: 14px;
+      background: white;
+      color: #54455d;
+      font: inherit;
+      line-height: 1.65;
+    }
+
+    .chat-file-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .chat-file-row input[type="file"] {
+      max-width: 100%;
+      font-size: 12px;
+    }
+
+    .chat-file-note {
+      color: #92839a;
+      font-size: 11px;
+    }
+
+    .chat-submit {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #8a61a2, #73508d);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chat-submit:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .chat-status {
+      min-height: 22px;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .chat-status.error { color: #a23e62; }
+    .chat-status.success { color: #567d66; }
+
+    .chat-loading {
+      padding: 70px 20px;
+      text-align: center;
+      color: #8d7d95;
+    }
+
+    .chat-invalid {
+      text-align: center;
+      padding: 60px 22px;
+      color: #785f84;
+      line-height: 1.8;
+    }
+
+    .hp-field {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+
+    @media (max-width: 600px) {
       .request-chat-page {
-        padding: 30px 12px 80px;
+        width: min(100% - 18px, 920px);
+        margin-top: 24px;
       }
 
-      .request-chat-messages {
-        min-height: 300px;
-        max-height: 52vh;
-        padding: 18px 12px;
+      .request-chat-header {
+        padding: 24px 16px;
       }
 
-      .request-chat-bubble {
-        max-width: 84%;
+      .request-chat-box {
+        padding: 13px;
+        border-radius: 20px;
+      }
+
+      .chat-bubble {
+        max-width: 88%;
       }
     }
   </style>
@@ -219,332 +237,217 @@
 
 <body>
 
-  <header>
+<header>
+  <div class="header-inner">
+    <p class="header-sub">OFFICIAL WEBSITE</p>
+    <h1>鴛鴦トワ</h1>
+  </div>
 
-    <div class="header-inner">
+  <nav>
+    <a href="./index.html">HOME</a>
+    <a href="./request.html">REQUEST</a>
+  </nav>
+</header>
 
-      <p class="header-sub">
-        OFFICIAL WEBSITE
-      </p>
+<main>
+  <section class="request-chat-page">
 
-      <h1>
-        鴛鴦トワ
-      </h1>
-
+    <div class="request-chat-header">
+      <p class="request-chat-label">PRIVATE REQUEST CHAT</p>
+      <h2>制作依頼 専用チャット</h2>
+      <div id="chatInfo" class="request-chat-info">読み込み中です…</div>
     </div>
 
-    <nav>
-      <a href="./index.html#news">NEWS</a>
-      <a href="./index.html#profile">PROFILE</a>
-      <a href="./index.html#music">MUSIC</a>
-      <a href="./index.html#jukebox">JUKEBOX</a>
-      <a href="./index.html#video">VIDEO</a>
-      <a href="./lyrics.html">LYRICS</a>
-      <a href="./blog.html">BLOG</a>
-      <a href="./index.html#novel">NOVEL</a>
-      <a href="./gallery.html">GALLERY</a>
-      <a href="./index.html#link">LINK</a>
-    </nav>
-
-  </header>
-
-  <main>
-
-    <section class="request-chat-page">
-
-      <div class="request-chat-head">
-
-        <p class="request-chat-label">
-          PRIVATE REQUEST CHAT
-        </p>
-
-        <h2>
-          制作依頼 専用チャット
-        </h2>
-
-        <p>
-          このページは、招待された方だけが利用できる<br>
-          制作依頼専用のチャットです。
-        </p>
-
+    <div class="request-chat-box">
+      <div id="chatArea">
+        <div class="chat-loading">チャットを読み込んでいます…</div>
       </div>
-
-      <div class="request-chat-card" id="chatCard">
-
-        <div class="request-chat-loading">
-          チャットを読み込んでいます…
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-
-    <div class="footer-inner">
-
-      <p class="footer-title">
-        鴛鴦トワ Official Website
-      </p>
-
-      <div class="footer-submenu">
-
-        <a href="./index.html">
-          HOME
-        </a>
-
-        <span>|</span>
-
-        <a href="./terms.html">
-          利用規約
-        </a>
-
-        <span>|</span>
-
-        <a href="./contact.html">
-          お問い合わせ
-        </a>
-
-      </div>
-
-      <p class="footer-copy">
-        © 鴛鴦トワ
-      </p>
-
     </div>
 
-  </footer>
+  </section>
+</main>
 
-  <script>
-    const API_BASE =
-      "https://enou-towa-admin.miyu-run-0220.workers.dev";
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-title">鴛鴦トワ Official Website</p>
+    <p class="footer-copy">© 鴛鴦トワ</p>
+  </div>
+</footer>
 
-    const params = new URLSearchParams(location.search);
-    const token = params.get("token") || "";
+<script>
+(() => {
+  const API = "https://enou-towa-admin.miyu-run-0220.workers.dev";
+  const params = new URLSearchParams(location.search);
+  const token = params.get("token") || "";
+  const chatArea = document.getElementById("chatArea");
+  const chatInfo = document.getElementById("chatInfo");
 
-    const chatCard = document.getElementById("chatCard");
+  const esc = value => String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
-    function esc(value) {
-      return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+  function fileToDataUrl(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function messageHtml(msg) {
+    const senderClass = msg.sender === "towa" ? "towa" : "client";
+    const images = (msg.files || []).length
+      ? '<div class="chat-images">' + msg.files.map(file => {
+          const src = API + "/api/public/request-chat/file?token=" +
+            encodeURIComponent(token) + "&id=" + encodeURIComponent(file.id);
+          return '<a href="' + src + '" target="_blank" rel="noopener noreferrer">' +
+            '<img src="' + src + '" alt="' + esc(file.name || "添付画像") + '">' +
+          '</a>';
+        }).join("") + "</div>"
+      : "";
+
+    return '<div class="chat-row ' + senderClass + '">' +
+      '<div class="chat-bubble">' +
+        (msg.body ? '<div>' + esc(msg.body).replace(/\n/g, "<br>") + '</div>' : '') +
+        images +
+        '<div class="chat-time">' + esc(msg.createdAt || "") + '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  async function loadChat(scrollBottom = true) {
+    if (!token) {
+      chatInfo.textContent = "";
+      chatArea.innerHTML =
+        '<div class="chat-invalid">このチャットURLは利用できません。<br>案内メールに記載されたURLからアクセスしてください。</div>';
+      return;
     }
 
-    function formatTime(value) {
-      if (!value) return "";
-
-      const date = new Date(
-        String(value).replace(" ", "T") + "Z"
-      );
-
-      if (Number.isNaN(date.getTime())) {
-        return String(value);
-      }
-
-      return new Intl.DateTimeFormat("ja-JP", {
-        timeZone: "Asia/Tokyo",
-        month: "numeric",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit"
-      }).format(date);
-    }
-
-    function scrollBottom() {
-      const area =
-        document.getElementById("chatMessages");
-
-      if (area) {
-        area.scrollTop = area.scrollHeight;
-      }
-    }
-
-    async function api(path, options = {}) {
+    try {
       const response = await fetch(
-        API_BASE + path,
-        options
+        API + "/api/public/request-chat?token=" + encodeURIComponent(token),
+        { method: "GET" }
       );
+      const data = await response.json();
 
-      const data = await response.json()
-        .catch(() => null);
-
-      if (!response.ok || !data?.ok) {
-        throw new Error(
-          data?.message || "通信に失敗しました"
-        );
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "チャットを読み込めませんでした");
       }
 
-      return data;
-    }
+      chatInfo.innerHTML =
+        "依頼番号：" + esc(data.request.publicId) + "<br>" +
+        esc(data.request.requestType) + " ｜ " + esc(data.request.title);
 
-    function renderChat(data) {
-      const item = data.request || {};
       const messages = data.messages || [];
 
-      const messageHtml = messages.length
-        ? messages.map(message => {
-            const sender =
-              message.sender === "admin"
-                ? "admin"
-                : "client";
+      chatArea.innerHTML =
+        '<div class="chat-notice">ここはご依頼者様専用のチャットです。URLは第三者へ共有しないようお願いいたします。</div>' +
+        '<div id="chatMessages" class="chat-messages">' +
+          (messages.length
+            ? messages.map(messageHtml).join("")
+            : '<div class="chat-empty">まだメッセージはありません。<br>こちらからご連絡いただけます。</div>') +
+        '</div>' +
+        '<form id="chatForm" class="chat-form">' +
+          '<label class="hp-field">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
+          '<textarea name="body" maxlength="3000" placeholder="メッセージを入力してください"></textarea>' +
+          '<div class="chat-file-row">' +
+            '<input type="file" name="images" accept="image/png,image/jpeg,image/webp" multiple>' +
+            '<span class="chat-file-note">画像は3枚まで・1枚5MBまで</span>' +
+          '</div>' +
+          '<button type="submit" class="chat-submit">送信する</button>' +
+          '<div id="chatStatus" class="chat-status"></div>' +
+        '</form>';
 
-            const label =
-              sender === "admin"
-                ? "鴛鴦トワ"
-                : "あなた";
+      document.getElementById("chatForm").addEventListener("submit", sendMessage);
 
-            return `
-              <div class="request-chat-message ${sender}">
-                <div class="request-chat-bubble">
-                  ${esc(message.body)}
-                  <span class="request-chat-time">
-                    ${esc(label)} ・ ${esc(formatTime(message.created_at))}
-                  </span>
-                </div>
-              </div>
-            `;
-          }).join("")
-        : `
-          <div class="request-chat-empty">
-            まだメッセージはありません。<br>
-            ご相談内容や確認したいことを送ってください。
-          </div>
-        `;
+      if (scrollBottom) {
+        const box = document.getElementById("chatMessages");
+        if (box) box.scrollTop = box.scrollHeight;
+      }
+    } catch (error) {
+      chatInfo.textContent = "";
+      chatArea.innerHTML =
+        '<div class="chat-invalid">' + esc(error.message) + '</div>';
+    }
+  }
 
-      chatCard.innerHTML = `
-        <div class="request-chat-info">
-          <p class="request-chat-number">
-            ${esc(item.publicId || "")}
-          </p>
+  async function sendMessage(event) {
+    event.preventDefault();
 
-          <p class="request-chat-title">
-            ${esc(item.title || "制作依頼")}
-          </p>
-        </div>
+    const form = event.currentTarget;
+    const status = document.getElementById("chatStatus");
+    const button = form.querySelector('button[type="submit"]');
+    const files = Array.from(form.images.files || []);
 
-        <div
-          class="request-chat-messages"
-          id="chatMessages"
-        >
-          ${messageHtml}
-        </div>
+    status.className = "chat-status";
+    status.textContent = "";
 
-        <form
-          class="request-chat-form"
-          id="chatForm"
-        >
-          <textarea
-            id="chatBody"
-            maxlength="3000"
-            placeholder="メッセージを入力してください"
-            required
-          ></textarea>
-
-          <button
-            type="submit"
-            class="request-chat-send"
-            id="chatSend"
-          >
-            送信する
-          </button>
-
-          <p
-            class="request-chat-status"
-            id="chatStatus"
-          ></p>
-        </form>
-      `;
-
-      document
-        .getElementById("chatForm")
-        .addEventListener(
-          "submit",
-          sendMessage
-        );
-
-      scrollBottom();
+    if (files.length > 3) {
+      status.className = "chat-status error";
+      status.textContent = "画像は3枚までです。";
+      return;
     }
 
-    async function loadChat() {
-      if (!token) {
-        chatCard.innerHTML = `
-          <div class="request-chat-error">
-            招待URLを確認してください。
-          </div>
-        `;
+    for (const file of files) {
+      if (!["image/png", "image/jpeg", "image/webp"].includes(file.type)) {
+        status.className = "chat-status error";
+        status.textContent = "PNG・JPEG・WebPのみ添付できます。";
         return;
       }
-
-      try {
-        const data = await api(
-          "/api/public/request-chat?token=" +
-          encodeURIComponent(token)
-        );
-
-        renderChat(data);
-      } catch (error) {
-        chatCard.innerHTML = `
-          <div class="request-chat-error">
-            ${esc(error.message)}
-          </div>
-        `;
+      if (file.size > 5 * 1024 * 1024) {
+        status.className = "chat-status error";
+        status.textContent = "画像は1枚5MB以下にしてください。";
+        return;
       }
     }
 
-    async function sendMessage(event) {
-      event.preventDefault();
+    button.disabled = true;
+    button.textContent = "送信中…";
 
-      const textarea =
-        document.getElementById("chatBody");
-
-      const button =
-        document.getElementById("chatSend");
-
-      const status =
-        document.getElementById("chatStatus");
-
-      const body = textarea.value.trim();
-
-      if (!body) return;
-
-      button.disabled = true;
-      status.textContent = "送信中…";
-
-      try {
-        await api(
-          "/api/public/request-chat",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              token,
-              body
-            })
-          }
-        );
-
-        textarea.value = "";
-        status.textContent = "送信しました";
-
-        await loadChat();
-
-      } catch (error) {
-        status.textContent = error.message;
-
-      } finally {
-        button.disabled = false;
+    try {
+      const images = [];
+      for (const file of files) {
+        images.push({
+          name: file.name,
+          dataUrl: await fileToDataUrl(file)
+        });
       }
-    }
 
-    loadChat();
-  </script>
+      const response = await fetch(API + "/api/public/request-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          token,
+          body: form.body.value,
+          website: form.website.value,
+          images
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "送信できませんでした");
+      }
+
+      form.reset();
+      await loadChat(true);
+    } catch (error) {
+      status.className = "chat-status error";
+      status.textContent = error.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = "送信する";
+    }
+  }
+
+  loadChat(true);
+})();
+</script>
 
 </body>
 </html>
