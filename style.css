@@ -3901,26 +3901,20 @@ main .request-page .request-page-header h2::before {
 }
 
 /* =========================
-   REQUEST CHAT BACKGROUND
-   request-chat.html だけに適用
+   REQUEST CHAT
+   チャット履歴部分だけ背景画像
 ========================= */
 
-body.request-chat-body {
+.chat-messages {
   background:
     linear-gradient(
-      rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0.18)
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.35)
     ),
-    url("./images/request-chat-bg.png") center top / cover fixed no-repeat;
-}
+    url("./images/request-chat-bg.png")
+    center center / cover no-repeat;
 
-body.request-chat-body .request-chat-page {
-  position: relative;
-  z-index: 1;
-}
+  border-radius: 18px;
 
-body.request-chat-body .request-chat-header,
-body.request-chat-body .request-chat-box {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  padding: 18px !important;
 }
