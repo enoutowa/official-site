@@ -20,7 +20,7 @@ const lyricsItems = [
   lyricist: "鴛鴦トワ",
   composer: "鴛鴦トワ",
   cover: "./images/lyrics-song-20260906-91a382.png",
-  youtube: "8F-7lc8UtBs",
+  youtube: "9fIMbkQcnis",
   lyrics: "<p>\n      はぁ！\n    </p>\n\n    <p>\n      波が呼ぶなら\n    </p>\n\n    <p>\n      波へ行く\n    </p>\n\n    <p>\n      風が笑えば\n    </p>\n\n    <p>\n      空を向く\n    </p>\n\n    <p>\n      褌ひとつ\n    </p>\n\n    <p>\n      締め直し\n    </p>\n\n    <p>\n      今日も背中で\n    </p>\n\n    <p>\n      語るだけ\n    </p>\n\n    <p>\n      どっこい！\n    </p>\n\n    <p>\n      見栄じゃねぇ\n    </p>\n\n    <p>\n      意地でもねぇ\n    </p>\n\n    <p>\n      守りてぇもんが\n    </p>\n\n    <p>\n      あるだけさ\n    </p>\n\n    <p>\n      はぁ！\n    </p>\n\n    <p>\n      粋に笑って\n    </p>\n\n    <p>\n      粋に生きる\n    </p>\n\n    <p>\n      泥にまみれて\n    </p>\n\n    <p>\n      花となる\n    </p>\n\n    <p>\n      褌締めりゃ\n    </p>\n\n    <p>\n      腹が決まる\n    </p>\n\n    <p>\n      これが男の\n    </p>\n\n    <p>\n      心意気！\n    </p>\n\n    <p>\n      どっこい！\n    </p>\n\n    <p>\n      転んだ数だけ\n    </p>\n\n    <p>\n      強くなる\n    </p>\n\n    <p>\n      涙は海へ\n    </p>\n\n    <p>\n      流しゃいい\n    </p>\n\n    <p>\n      はぁ！\n    </p>\n\n    <p>\n      祭り囃子が\n    </p>\n\n    <p>\n      響くなら\n    </p>\n\n    <p>\n      命燃やして\n    </p>\n\n    <p>\n      舞い踊れ\n    </p>\n\n    <p>\n      粋に笑って\n    </p>\n\n    <p>\n      粋に生きる\n    </p>\n\n    <p>\n      胸を張れよ\n    </p>\n\n    <p>\n      風になる\n    </p>\n\n    <p>\n      褌ひとつ\n    </p>\n\n    <p>\n      誇りにして\n    </p>\n\n    <p>\n      明日へ進め\n    </p>\n\n    <p>\n      どっこいしょ！\n    </p>"
 },
 
