@@ -291,7 +291,7 @@
 
     const article =
       blogPosts.find((post) => {
-        return post.id === articleId;
+        return String(post.id) === String(articleId);
       });
 
     const articleContent =
@@ -400,7 +400,11 @@
           await fetch(
             BLOG_API +
             "/api/public/support?article_id=" +
-            encodeURIComponent(articleId)
+            encodeURIComponent(articleId) +
+            "&t=" + Date.now(),
+            {
+              cache: "no-store"
+            }
           );
 
         const data =
@@ -549,6 +553,10 @@
 
     async function loadComments() {
 
+      if (!articleId || !article) {
+        return;
+      }
+
       commentList.innerHTML =
         '<p class="comment-loading">読み込み中...</p>';
 
@@ -559,15 +567,22 @@
           await fetch(
             BLOG_API +
             "/api/public/comments?article_id=" +
-            encodeURIComponent(articleId)
+            encodeURIComponent(articleId) +
+            "&t=" + Date.now(),
+            {
+              cache: "no-store"
+            }
           );
 
         const data =
           await response.json();
 
 
-        if (!data.ok) {
-          throw new Error();
+        if (!response.ok || !data.ok) {
+          throw new Error(
+            data.message ||
+            "コメントを読み込めませんでした"
+          );
         }
 
 
@@ -577,6 +592,8 @@
 
 
       } catch (error) {
+
+        console.error(error);
 
         commentList.innerHTML =
           '<p class="comment-empty">コメントを読み込めませんでした。</p>';
@@ -683,6 +700,9 @@
         commentStatus.textContent =
           "";
 
+        commentStatus.className =
+          "comment-status";
+
 
         try {
 
@@ -730,7 +750,7 @@
             await response.json();
 
 
-          if (!data.ok) {
+          if (!response.ok || !data.ok) {
 
             throw new Error(
               data.message ||
@@ -769,6 +789,32 @@
 
         }
 
+      }
+    );
+
+
+    /*
+      ADMINで承認して記事へ戻ってきた時にも、
+      承認済みコメントを自動で読み直す。
+    */
+    window.addEventListener(
+      "focus",
+      () => {
+        if (article) {
+          loadComments();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (
+          article &&
+          document.visibilityState === "visible"
+        ) {
+          loadComments();
+        }
       }
     );
 
