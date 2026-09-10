@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.09.10",
+  text: "新曲『ないなら作れ』をYouTubeにアップロードしました",
+  url: "https://youtu.be/gelPPZ7v6Q8?si=NNM2vvekyI-2DU29"
+},
+
+{
+  date: "2026.09.10",
   text: "制作依頼の受付を開始しました。"
 },
 
