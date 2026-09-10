@@ -1,6 +1,11 @@
 const newsItems = [
 
 {
+  date: "2026.09.11",
+  text: "『鴛鴦スグル』のプロフィールを追加しました。"
+},
+
+{
   date: "2026.09.10",
   text: "新曲『剪定』をYouTubeにアップロードしました。",
   url: "https://youtu.be/y650l0pBUZM?si=11AIAFmHsPTQJp74"
