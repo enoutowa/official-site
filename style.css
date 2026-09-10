@@ -3918,3 +3918,15 @@ main .request-page .request-page-header h2::before {
 
   padding: 18px !important;
 }
+
+.suguru-profile-link {
+  text-decoration: none;
+}
+
+.suguru-profile-link small {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.75em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
