@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.09.11",
+  text: "新曲『生贄』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/fRcaK7OJogQ?si=Xdsv10nb-t2UrSM4"
+},
+
+{
+  date: "2026.09.11",
   text: "『鴛鴦スグル』のプロフィールを追加しました。",
   url: "https://enoutowa.github.io/official-site/suguru.html"
 },
