@@ -6,6 +6,7 @@
   <title>制作依頼 専用チャット | 鴛鴦トワ Official Website</title>
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="./style.css">
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <style>
     * { box-sizing: border-box; }
@@ -53,6 +54,54 @@
     .request-chat-box {
       padding: 18px;
     }
+
+
+    .push-box {
+      margin-bottom: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(118,77,142,.16);
+      border-radius: 14px;
+      background: rgba(255,255,255,.88);
+      color: #735f7e;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .push-box-title {
+      margin: 0 0 8px;
+      font-weight: 700;
+      color: #694b78;
+    }
+
+    .push-enable {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      margin-top: 8px;
+      padding: 9px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #8a61a2, #73508d);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .push-enable:disabled {
+      opacity: .65;
+      cursor: default;
+    }
+
+    .push-status {
+      margin-top: 7px;
+      color: #806f89;
+      font-size: 11px;
+    }
+
+    .push-status.success { color: #567d66; }
+    .push-status.error { color: #a23e62; }
 
     .chat-notice {
       padding: 14px 16px;
@@ -298,6 +347,149 @@
     });
   }
 
+
+  function urlBase64ToUint8Array(base64String) {
+    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding)
+      .replace(/-/g, "+")
+      .replace(/_/g, "/");
+    const raw = atob(base64);
+    return Uint8Array.from(raw, char => char.charCodeAt(0));
+  }
+
+  function isIos() {
+    return /iphone|ipad|ipod/i.test(navigator.userAgent);
+  }
+
+  function isStandalone() {
+    return window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true;
+  }
+
+  async function postPushSubscription(subscription) {
+    const json = subscription.toJSON();
+
+    const response = await fetch(API + "/api/public/request-push-subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token,
+        subscription: json
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.ok) {
+      throw new Error(data.message || "通知登録に失敗しました");
+    }
+
+    return data;
+  }
+
+  async function refreshPushState() {
+    const button = document.getElementById("pushEnableButton");
+    const status = document.getElementById("pushStatus");
+    if (!button || !status) return;
+
+    if (!("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) {
+      button.disabled = true;
+      button.textContent = "この端末では通知を利用できません";
+      status.textContent = "";
+      return;
+    }
+
+    if (isIos() && !isStandalone()) {
+      button.disabled = false;
+      button.textContent = "通知を受け取る";
+      status.textContent = "iPhone / iPadでは、このページをホーム画面に追加してから通知を有効にしてください。";
+      return;
+    }
+
+    if (Notification.permission === "denied") {
+      button.disabled = true;
+      button.textContent = "通知がブロックされています";
+      status.className = "push-status error";
+      status.textContent = "端末またはブラウザの設定から、このサイトの通知を許可してください。";
+      return;
+    }
+
+    const registration = await navigator.serviceWorker.register("./service-worker.js");
+    const existing = await registration.pushManager.getSubscription();
+
+    if (existing) {
+      try {
+        await postPushSubscription(existing);
+      } catch {}
+      button.disabled = true;
+      button.textContent = "通知は有効です ✓";
+      status.className = "push-status success";
+      status.textContent = "トワから返信が届くと端末に通知します。";
+      return;
+    }
+
+    button.disabled = false;
+    button.textContent = "通知を受け取る";
+    status.className = "push-status";
+    status.textContent = "ボタンを押すと、ブラウザの通知許可画面が表示されます。";
+  }
+
+  async function enablePushNotifications() {
+    const button = document.getElementById("pushEnableButton");
+    const status = document.getElementById("pushStatus");
+    if (!button || !status) return;
+
+    if (isIos() && !isStandalone()) {
+      status.className = "push-status";
+      status.textContent = "iPhone / iPadでは、共有メニュー →「ホーム画面に追加」→ 追加したアイコンからこのチャットを開いてください。";
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "設定中…";
+    status.className = "push-status";
+    status.textContent = "";
+
+    try {
+      const permission = await Notification.requestPermission();
+
+      if (permission !== "granted") {
+        throw new Error("通知が許可されませんでした。ブラウザの設定をご確認ください。");
+      }
+
+      const keyResponse = await fetch(API + "/api/public/push-key", { method: "GET" });
+      const keyData = await keyResponse.json();
+
+      if (!keyResponse.ok || !keyData.ok || !keyData.publicKey) {
+        throw new Error("通知用の公開鍵を取得できませんでした");
+      }
+
+      const registration = await navigator.serviceWorker.register("./service-worker.js");
+      await navigator.serviceWorker.ready;
+
+      let subscription = await registration.pushManager.getSubscription();
+
+      if (!subscription) {
+        subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(keyData.publicKey)
+        });
+      }
+
+      await postPushSubscription(subscription);
+
+      button.textContent = "通知は有効です ✓";
+      status.className = "push-status success";
+      status.textContent = "設定できました。トワから返信が届くと端末に通知します。";
+    } catch (error) {
+      button.disabled = false;
+      button.textContent = "通知を受け取る";
+      status.className = "push-status error";
+      status.textContent = error.message;
+    }
+  }
+
+
   function messageHtml(msg) {
     const senderClass = msg.sender === "towa" ? "towa" : "client";
     const images = (msg.files || []).length
@@ -346,6 +538,12 @@
 
       chatArea.innerHTML =
         '<div class="chat-notice">ここはご依頼者様専用のチャットです。URLは第三者へ共有しないようお願いいたします。</div>' +
+        '<div class="push-box">' +
+          '<p class="push-box-title">🔔 新着メッセージ通知</p>' +
+          '<div>トワから返信が届いた時に、この端末へ通知できます。</div>' +
+          '<button type="button" id="pushEnableButton" class="push-enable">通知を受け取る</button>' +
+          '<div id="pushStatus" class="push-status"></div>' +
+        '</div>' +
         '<div id="chatMessages" class="chat-messages">' +
           (messages.length
             ? messages.map(messageHtml).join("")
@@ -363,6 +561,9 @@
         '</form>';
 
       document.getElementById("chatForm").addEventListener("submit", sendMessage);
+      const pushButton = document.getElementById("pushEnableButton");
+      if (pushButton) pushButton.addEventListener("click", enablePushNotifications);
+      refreshPushState().catch(() => {});
 
       if (scrollBottom) {
         const box = document.getElementById("chatMessages");
