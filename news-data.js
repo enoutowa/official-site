@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.09.13",
+  text: "BLOGを更新しました。",
+  url: "./article.html?id=20260913-0-7"
+},
+
+{
+  date: "2026.09.13",
   text: "新曲『不調和』をYouTubeにアップロードしました。",
   url: "https://youtu.be/j08u938jyuE?si=36IYzuX4U5cUKCBa"
 },
