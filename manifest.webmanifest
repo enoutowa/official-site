@@ -1,0 +1,10 @@
+{
+  "name": "鴛鴦トワ 制作依頼チャット",
+  "short_name": "制作依頼チャット",
+  "start_url": "./request-chat.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f4ff",
+  "theme_color": "#8f7ab8",
+  "lang": "ja"
+}
