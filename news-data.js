@@ -1,6 +1,12 @@
 const newsItems = [
 
 {
+  date: "2026.09.15",
+  text: "新曲『黒猫』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/n3gizrxrXrw?si=C6hAgKzqYZfHAhTw"
+},
+
+{
   date: "2026.09.13",
   text: "BLOGを更新しました。",
   url: "./article.html?id=20260913-0-7"
