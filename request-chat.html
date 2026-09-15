@@ -254,6 +254,25 @@
       line-height: 1.8;
     }
 
+    .chat-locked {
+      margin: 18px 0 4px;
+      padding: 22px 18px;
+      border: 1px solid rgba(162,62,98,.18);
+      border-radius: 16px;
+      background: #faf3f6;
+      color: #785f84;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .chat-locked strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #8b4562;
+      font-size: 15px;
+    }
+
     .hp-field {
       position: absolute !important;
       left: -9999px !important;
@@ -535,35 +554,50 @@
         esc(data.request.requestType) + " ｜ " + esc(data.request.title);
 
       const messages = data.messages || [];
+      const locked = data.locked === true || data.request?.locked === true;
 
-      chatArea.innerHTML =
-        '<div class="chat-notice">ここはご依頼者様専用のチャットです。URLは第三者へ共有しないようお願いいたします。</div>' +
-        '<div class="push-box">' +
-          '<p class="push-box-title">🔔 新着メッセージ通知</p>' +
-          '<div>トワから返信が届いた時に、この端末へ通知できます。</div>' +
-          '<button type="button" id="pushEnableButton" class="push-enable">通知を受け取る</button>' +
-          '<div id="pushStatus" class="push-status"></div>' +
-        '</div>' +
+      const historyHtml =
         '<div id="chatMessages" class="chat-messages">' +
           (messages.length
             ? messages.map(messageHtml).join("")
-            : '<div class="chat-empty">まだメッセージはありません。<br>こちらからご連絡いただけます。</div>') +
-        '</div>' +
-        '<form id="chatForm" class="chat-form">' +
-          '<label class="hp-field">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
-          '<textarea name="body" maxlength="3000" placeholder="メッセージを入力してください"></textarea>' +
-          '<div class="chat-file-row">' +
-            '<input type="file" name="images" accept="image/png,image/jpeg,image/webp" multiple>' +
-            '<span class="chat-file-note">画像は3枚まで・1枚5MBまで</span>' +
-          '</div>' +
-          '<button type="submit" class="chat-submit">送信する</button>' +
-          '<div id="chatStatus" class="chat-status"></div>' +
-        '</form>';
+            : '<div class="chat-empty">まだメッセージはありません。</div>') +
+        '</div>';
 
-      document.getElementById("chatForm").addEventListener("submit", sendMessage);
-      const pushButton = document.getElementById("pushEnableButton");
-      if (pushButton) pushButton.addEventListener("click", enablePushNotifications);
-      refreshPushState().catch(() => {});
+      if (locked) {
+        chatArea.innerHTML =
+          '<div class="chat-notice">ここはご依頼者様専用のチャットです。URLは第三者へ共有しないようお願いいたします。</div>' +
+          historyHtml +
+          '<div class="chat-locked">' +
+            '<strong>このチャットは現在ご利用いただけません</strong>' +
+            'こちらからのご連絡後、7日間ご返信が確認できなかったため、チャットの利用を停止しています。<br>' +
+            '制作の再開・今後の対応について確認が必要な場合は、改めてお問い合わせください。' +
+          '</div>';
+      } else {
+        chatArea.innerHTML =
+          '<div class="chat-notice">ここはご依頼者様専用のチャットです。URLは第三者へ共有しないようお願いいたします。</div>' +
+          '<div class="push-box">' +
+            '<p class="push-box-title">🔔 新着メッセージ通知</p>' +
+            '<div>トワから返信が届いた時に、この端末へ通知できます。</div>' +
+            '<button type="button" id="pushEnableButton" class="push-enable">通知を受け取る</button>' +
+            '<div id="pushStatus" class="push-status"></div>' +
+          '</div>' +
+          historyHtml +
+          '<form id="chatForm" class="chat-form">' +
+            '<label class="hp-field">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>' +
+            '<textarea name="body" maxlength="3000" placeholder="メッセージを入力してください"></textarea>' +
+            '<div class="chat-file-row">' +
+              '<input type="file" name="images" accept="image/png,image/jpeg,image/webp" multiple>' +
+              '<span class="chat-file-note">画像は3枚まで・1枚5MBまで</span>' +
+            '</div>' +
+            '<button type="submit" class="chat-submit">送信する</button>' +
+            '<div id="chatStatus" class="chat-status"></div>' +
+          '</form>';
+
+        document.getElementById("chatForm").addEventListener("submit", sendMessage);
+        const pushButton = document.getElementById("pushEnableButton");
+        if (pushButton) pushButton.addEventListener("click", enablePushNotifications);
+        refreshPushState().catch(() => {});
+      }
 
       if (scrollBottom) {
         const box = document.getElementById("chatMessages");
