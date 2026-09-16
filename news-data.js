@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.09.16",
+  text: "新曲『結び文』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/6luqwBzlo50?si=w4VZodnDsY2kcdam"
+},
+
+{
+  date: "2026.09.16",
   text: "新曲『共依存』をYouTubeにアップロードしました。",
   url: "https://youtu.be/kHgHCMGRt5E?si=DtmxwsH9Yr7kpmXU"
 },
