@@ -7,10 +7,10 @@ const blogPosts = [
   category: "MUSIC",
   title: "大事にしてくれる人を大事にしたい",
   summary: "蔑ろにされたり雑に扱われたりするとどうでも良くなりますよね。",
-  linkText: "『それでも』をYouTubeで聴く",
+  linkText: "▶『それでも』をYouTubeで聴く",
   linkUrl: "https://youtu.be/hCEe3zngj_4?si=UMl41UcGS1g6sfJy",
   image: "",
-  content: "<p>\n      住民の皆様こんにゃあ(⋆ᴗ͈ˬᴗ͈)”\n    </p>\n\n    <p>\n      最近は人間関係だったりで、<br>\n      ちょっと凹んだりしてました。\n    </p>\n\n    <p>\n      すれ違いだったり、<br>\n      勘違いだったり。<br>\n      人と関わっていれば色々あるけど、\n    </p>\n\n    <p>\n      結局は、そばに居てくれる人を<br>\n      どれだけ大事にできているか。\n    </p>\n\n    <p>\n      そんなことを自分でも<br>\n      改めて考え直してました。\n    </p>\n\n    <p>\n      どれだけ長くそばに居ても、<br>\n      どれだけ関係に慣れてきても、<br>\n      「大事にすること」だけには<br>\n      慣れたくないですね。\n    </p>\n\n    <p>\n      そばに居てくれることを<br>\n      当たり前だと思いたくない。\n    </p>\n\n    <p>\n      だからこそ、\n    </p>\n\n    <p>\n      その対応は相手を傷つけていないか。<br>\n      その言葉で相手を蔑ろにしていないか。<br>\n      ちゃんと相手と向き合って出した言葉なのか。\n    </p>\n\n    <p>\n      そういうことを、<br>\n      いつも考えられる猫でありたいなと<br>\n      改めて思いました🪻\n    </p>\n\n    <p>\n      愛して欲しいと思うけど<br>\n      私もちゃんと愛せてるかな。\n    </p>\n\n    <p>\n      みんなのこと大事にできてるかな。\n    </p>\n\n    <p>\n      そんな気持ちを曲にしましたฅ^•ω•^ฅ\n    </p>\n\n    <p class=\"blog-extra-link\">\n      <a href=\"https://youtu.be/hCEe3zngj_4?si=UMl41UcGS1g6sfJy\" target=\"_blank\" rel=\"noopener noreferrer\">『それでも』をYouTubeで聴く</a>\n    </p>"
+  content: "<p>\n      住民の皆様こんにゃあ(⋆ᴗ͈ˬᴗ͈)”\n    </p>\n\n    <p>\n      最近は人間関係だったりで、<br>\n      ちょっと凹んだりしてました。\n    </p>\n\n    <p>\n      すれ違いだったり、<br>\n      勘違いだったり。<br>\n      人と関わっていれば色々あるけど、\n    </p>\n\n    <p>\n      結局は、そばに居てくれる人を<br>\n      どれだけ大事にできているか。\n    </p>\n\n    <p>\n      そんなことを自分でも<br>\n      改めて考え直してました。\n    </p>\n\n    <p>\n      どれだけ長くそばに居ても、<br>\n      どれだけ関係に慣れてきても、<br>\n      「大事にすること」だけには<br>\n      慣れたくないですね。\n    </p>\n\n    <p>\n      そばに居てくれることを<br>\n      当たり前だと思いたくない。\n    </p>\n\n    <p>\n      だからこそ、\n    </p>\n\n    <p>\n      その対応は相手を傷つけていないか。<br>\n      その言葉で相手を蔑ろにしていないか。<br>\n      ちゃんと相手と向き合って出した言葉なのか。\n    </p>\n\n    <p>\n      そういうことを、<br>\n      いつも考えられる猫でありたいなと<br>\n      改めて思いました🪻\n    </p>\n\n    <p>\n      愛して欲しいと思うけど<br>\n      私もちゃんと愛せてるかな。\n    </p>\n\n    <p>\n      みんなのこと大事にできてるかな。\n    </p>\n\n    <p>\n      そんな気持ちを曲にしましたฅ^•ω•^ฅ\n    </p>\n\n    <p class=\"blog-extra-link\">\n      <a href=\"https://youtu.be/hCEe3zngj_4?si=UMl41UcGS1g6sfJy\" target=\"_blank\" rel=\"noopener noreferrer\">▶『それでも』をYouTubeで聴く</a>\n    </p>"
 },
 
 {
