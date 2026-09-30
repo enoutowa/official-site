@@ -1,6 +1,12 @@
 const newsItems = [
 
 {
+  date: "2026.10.01",
+  text: "新曲『アダルトチルドレン』をYouTube二アップロードしました。",
+  url: "https://youtu.be/rX5xAIJW1Wo?si=FrFptZfEvhdwwsyT"
+},
+
+{
   date: "2026.09.16",
   text: "BLOGを更新しました。",
   url: "./article.html?id=20260916-blog-dc87f5"
