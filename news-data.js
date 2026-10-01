@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.10.01",
+  text: "BLOGを更新しました。",
+  url: "./article.html?id=20261001-blog-82b6d6"
+},
+
+{
+  date: "2026.10.01",
   text: "新曲『ひとりぼっち』をYouTubeにアップロードしました。",
   url: "https://youtu.be/zRhdjKnGkFk?si=I9gyBGyyVWIuhgmW"
 },
