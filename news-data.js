@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.10.01",
+  text: "新曲『ひとりぼっち』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/zRhdjKnGkFk?si=I9gyBGyyVWIuhgmW"
+},
+
+{
+  date: "2026.10.01",
   text: "新曲『アダルトチルドレン』をYouTubeにアップロードしました。",
   url: "https://youtu.be/rX5xAIJW1Wo?si=FrFptZfEvhdwwsyT"
 },
