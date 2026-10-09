@@ -1,6 +1,19 @@
 const blogPosts = [
 
 {
+  id: "20261009-blog-09380f",
+  url: "./article.html?id=20261009-blog-09380f",
+  date: "2026.10.09",
+  category: "SITE",
+  title: "いつもありがとう",
+  summary: "ゲームの同盟メンバーに創作活動チェックされてました( 'ᢦ' )",
+  linkText: "▶『今日からあなたも住民』をYouTubeで聞く",
+  linkUrl: "https://youtu.be/hDUnaDhQQhY?si=xoYdQpLjy8l2hMAs",
+  image: "",
+  content: "<p>\n      今日も元気にゲームしてて<br>\n      同盟メンバーとワチャワチャ<br>\n      お話してたら<br>\n      『トワさんってエンジニアなの？』<br>\n      と聞かれました。<br>\n      『違うよー？なんでー？』<br>\n      って聞いたら<br>\n      創作活動チェックしてくださってました( &#39;ᢦ&#39; )w\n    </p>\n\n    <p>\n      めっちゃ恥ずかしい！！\n    </p>\n\n    <p>\n      でも嬉しいい！！\n    </p>\n\n    <p>\n      何だこの感情は！！<br>\n      ってなりましたww\n    </p>\n\n    <p>\n      でもやっぱり素直に嬉しいな<br>\n      自分が作ったものが<br>\n      誰かに届くのは本当に楽しい！\n    </p>\n\n    <p>\n      これからも頑張ろー！\n    </p>\n\n    <p>\n      そしてゲームでもよろしくね？🥺💜\n    </p>\n\n    <p>\n      そんな気持ちを曲にしときました🫶🏻\n    </p>\n\n    <p class=\"blog-extra-link\">\n      <a href=\"https://youtu.be/hDUnaDhQQhY?si=xoYdQpLjy8l2hMAs\" target=\"_blank\" rel=\"noopener noreferrer\">▶『今日からあなたも住民』をYouTubeで聞く</a>\n    </p>"
+},
+
+{
   id: "20261001-blog-82b6d6",
   url: "./article.html?id=20261001-blog-82b6d6",
   date: "2026.10.01",

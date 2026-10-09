@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.10.09",
+  text: "BLOGを更新しました。",
+  url: "./article.html?id=20261009-blog-09380f"
+},
+
+{
+  date: "2026.10.09",
   text: "新曲『今日からあなたも住民』をYouTubeにアップロードしました。",
   url: "https://youtu.be/hDUnaDhQQhY?si=xoYdQpLjy8l2hMAs"
 },
