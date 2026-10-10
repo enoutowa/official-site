@@ -1,6 +1,12 @@
 const newsItems = [
 
 {
+  date: "2026.10.11",
+  text: "新曲『彩』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/VodjkM5a3X0?si=_jXvOsc1-FFdXylD"
+},
+
+{
   date: "2026.10.09",
   text: "新曲『美』をYouTubeにアップロードしました。",
   url: "https://youtu.be/BnqEQoOCX7U?si=gOPNYcIJ3tfo7UAh"
