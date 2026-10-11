@@ -1,4 +1,66 @@
 
+過去のメッセージを読み込み中…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    全体
 ========================= */
 
@@ -3930,3 +3992,117 @@ main .request-page .request-page-header h2::before {
   font-size: 0.9em;
   font-weight: bold;
 }
+
+/* =========================
+   BLOG SHARE
+   記事共有
+========================= */
+
+section.blog-share {
+  margin: 26px 0 0;
+  padding: 24px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(238, 229, 247, 0.82),
+      rgba(255, 255, 255, 0.88)
+    );
+
+  border:
+    1px solid rgba(126, 91, 156, 0.20);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 18px rgba(78, 55, 92, 0.08);
+}
+
+.blog-share-title {
+  margin: 0 0 16px !important;
+
+  color: #654c78;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  letter-spacing: 0.06em;
+}
+
+.blog-share-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.blog-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 120px;
+
+  padding: 9px 16px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  border:
+    1px solid #cdb8de;
+
+  border-radius: 999px;
+
+  color: #654c78;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.blog-share-button:hover {
+  background: #71548d;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+.blog-share-message {
+  min-height: 1.6em;
+
+  margin: 12px 0 0 !important;
+
+  color: #80639a;
+
+  font-size: 12px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+  section.blog-share {
+    padding: 22px 16px;
+  }
+
+  .blog-share-buttons {
+    gap: 8px;
+  }
+
+  .blog-share-button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+}
+
