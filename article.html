@@ -1,3 +1,54 @@
+
+過去のメッセージを読み込み中…
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -100,7 +151,7 @@
         <p class="blog-share-title">この記事を共有する</p>
 
         <div class="blog-share-buttons">
-          <a href="#" class="blog-share-button" id="share-x" target="_blank" rel="noopener noreferrer">Xで共有</a>
+          <a href="#" class="blog-share-button" id="share-x">Xアプリで共有</a>
           <a href="#" class="blog-share-button" id="share-line" target="_blank" rel="noopener noreferrer">LINEで共有</a>
           <button type="button" class="blog-share-button" id="share-copy">URLをコピー</button>
         </div>
@@ -407,11 +458,46 @@
       const shareUrl = window.location.href;
       const shareText = article.title + " | 鴛鴦トワ Official Website";
 
-      shareX.href =
-        "https://twitter.com/intent/tweet?text=" +
-        encodeURIComponent(shareText) +
-        "&url=" +
-        encodeURIComponent(shareUrl);
+      const xPostText =
+        shareText + "\n" + shareUrl;
+
+      const isAndroid =
+        /Android/i.test(navigator.userAgent);
+
+      const isIOS =
+        /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      const xWebUrl =
+        "https://x.com/intent/post?text=" +
+        encodeURIComponent(xPostText);
+
+      shareX.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (isAndroid) {
+          window.location.href =
+            "intent://post?message=" +
+            encodeURIComponent(xPostText) +
+            "#Intent;scheme=twitter;package=com.twitter.android;" +
+            "S.browser_fallback_url=" +
+            encodeURIComponent(xWebUrl) +
+            ";end";
+          return;
+        }
+
+        if (isIOS) {
+          window.location.href =
+            "twitter://post?message=" +
+            encodeURIComponent(xPostText);
+          return;
+        }
+
+        window.open(
+          xWebUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
+      });
 
       shareLine.href =
         "https://social-plugins.line.me/lineit/share?url=" +
@@ -892,3 +978,5 @@
 </body>
 
 </html>
+
+
