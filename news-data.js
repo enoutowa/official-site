@@ -1,6 +1,12 @@
 const newsItems = [
 
 {
+  date: "2026.10.13",
+  text: "新曲『Don't Hear My Heart』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/96Wj-3W5lU0?si=IqsX_mPcAF5PVKoI"
+},
+
+{
   date: "2026.10.12",
   text: "新曲『灯』をYouTubeにアップロードしました。",
   url: "https://youtu.be/kSMnlb7QCwM?si=Q9y_Em8YrEyPwHzL"
