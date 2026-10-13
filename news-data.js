@@ -3,7 +3,7 @@ const newsItems = [
 {
   date: "2026.10.13",
   text: "新曲『Don't Hear My Heart』をYouTubeにアップロードしました。",
-  url: "https://youtu.be/96Wj-3W5lU0?si=IqsX_mPcAF5PVKoI"
+  url: "https://youtu.be/BVo2-pb-gjg?si=exaI6c62F9dpWsfK"
 },
 
 {
