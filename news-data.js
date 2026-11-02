@@ -1,6 +1,12 @@
 const newsItems = [
 
 {
+  date: "2026.11.02",
+  text: "新曲『サイレント』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/fOFSGqIExKg?si=O3qnXBgUM81D-eKg"
+},
+
+{
   date: "2026.10.13",
   text: "新曲『Don't Hear My Heart』をYouTubeにアップロードしました。",
   url: "https://youtu.be/BVo2-pb-gjg?si=exaI6c62F9dpWsfK"
