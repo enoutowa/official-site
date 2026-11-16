@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.11.16",
+  text: "BLOGを更新しました。",
+  url: "./article.html?id=20261116-blog-58d2db"
+},
+
+{
+  date: "2026.11.16",
   text: "新曲『相剋』をYouTubeにアップロードしました。",
   url: "https://youtu.be/SQqtYUNTVMw?si=jorrtMRX3YvXn-SX"
 },
