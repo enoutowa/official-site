@@ -2,6 +2,11 @@ const newsItems = [
 
 {
   date: "2026.11.16",
+  text: "YouTubeで鴛鴦トワ専用トピックが自動生成されてました。"
+},
+
+{
+  date: "2026.11.16",
   text: "BLOGを更新しました。",
   url: "./article.html?id=20261116-blog-58d2db"
 },
