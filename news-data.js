@@ -1,6 +1,12 @@
 const newsItems = [
 
 {
+  date: "2026.11.17",
+  text: "新曲『抗命』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/p9w8Yt0U7tY?si=g0ESUuz0qWzfnM_t"
+},
+
+{
   date: "2026.11.16",
   text: "YouTubeで鴛鴦トワ専用トピックが自動生成されてました。"
 },
