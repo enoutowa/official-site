@@ -2,6 +2,12 @@ const newsItems = [
 
 {
   date: "2026.11.17",
+  text: "新曲『亡命』をYouTubeにアップロードしました。",
+  url: "https://youtu.be/AFPkIFAO2Gg?si=fIR6JNamMFYey2lT"
+},
+
+{
+  date: "2026.11.17",
   text: "新曲『抗命』をYouTubeにアップロードしました。",
   url: "https://youtu.be/p9w8Yt0U7tY?si=g0ESUuz0qWzfnM_t"
 },
